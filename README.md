@@ -16,7 +16,7 @@ Local Installation
 
 1. Clone the repository
 
-  `git clone https://github.com/manfergo25/pymenta-rails.git`
+  `git clone https://github.com/manfergo25/pymenta.git`
 
 2. Configure your database in config/database.yml The current config assumes a custom local SQLite configuration.
 
