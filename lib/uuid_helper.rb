@@ -13,7 +13,7 @@ module UUIDHelper
   module InstanceMethods
     private
       def set_uuid
-        self.id = UUIDTools::UUID.timestamp_create().to_s
+        self.id = UUIDTools::UUID.random_create().to_s
       end
     end
 end
