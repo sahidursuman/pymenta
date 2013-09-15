@@ -15,6 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
        end
 
     if @user.save && @company.save
+      sign_in(resource_name, resource)
       flash[:notice] = "You have signed up successfully. If enabled, a confirmation was sent to your email"
         redirect_to root_url
     else
