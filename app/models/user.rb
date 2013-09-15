@@ -9,5 +9,5 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
   attr_accessible :domain, :company_name, :name, :email, :password, :password_confirmation, :remember_me, :username
-  
+  belongs_to :company, :foreign_key => 'domain'
 end
