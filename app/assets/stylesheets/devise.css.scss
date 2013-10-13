@@ -1,0 +1,72 @@
+
+
+$myWhite: #ffffff;
+$myBlack: #000000;
+
+/* colors */
+$navbarBackground: $myBlack;
+$navbarBackgroundHighlight: lighten($navbarBackground, 10);
+$navbarLinkColor: darken($myWhite, 10); 
+$navbarLinkColorHover: $myWhite; 
+$bodyBackground: #000;
+
+// Use Twitter Bootstrap
+@import 'bootstrap';
+@import "bootstrap-responsive";
+
+body {
+  background-color: #fff;
+//  background-image: image-url("background.jpg");
+//  background-position: 0 30px;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-size: cover;
+  height: 100%;
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  padding-top: 60px;
+}
+
+/* styles for layout */
+html
+{
+    height:100%;
+
+}
+ 
+#wrap
+{
+  min-height: 100%;
+}
+ 
+#main
+{
+	height: 750px;
+    overflow:auto;
+    padding-bottom:50px; /* this needs to be bigger than footer height*/
+}
+
+.content {
+  background-color: #eee;
+  padding: 20px;
+  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+ 
+.footer
+{
+    position: relative;
+    margin-top: -0px; /* negative value of footer height */
+    height: 50px;
+    clear:both;
+    padding-top:20px;
+    color:#fff;
+}
