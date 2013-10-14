@@ -20,3 +20,5 @@ production:
   username: myapp
   password:
 
+cucumber:
+  <<: *test
