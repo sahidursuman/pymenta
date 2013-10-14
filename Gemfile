@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '3.2.14'
-gem 'pg'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -10,6 +9,13 @@ end
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'cancan'
+group :development, :test do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 gem 'devise'
 gem 'figaro'
 gem 'rolify'
@@ -33,6 +39,5 @@ group :test do
   gem 'email_spec'
   gem 'launchy'
 end
-gem 'rails_12factor', group: :production
 ruby '2.0.0'
 
