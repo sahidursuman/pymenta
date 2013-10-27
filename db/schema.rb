@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20130913224704) do
     t.string   "username",               :default => "", :null => false
     t.string   "company_name",           :default => "", :null => false
     t.string   "domain",                 :default => "", :null => false
-    t.string   "name"
+    t.string   "name",                   :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
