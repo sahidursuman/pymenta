@@ -41,6 +41,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    params[:product][:version] = ENV["VERSION"]
     params[:product][:domain] = current_user.domain
     params[:product][:username] = current_user.username
     @product = Product.new(params[:product])
@@ -59,6 +60,7 @@ class ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
+    params[:product][:version] = ENV["VERSION"]
     params[:product][:username] = current_user.username    
     @product = Product.find(params[:id])
 
