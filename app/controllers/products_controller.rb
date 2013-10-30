@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   before_filter :authenticate_user!
   def index
-    @products = Product.all
+    @products = current_user.company.products
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +41,8 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    params[:product][:domain] = current_user.domain
+    params[:product][:username] = current_user.username
     @product = Product.new(params[:product])
 
     respond_to do |format|
@@ -57,6 +59,7 @@ class ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
+    params[:product][:username] = current_user.username    
     @product = Product.find(params[:id])
 
     respond_to do |format|

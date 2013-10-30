@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20131030220237) do
   create_table "products", :id => false, :force => true do |t|
     t.string   "id",          :limit => 36
     t.string   "version"
+    t.string   "domain"
     t.string   "username"
     t.string   "code"
     t.string   "description"
