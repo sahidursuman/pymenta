@@ -6,6 +6,9 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:version) %></th>
+      <th><%= model_class.human_attribute_name(:domain) %></th>
+      <th><%= model_class.human_attribute_name(:username) %></th>
       <th><%= model_class.human_attribute_name(:code) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -16,6 +19,9 @@
     <% @brands.each do |brand| %>
       <tr>
         <td><%= link_to brand.id, brand_path(brand) %></td>
+        <td><%= brand.version %></td>
+        <td><%= brand.domain %></td>
+        <td><%= brand.username %></td>
         <td><%= brand.code %></td>
         <td><%= brand.description %></td>
         <td><%=l brand.created_at %></td>
