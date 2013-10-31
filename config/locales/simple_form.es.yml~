@@ -1,4 +1,9 @@
 es:
+  helpers:
+    submit:
+      product:
+        create: "Crear %{model}"
+        update: "Actualizar %{model}"
   simple_form:
     "yes": 'Sí'
     "no": 'No'
@@ -22,7 +27,6 @@ es:
         brand: "Marca"
         units: "Unidades"
         price: "Precio" 
-	cancel: "Cancelar" 
     hints:
       user:
         password: "La contraseña debe tener al menos 6 caracteres"

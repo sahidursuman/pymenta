@@ -1,4 +1,9 @@
 en:
+  helpers:
+    submit:
+      product:
+        create: "Create Product"
+        update: "Update Product"
   simple_form:
     "yes": 'Yes'
     "no": 'No'
