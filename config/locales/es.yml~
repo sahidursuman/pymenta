@@ -29,7 +29,5 @@ es:
       destroy: "Destruir"
     edit:
       title: "Editar Producto"
-      cancel: "Cancelar"
     new:
       title: "Nuevo Producto"	
-      cancel: "Cancelar"

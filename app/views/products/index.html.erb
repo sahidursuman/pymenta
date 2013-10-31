@@ -4,12 +4,11 @@
 </div>
 <table class="table table-striped">
   <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:code) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:brand_id) %></th>
-      <th><%= model_class.human_attribute_name(:units) %></th>
-      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%=t '.code', :default => model_class.human_attribute_name(:code) %></th>
+      <th><%=t '.description', :default => model_class.human_attribute_name(:description) %></th>
+      <th><%=t '.brand', :default => model_class.human_attribute_name(:brand_id) %></th>
+      <th><%=t '.units', :default => model_class.human_attribute_name(:units) %></th>
+      <th><%=t '.price', :default => model_class.human_attribute_name(:price) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>

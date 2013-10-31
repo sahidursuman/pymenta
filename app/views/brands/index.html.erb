@@ -14,7 +14,6 @@
     <% @brands.each do |brand| %>
       <tr>
         <td><%= link_to brand.code, brand_path(brand) %></td>
-        <td><%= brand.code %></td>
         <td><%= brand.description %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

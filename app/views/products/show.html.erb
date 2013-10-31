@@ -4,15 +4,15 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:code) %>:</strong></dt>
+  <dt><strong><%=t '.code', :default => model_class.human_attribute_name(:code) %>:</strong></dt>
   <dd><%= @product.code %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dt><strong><%=t '.description', :default => model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @product.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:brand_id) %>:</strong></dt>
+  <dt><strong><%=t '.brand', :default => model_class.human_attribute_name(:brand_id) %>:</strong></dt>
   <dd><%= @product.brand.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:units) %>:</strong></dt>
+  <dt><strong><%=t '.units', :default => model_class.human_attribute_name(:units) %>:</strong></dt>
   <dd><%= @product.units %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
+  <dt><strong><%=t '.price', :default => model_class.human_attribute_name(:price) %>:</strong></dt>
   <dd><%= @product.price %></dd>
 
 </dl>

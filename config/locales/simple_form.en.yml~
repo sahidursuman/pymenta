@@ -22,6 +22,7 @@ en:
         brand: "Brand"
         units: "Units"
         price: "Price"
+	cancel: "Cancel"  	
     hints:
       user:
         password: "Password must be at least 6 characters long"

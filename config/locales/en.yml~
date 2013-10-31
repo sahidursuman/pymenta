@@ -29,8 +29,7 @@ en:
       destroy: "Destroy"
     edit:
       title: "Edit Product"
-      cancel: "Cancel"
     new:
       title: "New Product"	 	
-      cancel: "Cancel"
+ 
 
