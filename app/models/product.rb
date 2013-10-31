@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   attr_accessible :code, :domain, :description, :id, :price, :units, :username, :version, :brand_id
 
   belongs_to :company, :foreign_key => 'domain'
-  has_many :brands
+  belongs_to :brand
 
   UNIT_TYPES = ["UND","MTS","HRS"]
   validates :units, inclusion: UNIT_TYPES

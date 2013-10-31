@@ -9,7 +9,7 @@
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @product.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:brand_id) %>:</strong></dt>
-  <dd><%= Brand.find(@product.brand_id).description %></dd>
+  <dd><%= @product.brand.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:units) %>:</strong></dt>
   <dd><%= @product.units %></dd>
   <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>

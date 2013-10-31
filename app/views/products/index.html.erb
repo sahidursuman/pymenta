@@ -20,7 +20,7 @@
         <td><%= link_to product.id, product_path(product) %></td>
         <td><%= product.code %></td>
         <td><%= product.description %></td>
-        <td><%= Brand.find(product.brand_id).description %></td>
+        <td><%= product.brand.description %></td>
         <td><%= product.units %></td>
         <td><%= product.price %></td>
 

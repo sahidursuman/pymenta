@@ -3,4 +3,16 @@ class Brand < ActiveRecord::Base
   include UUIDHelper
   attr_accessible :code, :description, :domain, :id, :username, :version
   belongs_to :company, :foreign_key => 'domain'
+  has_many :products, :dependent => :restrict 
+
+  before_destroy :check_for_products
+
+  private
+
+  def check_for_products
+    if products.count > 0
+      errors.add_to_base("cannot delete brand while products exist")
+      return false
+    end
+  end
 end
