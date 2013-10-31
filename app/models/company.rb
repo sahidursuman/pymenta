@@ -4,4 +4,5 @@ class Company < ActiveRecord::Base
   attr_accessible :address, :name
   has_many :users, :foreign_key => 'domain'
   has_many :products, :foreign_key => 'domain'
+  has_many :brands, :foreign_key => 'domain'
 end
