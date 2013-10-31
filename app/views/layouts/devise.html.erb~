@@ -27,28 +27,25 @@
     <div id="main" role="main">
       <div class="container">
            <div class="row">
-			<br>
-			<br>
-			<br>						
-			<div class="span8">
-				<h1 style="color:#096cc8">Pymenta</h1>
-				<h2 style="color:#c8091b">Tu Pyme en la nube</h2>
-			</div>	
-           	<div class="span4">
+ 			</br>
+			</br>
+			</br>
+           	        <div class="span4">
 				<div class="content">
-              		<%= render 'layouts/messages' %>
-              		<%= yield %>
-            	</div>
-			</div>
+              				<%= render 'layouts/messages' %>
+              				<%= yield %>
+				</div>
+            		</div>
+
           </div>
       </div> <!--! end of .container -->
     </div> <!--! end of #main -->
-	<div> <!--! end of #wrap -->
-		<footer class="footer" style="background-color:#c2c2c2;">
+	</div> <!--! end of #wrap -->
+		<footer class="footer">
 		    <div class="container" style="margin:0 auto;">
 		        <div class="row">
 		            <div class="span12">
-		                <h4>Copyright 2013</h4>
+		                <h4 style="color:#c8091b">Copyright 2013</h4>
 		            </div>
 		        </div>
 		    </div>
