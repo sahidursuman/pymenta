@@ -4,18 +4,17 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:version) %>:</strong></dt>
-  <dd><%= @product.version %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:username) %>:</strong></dt>
-  <dd><%= @product.username %></dd>
   <dt><strong><%= model_class.human_attribute_name(:code) %>:</strong></dt>
   <dd><%= @product.code %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @product.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:brand_id) %>:</strong></dt>
+  <dd><%= @product.brands.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:units) %>:</strong></dt>
   <dd><%= @product.units %></dd>
   <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
   <dd><%= @product.price %></dd>
+
 </dl>
 
 <div class="form-actions">
