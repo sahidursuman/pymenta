@@ -2,7 +2,7 @@
   <%= f.input :code %>
   <%= f.input :description %>
   <%= f.input :brand do %>
-    <%= f.collection_select :brand_id, Brand.all, :id, :description %>  
+    <%= f.collection_select :brand_id, current_user.company.brands, :id, :description %>  
   <% end %>
   <%= f.input :units, collection: Product::UNIT_TYPES, prompt: "Select a unit" %>
   <%= f.input :price %>

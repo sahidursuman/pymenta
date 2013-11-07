@@ -10,6 +10,8 @@
   <dd><%= @product.description %></dd>
   <dt><strong><%=t '.brand', :default => model_class.human_attribute_name(:brand_id) %>:</strong></dt>
   <dd><%= @product.brand.description %></dd>
+  <dt><strong><%=t '.category', :default => model_class.human_attribute_name(:category_id) %>:</strong></dt>
+  <dd><%= @product.category.description %></dd>
   <dt><strong><%=t '.units', :default => model_class.human_attribute_name(:units) %>:</strong></dt>
   <dd><%= @product.units %></dd>
   <dt><strong><%=t '.price', :default => model_class.human_attribute_name(:price) %>:</strong></dt>
