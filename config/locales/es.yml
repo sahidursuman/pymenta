@@ -7,29 +7,11 @@ es:
   products:
     index:
       title: "Productos"
-      code: "Código"
-      description: "Descripción"
-      brand: "Marca"
-      units: "Unidades"
-      price: "Precio"
-      edit: "Editar"
-      new: "Nuevo"
-      destroy: "Destruir"
-      actions: "Acciones"
-      confirm: "Estas seguro?"
     show:
       title: "Producto"
-      code: "Código"
-      description: "Descripción"
-      brand: "Marca"
-      units: "Unidades"
-      price: "Precio"
-      edit: "Editar"
-      back: "Atras"
-      destroy: "Destruir"
     edit:
       title: "Editar Producto"
-      cancel: "Cancelar"
     new:
-      title: "Nuevo Producto"	
-      cancel: "Cancelar"
+      title: "Nuevo Producto"
+
+

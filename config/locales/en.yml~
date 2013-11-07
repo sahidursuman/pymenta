@@ -4,32 +4,5 @@
 en:
   hello: "Hello world"
   
-  products:
-    index:
-      title: "Products"
-      code: "Code"
-      description: "Description"
-      brand: "Brand"
-      units: "Units"
-      price: "Price"
-      edit: "Edit"
-      new: "New"
-      destroy: "Destroy"
-      actions: "Actions"
-      confirm: "Are you sure?"
-    show:
-      title: "Product"
-      code: "Code"
-      description: "Description"
-      brand: "Brand"
-      units: "Units"
-      price: "Price"
-      edit: "Edit"
-      back: "Back"
-      destroy: "Destroy"
-    edit:
-      title: "Edit Product"
-    new:
-      title: "New Product"	 	
- 
+
 

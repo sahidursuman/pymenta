@@ -1,5 +1,21 @@
 es:
   helpers:
+    actions: "Acciones"
+    labels:
+      code: "Código"
+      description: "Descripción"
+      brand: "Marca"
+      category: "Categoria"
+      units: "Unidades"
+      price: "Precio" 	
+    links:
+      cancel: "Cancelar"
+      select: "Seleccion de la lista.."	
+      new: "Nuevo"	
+      edit: "Editar"
+      destroy: "Destruir"
+      confirm: "Esta seguro?"	
+      back: "Atras"	
     submit:
       product:
         create: "Crear Producto"
@@ -25,6 +41,7 @@ es:
         code: "Código"
         description: "Descripción"
         brand: "Marca"
+        category: "Categoria"
         units: "Unidades"
         price: "Precio" 
     hints:

@@ -4,11 +4,12 @@
 </div>
 <table class="table table-striped">
   <thead>
-      <th><%=t '.code', :default => model_class.human_attribute_name(:code) %></th>
-      <th><%=t '.description', :default => model_class.human_attribute_name(:description) %></th>
-      <th><%=t '.brand', :default => model_class.human_attribute_name(:brand_id) %></th>
-      <th><%=t '.units', :default => model_class.human_attribute_name(:units) %></th>
-      <th><%=t '.price', :default => model_class.human_attribute_name(:price) %></th>
+      <th><%=t '.code', :default =>  t("helpers.label.code") %></th>
+      <th><%=t '.description', :default =>  t("helpers.label.description") %></th>
+      <th><%=t '.brand', :default =>  t("helpers.label.brand") %></th>
+      <th><%=t '.category', :default =>  t("helpers.label.category") %></th>
+      <th><%=t '.units', :default =>  t("helpers.label.units") %></th>
+      <th><%=t '.price', :default =>  t("helpers.label.price") %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= link_to product.code, product_path(product) %></td>
         <td><%= product.description %></td>
         <td><%= product.brand.description %></td>
+        <td><%= product.category.description %></td>
         <td><%= product.units %></td>
         <td><%= product.price %></td>
 

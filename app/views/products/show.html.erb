@@ -4,17 +4,17 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%=t '.code', :default => model_class.human_attribute_name(:code) %>:</strong></dt>
+  <dt><strong><%=t '.code', :default => t("helpers.labels.code") %>:</strong></dt>
   <dd><%= @product.code %></dd>
-  <dt><strong><%=t '.description', :default => model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dt><strong><%=t '.description', :default => t("helpers.labels.description") %>:</strong></dt>
   <dd><%= @product.description %></dd>
-  <dt><strong><%=t '.brand', :default => model_class.human_attribute_name(:brand_id) %>:</strong></dt>
+  <dt><strong><%=t '.brand', :default => t("helpers.labels.brand") %>:</strong></dt>
   <dd><%= @product.brand.description %></dd>
-  <dt><strong><%=t '.category', :default => model_class.human_attribute_name(:category_id) %>:</strong></dt>
+  <dt><strong><%=t '.category', :default => t("helpers.labels.category") %>:</strong></dt>
   <dd><%= @product.category.description %></dd>
-  <dt><strong><%=t '.units', :default => model_class.human_attribute_name(:units) %>:</strong></dt>
+  <dt><strong><%=t '.units', :default => t("helpers.labels.units") %>:</strong></dt>
   <dd><%= @product.units %></dd>
-  <dt><strong><%=t '.price', :default => model_class.human_attribute_name(:price) %>:</strong></dt>
+  <dt><strong><%=t '.price', :default => t("helpers.labels.price") %>:</strong></dt>
   <dd><%= @product.price %></dd>
 
 </dl>

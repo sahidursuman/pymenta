@@ -7,7 +7,7 @@
   <%= f.input :category do %>
     <%= f.collection_select :category_id, current_user.company.categories, :id, :description %>  
   <% end %>
-  <%= f.input :units, collection: Product::UNIT_TYPES, prompt: "Select a unit" %>
+  <%= f.input :units, collection: Product::UNIT_TYPES, prompt: t('.select', :default => t("helpers.links.select")) %>
   <%= f.input :price %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

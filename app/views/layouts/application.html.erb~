@@ -27,8 +27,9 @@
 			    		<ul class="nav">
 			    			<li><%= link_to 'Users', users_path %></li>
 			    			<li><%= link_to 'Companies', companies_path %></li>
-						<li><%= link_to 'Products', products_path %></li>
+						<li><%= link_to t('.products', :default => t("helpers.labels.products")), products_path %></li>
 						<li><%= link_to 'Brands', brands_path %></li>
+						<li><%= link_to 'Categories', categories_path %></li>
 			    		</ul>
 			    	</div>
 			    </div>
