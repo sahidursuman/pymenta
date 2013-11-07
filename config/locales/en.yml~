@@ -4,5 +4,13 @@
 en:
   hello: "Hello world"
   
-
+  products:
+    index:
+      title: "Products"
+    show:
+      title: "Product"
+    edit:
+      title: "Edit Product"
+    new:
+      title: "New Product"
 

@@ -3,7 +3,9 @@
 
 en:
   hello: "Hello world"
-  
+  translation:
+    en: "English"
+    es: "Spanish"
   products:
     index:
       title: "Products"

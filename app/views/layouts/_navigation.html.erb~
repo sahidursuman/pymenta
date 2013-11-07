@@ -22,9 +22,9 @@
     <li>
     <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
     </li>
-    <% language_links.each do |link| %>
+    <% language_links.each do |wl| %>
       <li>
-        <%= link %>,
+        <%= wl %>,
       </li>
     <% end %> 
   <% else %>

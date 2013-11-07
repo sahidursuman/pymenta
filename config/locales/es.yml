@@ -3,6 +3,9 @@
 
 es:
   hello: "Hola Mundo"
+  translation:
+    en: "Ingles"
+    es: "Espanol"
   
   products:
     index:
