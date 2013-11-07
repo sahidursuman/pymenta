@@ -1,5 +1,7 @@
 en:
   helpers:
+    links:
+      cancel: "Cancel"
     submit:
       product:
         create: "Create Product"

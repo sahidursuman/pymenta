@@ -2,8 +2,8 @@ en:
   helpers:
     submit:
       product:
-        create: "Create %{model}"
-        update: "Update %{model}"
+        create: "Create Product"
+        update: "Update Product"
   simple_form:
     "yes": 'Yes'
     "no": 'No'
