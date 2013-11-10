@@ -1,7 +1,4 @@
 Pymenta::Application.routes.draw do
- 
-
-
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :companies
@@ -14,6 +11,7 @@ Pymenta::Application.routes.draw do
     root :to => "home#index"
     devise_for :users, :controllers => { :registrations => "registrations"}
     resources :users
+    match '/:locale/products/search' => 'products#search', :as => :product_search
   end  
 
 end

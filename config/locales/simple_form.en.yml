@@ -10,7 +10,8 @@ en:
       brand: "Brand"
       category: "Category"
       units: "Units"
-      price: "Price"      	
+      price: "Price"
+      search: "Search"      	
     links:
       cancel: "Cancel"
       select: "Select from the list.."	

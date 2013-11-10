@@ -11,6 +11,7 @@ es:
       category: "Categoria"
       units: "Unidades"
       price: "Precio" 	
+      search: "Buscar"
     links:
       cancel: "Cancelar"
       select: "Seleccion de la lista.."	

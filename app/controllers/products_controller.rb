@@ -2,6 +2,15 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   before_filter :authenticate_user!
+  def search
+    @products = current_user.company.products
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @products }
+    end
+  end
+    
   def index
     @products = current_user.company.products
 

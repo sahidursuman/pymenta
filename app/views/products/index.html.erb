@@ -2,6 +2,21 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<div class="form-actions">
+	<div class="form-search">
+		<%= form_tag({:controller => "products", :action => "search"}, :method => "post") do %>
+  		  <%= label_tag(:code, (t '.code', :default =>  t("helpers.labels.code")) ) %>
+          <%= text_field_tag(:code, nil, :class => 'input-small') %>
+          <%= label_tag(:description, (t '.description', :default =>  t("helpers.labels.description")) ) %>
+          <%= text_field_tag(:description) %>
+  		  <%= label_tag(:brand_id, (t '.brand', :default =>  t("helpers.labels.brand") ) ) %>
+          <%= select_tag(:brand_id, options_for_select(current_user.company.brands.collect{|x| [x.description,x.id]})) %>
+          <%= label_tag(:category_id, (t '.category', :default =>  t("helpers.labels.category") ) ) %>
+           <%= select_tag(:category_id, options_for_select(current_user.company.categories.collect{|x| [x.description,x.id]})) %>
+          <%= submit_tag((t '.search', :default =>  t("helpers.labels.search")), :class => 'btn btn-danger') %>
+        <% end %>
+	</div>
+</div>		
 <table class="table table-striped">
   <thead>
       <th><%=t '.code', :default =>  t("helpers.labels.code") %></th>
