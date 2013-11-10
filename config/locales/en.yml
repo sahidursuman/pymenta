@@ -15,4 +15,21 @@ en:
       title: "Edit Product"
     new:
       title: "New Product"
-
+  categories:
+    index:
+      title: "Categories"
+    show:
+      title: "Category"
+    edit:
+      title: "Edit Category"
+    new:
+      title: "New Category"      
+  brands:
+    index:
+      title: "Brands"
+    show:
+      title: "Brand"
+    edit:
+      title: "Edit Brand"
+    new:
+      title: "New Brand"

@@ -21,6 +21,12 @@ en:
       product:
         create: "Create Product"
         update: "Update Product"
+      category:
+        create: "Create Category"
+        update: "Update Category"
+      brand:
+        create: "Create Brand"
+        update: "Update Brand"              
   simple_form:
     "yes": 'Yes'
     "no": 'No'

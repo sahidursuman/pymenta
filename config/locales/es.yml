@@ -6,7 +6,6 @@ es:
   translation:
     en: "Ingles"
     es: "Espanol"
-  
   products:
     index:
       title: "Productos"
@@ -16,5 +15,23 @@ es:
       title: "Editar Producto"
     new:
       title: "Nuevo Producto"
-
+  categories:
+    index:
+      title: "Categorias"
+    show:
+      title: "Categoria"
+    edit:
+      title: "Editar Categoria"
+    new:
+      title: "Nueva Categoria"      
+  brands:
+    index:
+      title: "Marcas"
+    show:
+      title: "Marca"
+    edit:
+      title: "Editar Marca"
+    new:
+      title: "Nueva Marca"
+  
 

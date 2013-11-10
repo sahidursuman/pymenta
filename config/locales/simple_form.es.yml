@@ -5,6 +5,8 @@ es:
       code: "Código"
       description: "Descripción"
       products: "Productos"
+      brands: "Marcas"
+      categories: "Categorias"      
       brand: "Marca"
       category: "Categoria"
       units: "Unidades"
@@ -21,6 +23,12 @@ es:
       product:
         create: "Crear Producto"
         update: "Actualizar Producto"
+      category:
+        create: "Crear Categoria"
+        update: "Actualizar Categoria"
+      brand:
+        create: "Crear Marca"
+        update: "Actualizar Marca"       
   simple_form:
     "yes": 'Sí'
     "no": 'No'

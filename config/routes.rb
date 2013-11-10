@@ -1,12 +1,13 @@
 Pymenta::Application.routes.draw do
  
-  resources :categories
+
 
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :companies
     resources :brands
     resources :products
+    resources :categories
     authenticated :user do
       root :to => 'home#index'
     end

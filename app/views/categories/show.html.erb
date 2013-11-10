@@ -4,9 +4,9 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:code) %>:</strong></dt>
+  <dt><strong><%=t '.code', :default => t("helpers.labels.code") %>:</strong></dt>
   <dd><%= @category.code %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dt><strong><%=t '.description', :default => t("helpers.labels.description") %>:</strong></dt>
   <dd><%= @category.description %></dd>
 </dl>
 
