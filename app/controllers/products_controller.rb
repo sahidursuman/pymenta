@@ -3,12 +3,9 @@ class ProductsController < ApplicationController
   # GET /products.json
   before_filter :authenticate_user!
   def search
-    @products = Product.where("code = ? and brand_id = ? and category_id = ?", params[:code],params[:brand_id],params[:category_id])
+    @products = Product.where("code like ? and description like ? and brand_id = ? and category_id = ?", "%#{params[:code]}%","%#{params[:description]}%",params[:brand_id],params[:category_id])
 
-    respond_to do |format|
-      format.html 
-      format.json { render json: @products }
-    end
+    render :index
   end
     
   def index
