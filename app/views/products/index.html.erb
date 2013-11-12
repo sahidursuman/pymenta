@@ -52,9 +52,13 @@
   </tbody>
 </table>
 
+
+
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_product_path,
             :class => 'btn btn-primary' %>
 <%= link_to t('.pdf', :default => t("helpers.links.pdf")),
             new_product_path,
             :class => 'btn btn-info' %>
+
+<%= will_paginate(@movies, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
