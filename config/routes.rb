@@ -1,5 +1,8 @@
 Pymenta::Application.routes.draw do
 
+  resources :accounts
+
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :companies
     resources :brands

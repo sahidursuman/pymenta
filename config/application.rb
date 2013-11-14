@@ -81,6 +81,8 @@ module Pymenta
 
     config.assets.initialize_on_precompile = false
     
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
+    
     I18n.default_locale = :es
     I18n.locale = I18n.default_locale
   end
