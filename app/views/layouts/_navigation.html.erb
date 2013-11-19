@@ -1,8 +1,3 @@
-<% if user_signed_in? %>
-	<%= link_to current_user.company.name, root_path, :class => 'brand' %>
-<% else %>
-	<%= link_to "Pymenta", root_path, :class => 'brand' %>
-<% end %>
 <ul class="nav pull-right">
   <% if user_signed_in? %>
     <li>
@@ -34,3 +29,4 @@
 
   <% end %>
 </ul>
+

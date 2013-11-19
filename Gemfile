@@ -20,7 +20,7 @@ gem 'devise'
 gem 'figaro'
 gem 'rolify'
 gem 'simple_form'
-gem "twitter-bootstrap-rails"
+gem "twitter-bootstrap-rails", ">= 2.0.3"
 gem 'bootswatch-rails'
 gem 'uuidtools'
 gem "will_paginate", '~> 3.0'
