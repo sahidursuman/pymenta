@@ -13,42 +13,26 @@
 	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
-	  <div class="navbar navbar-fixed-top">
-	    <div class="navbar-inner">
-	      <div class="container">
-	        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-	          <span class="icon-bar"></span>
-	          <span class="icon-bar"></span>
-	          <span class="icon-bar"></span>
-	        </a>
-			<% if user_signed_in? %>
-				<%= link_to current_user.company.name, root_path, :class => 'brand' %>
-			<% else %>
-				<%= link_to "Pymenta", root_path, :class => 'brand' %>
-			<% end %>
-	        <div class="nav-collapse">
-	          <ul class="nav pull-right">
-	            <%= render 'layouts/navigation' %>
-	          </ul>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
+	<%= link_to "Pymenta", root_path, :class => 'brand' %>
 	<div id="wrap">
-    <div id="main" role="main">
-      <div class="container">
-           <div class="row">
- 			</br>
-			</br>
-			</br>
-           	        <div class="span4 pull-right">
-				<div class="content">
-              				<%= render 'layouts/messages' %>
-              				<%= yield %>
-				</div>
-            		</div>
-
+      <div id="main" role="main">
+        <div class="container">
+		  </br>	
+		  </br>	
+		  </br>	
+		  </br>	
+		  </br>				
+          <div class="row">
+	        <div class="span4"></div>	
+	        <div class="span4 pull-center">
+	          <div class="content">
+    		    <%= render 'layouts/messages' %>
+    			<%= yield %>
+			  </div>
+		    </div>	
+			<div class="span4"></div>
           </div>
+	    </div>
       </div> <!--! end of .container -->
     </div> <!--! end of #main -->
 	</div> <!--! end of #wrap -->
