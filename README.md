@@ -30,4 +30,21 @@ Local Installation
 
   `rails s`
 
+Using Heroku
+------------------
+
+In order to use heroku, you need to:
+
+  1. Download the heroku toolbelt for windows at https://toolbelt.heroku.com/
+
+  2. Install
+
+  3. Log in using the email address and password you used when creating your Heroku account
+
+  4. Create --> heroku create
+
+  5. Deploy --> git push heroku master ( if you get Permission denied (publickey) --> heroku keys:add )
+
+  6. Migrate --> heroku run rake db:migrate
+
 
