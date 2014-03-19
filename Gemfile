@@ -6,6 +6,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+gem 'sass', '3.2.13'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'cancan'
