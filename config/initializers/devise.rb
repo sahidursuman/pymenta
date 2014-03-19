@@ -117,7 +117,7 @@ Devise.setup do |config|
   config.reconfirmable = true
 
   # Secret Key
-  config.secret_key = '5417576be8634cf5d11d2edb56a5d02ef5920383ea5ad76bec5b715e4ed9845762c3db9f2392f3515e92cff60d203bce3811c52ca631a83ace37aa6138f6c222'
+  # config.secret_key = '5417576be8634cf5d11d2edb56a5d02ef5920383ea5ad76bec5b715e4ed9845762c3db9f2392f3515e92cff60d203bce3811c52ca631a83ace37aa6138f6c222'
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [ :email ]
