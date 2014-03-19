@@ -8,7 +8,7 @@ group :assets do
 end
 gem 'sass', '3.2.13'
 gem 'jquery-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass','3.0.2.1'
 gem 'cancan'
 group :development, :test do
   gem 'sqlite3'
