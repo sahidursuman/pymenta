@@ -14,6 +14,10 @@ A demo application can be found at http://pymenta.herokuapp.com/
 Local Installation
 ------------------
 
+1. Install railsinstaller (www.railsinstaller.org)
+
+2. Install git
+
 1. Clone the repository
 
   `git clone https://github.com/manfergo25/pymenta.git`
