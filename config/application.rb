@@ -83,7 +83,7 @@ module Pymenta
     
    # config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
     config.autoload_paths += %W(#{config.root}/app/models)
-    config.assets.precompile += %w( application.css *.js )
+    config.assets.precompile += %w( application.css devise.css *.js )
     
     I18n.default_locale = :es
     I18n.locale = I18n.default_locale
