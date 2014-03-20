@@ -84,8 +84,7 @@ module Pymenta
    # config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
     config.autoload_paths += %W(#{config.root}/app/models)
     # Custom directories with classes and modules you want to be autoloadable.
-    config.sass.load_paths ||= []
-    config.sass.load_paths << "#{Rails.root}/app/assets/stylesheets"
+    config.assets.precompile += %w{*.js bootstrap_and_overrides.css devise.css home.css scaffolds.css application.css}
     
     I18n.default_locale = :es
     I18n.locale = I18n.default_locale
