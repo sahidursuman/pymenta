@@ -24,7 +24,15 @@ Local Installation
 
    `edit config/database.yml`
 
-4. Start your webserver
+4. Install gems
+
+  `bundle`
+
+5. Migrate database
+
+  `rake db:migrate`
+
+6. Start your webserver
 
   `rails s`
 
@@ -37,10 +45,16 @@ In order to use heroku, you need to:
 
   2. Log in using the email address and password you used when creating your Heroku account
 
-  3. Create --> heroku create
+  3. Create an application
 
-  4. Deploy --> git push heroku master ( if you get Permission denied (publickey) --> heroku keys:add )
+	`heroku create`
 
-  5. Migrate --> heroku run rake db:migrate
+  4. Deploy the application
+ 	
+	`git push heroku master ( if you get Permission denied (publickey) --> heroku keys:add )`
+
+  5. Migrate database
+
+	`heroku run rake db:migrate`
 
 
