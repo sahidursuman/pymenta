@@ -11,8 +11,8 @@ class RegistrationsController < Devise::RegistrationsController
     User.transaction do
        @company.save!
        @user.domain = @company.id
-       @user.save!
-       end
+       @user.save
+    end
 
     if @user.save && @company.save
       sign_in(resource_name, resource)
