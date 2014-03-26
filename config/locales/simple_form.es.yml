@@ -1,4 +1,4 @@
-es:
+﻿es:
   helpers:
     actions: "Acciones"
     labels:
@@ -43,6 +43,7 @@ es:
       default_message: "Por favor, revise los problemas que siguen:"
     labels:
       user:
+        company_name: "Nombre de la Compañia"
         name: "Nombre de Usuario"
         email: "Correo Electrónico"
         password: "Contraseña"
@@ -59,5 +60,8 @@ es:
         password: "La contraseña debe tener al menos 6 caracteres"
     placeholders:
       user:
+        company_name: "Nombre de la Compañia"
+        username: "Usuario"
         email: "Correo Electrónico"
         password: "Contraseña"
+        password_confirmation: "Confirmar contraseña"
