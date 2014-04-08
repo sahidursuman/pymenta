@@ -51,4 +51,6 @@ Pymenta::Application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
 
+  Paperclip.options[:command_path] = 'C:\Program Files\ImageMagick-6.8.8-Q16'
+
 end

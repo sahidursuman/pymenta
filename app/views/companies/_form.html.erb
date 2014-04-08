@@ -1,6 +1,7 @@
-<%= simple_form_for @company, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @company, :html => { :multipart => true , :class => 'form-horizontal' } do |f| %>
   <%= f.input :name %>
   <%= f.input :address %>
+  <%= f.file_field :logo %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
