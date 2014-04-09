@@ -92,5 +92,8 @@ module Pymenta
     
     I18n.default_locale = :es
     I18n.locale = I18n.default_locale
+
+    # add app/assets/fonts to the asset path
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end
