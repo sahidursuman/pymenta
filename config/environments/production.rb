@@ -79,7 +79,7 @@ config.paperclip_defaults = {
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
     :path => '/:class/:attachment/:id/:style_:basename.:extension',
     :url => ":s3_domain_url",
-    :s3_host_name => "s3-us-east-1.amazonaws.com"
+    :s3_host_name => "s3.amazonaws.com"
   }
 }
   config.action_mailer.default_url_options = { :host => 'example.com' }
