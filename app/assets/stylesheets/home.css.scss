@@ -1,1 +1,12 @@
+@font-face {
+    font-family: 'Altis-Bold';
+    src: url('altis-bold-webfont.ttf') format('truetype');
+}
 
+.brand {
+    font-family: 'Altis-Bold';
+}
+
+.navbar .brand {
+    font-size: 32px;
+}
