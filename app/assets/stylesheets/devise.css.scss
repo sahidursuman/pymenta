@@ -15,7 +15,7 @@ $bodyBackground: #000;
 @import 'bootstrap-responsive';
 @font-face {
     font-family: 'Altis-Bold';
-    src: url('altis-bold-webfont.ttf') format('truetype');
+    src: url('webfont.ttf') format('truetype');
 }
 
 .brand {
@@ -27,7 +27,7 @@ $bodyBackground: #000;
 }
 
 body {
-  background: url('background.jpg') no-repeat center center fixed; 
+  background: url('background.JPG') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -63,9 +63,9 @@ html
   background-color: #eee;
   padding: 20px;
   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-  -webkit-border-radius: 0 0 6px 6px;
-  -moz-border-radius: 0 0 6px 6px;
-  border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px;
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   box-shadow: 0 1px 2px rgba(0,0,0,.15);

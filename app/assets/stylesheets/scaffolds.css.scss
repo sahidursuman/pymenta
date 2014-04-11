@@ -1,4 +1,9 @@
 body {
+  background: url('background2.JPG') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
