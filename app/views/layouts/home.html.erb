@@ -20,7 +20,7 @@
     	  /* Custom container */
           .container-narrow {
             margin: 0 auto;
-            max-width: 700px;
+            max-width: 600px;
           }
           .container-narrow > hr {
             margin: 30px 0;
@@ -76,8 +76,8 @@
       <div class="container-narrow">
 
      <div class="jumbotron">
-        <h1>Now your company in the cloud!</h1>
-        <p class="lead">Pymenta is a very simple Cloud ERP System created for small companies to create, manage and print documents. You can manage warehouses, providers and clients. Also products and stock. Print Statistic Reports. Designed to work in the Cloud.</p>
+        <h1><%=t '.title', :default => 'Now your company in the cloud!' %></h1>
+        <p class="lead"><%=t '.description', :default => 'Pymenta is a very simple Cloud ERP System created for small companies to create, manage and print documents. You can manage warehouses, providers and clients. Also products and stock. Print Statistic Reports. Designed to work in the Cloud.' %></p>
 <%= link_to "Sign up today", new_user_registration_path , :class=>"btn btn-danger btn-large" %>
         
       </div>
