@@ -133,9 +133,13 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    pdf-core (0.2.5)
     pg (0.17.1)
     pg (0.17.1-x86-mingw32)
     polyglot (0.3.4)
+    prawn (1.0.0)
+      pdf-core (~> 0.2.2)
+      ttfunk (~> 1.1.1)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
@@ -202,6 +206,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    ttfunk (1.1.1)
     twitter-bootstrap-rails (2.2.8)
       actionpack (>= 3.1)
       execjs
@@ -242,6 +247,7 @@ DEPENDENCIES
   launchy
   paperclip (~> 3.5.3)
   pg
+  prawn
   quiet_assets
   rails (= 3.2.14)
   rails_12factor

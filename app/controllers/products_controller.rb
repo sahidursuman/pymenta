@@ -92,4 +92,12 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  
+  def product_list_report
+    products = current_user.company.products
+    pdf = ProductListReport.new(products)
+    send_data pdf.render, filename:'product_list_report.pdf',type: 'application/pdf', disposition: 'inline'
+  end
+  
 end

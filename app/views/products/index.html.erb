@@ -58,7 +58,7 @@
             new_product_path,
             :class => 'btn btn-primary' %>
 <%= link_to t('.pdf', :default => t("helpers.links.pdf")),
-            new_product_path,
-            :class => 'btn btn-info' %>
+            product_list_report_products_path,
+            :class => 'btn btn-primary' %>
 
 <%= will_paginate(@movies, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
