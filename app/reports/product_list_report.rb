@@ -1,6 +1,5 @@
 class ProductListReport < PdfReport
   TABLE_WIDTHS = [50, 200, 60, 120]
-  TABLE_HEADERS = ["Code", "Description", "Brand", "Category", "Price"]
 
   def initialize(products=[])
     super()
