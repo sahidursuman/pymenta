@@ -58,7 +58,20 @@
         brand: "Marca"
         category: "Categoria"
         units: "Unidades"
-        price: "Precio" 
+        price: "Precio"
+      client:
+        code: "Código"
+        name: "Nombre"
+        address: "Dirección"
+        city: "Ciudad"
+        state: "Provincia"
+        country: "Pais"	 
+        fax: "Fax"
+        telephone: "Telefono"
+        email: "Email"
+        web: "Web"
+        contact: "Contacto"
+        observations: "Observacciones"
     hints:
       user:
         password: "La contraseña debe tener al menos 6 caracteres"

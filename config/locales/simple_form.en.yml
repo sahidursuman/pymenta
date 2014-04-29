@@ -59,6 +59,19 @@ en:
         category: "Category"
         units: "Units"
         price: "Price"
+      client:
+        code: "Code"
+        name: "Name"
+        address: "Address"
+        city: "City"
+        state: "State"
+        country: "Country"	
+        fax: "Fax"
+        telephone: "Telephone"
+        email: "Email"
+        web: "Web"	
+        contact: "Contact"
+        observations: "Observations"	
     hints:
       user:
         password: "Password must be at least 6 characters long"
