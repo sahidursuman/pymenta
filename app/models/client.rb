@@ -1,5 +1,2 @@
 class Client < Account
-
-
-
 end

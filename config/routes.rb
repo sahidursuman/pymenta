@@ -10,6 +10,7 @@ Pymenta::Application.routes.draw do
     resources :brands
     resources :products
     resources :categories
+    resources :clients
     authenticated :user do
       root :to => 'home#index'
     end

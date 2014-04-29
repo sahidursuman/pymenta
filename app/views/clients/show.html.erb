@@ -1,0 +1,63 @@
+<%- model_class = Client -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:version) %>:</strong></dt>
+  <dd><%= @client.version %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:domain) %>:</strong></dt>
+  <dd><%= @client.domain %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:username) %>:</strong></dt>
+  <dd><%= @client.username %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:code) %>:</strong></dt>
+  <dd><%= @client.code %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @client.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:type) %>:</strong></dt>
+  <dd><%= @client.type %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:debit_credit) %>:</strong></dt>
+  <dd><%= @client.debit_credit %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:balance) %>:</strong></dt>
+  <dd><%= @client.balance %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:balance_b) %>:</strong></dt>
+  <dd><%= @client.balance_b %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:id_number1) %>:</strong></dt>
+  <dd><%= @client.id_number1 %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:id_number2) %>:</strong></dt>
+  <dd><%= @client.id_number2 %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
+  <dd><%= @client.address %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
+  <dd><%= @client.city %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
+  <dd><%= @client.state %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:country) %>:</strong></dt>
+  <dd><%= @client.country %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:zip_code) %>:</strong></dt>
+  <dd><%= @client.zip_code %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:telephone) %>:</strong></dt>
+  <dd><%= @client.telephone %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:fax) %>:</strong></dt>
+  <dd><%= @client.fax %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @client.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:web) %>:</strong></dt>
+  <dd><%= @client.web %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:contact) %>:</strong></dt>
+  <dd><%= @client.contact %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:observations) %>:</strong></dt>
+  <dd><%= @client.observations %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              clients_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_client_path(@client), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              client_path(@client),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
