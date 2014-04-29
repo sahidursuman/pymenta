@@ -4,6 +4,8 @@
     labels:
       code: "Código"
       description: "Descripción"
+      name: "Nombre"
+      city: "Ciudad"
       products: "Productos"
       brands: "Marcas"
       categories: "Categorias"
@@ -72,6 +74,7 @@
         web: "Web"
         contact: "Contacto"
         observations: "Observacciones"
+        zip_code: "Código Postal"
     hints:
       user:
         password: "La contraseña debe tener al menos 6 caracteres"

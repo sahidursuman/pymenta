@@ -4,6 +4,8 @@ en:
     labels:
       code: "Code"
       description: "Description"
+      name: "Name"
+      city: "City"
       products: "Products"
       brands: "Brands"
       categories: "Categories"
@@ -71,7 +73,8 @@ en:
         email: "Email"
         web: "Web"	
         contact: "Contact"
-        observations: "Observations"	
+        observations: "Observations"
+        zip_code: "Zip Code"
     hints:
       user:
         password: "Password must be at least 6 characters long"
