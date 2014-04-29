@@ -1,0 +1,3 @@
+class Warehouse < Account
+
+end

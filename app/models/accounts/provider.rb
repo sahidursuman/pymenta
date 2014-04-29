@@ -1,4 +1,0 @@
-class Provider < Account
-  
-
-end

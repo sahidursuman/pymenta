@@ -1,4 +1,0 @@
-class Client < Account
-  
-
-end
