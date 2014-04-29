@@ -35,7 +35,10 @@
         update: "Actualizar Marca"
       client:
         create: "Crear Cliente"
-        update: "Actualizar Cliente"            
+        update: "Actualizar Cliente"  
+      provider:
+        create: "Crear Proveedor"
+        update: "Actualizar Proveedor"             
   simple_form:
     "yes": 'Sí'
     "no": 'No'
@@ -62,6 +65,22 @@
         units: "Unidades"
         price: "Precio"
       client:
+        code: "Código"
+        name: "Nombre"
+        address: "Dirección"
+        city: "Ciudad"
+        state: "Provincia"
+        country: "Pais"	 
+        fax: "Fax"
+        telephone: "Telefono"
+        email: "Email"
+        web: "Web"
+        contact: "Contacto"
+        observations: "Observacciones"
+        zip_code: "Código Postal"
+        id_number1: "Numero Id 1"
+        id_number2: "Numero Id 2"
+      provider:
         code: "Código"
         name: "Nombre"
         address: "Dirección"

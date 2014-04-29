@@ -42,6 +42,15 @@ es:
       title: "Editar Cliente"
     new:
       title: "Nuevo Cliente"
+  providers:
+    index:
+      title: "Proveedores"
+    show:
+      title: "Proveedor"
+    edit:
+      title: "Editar Proveedor"
+    new:
+      title: "Nuevo Proveedor"
   layouts:
     home:
       title: "Ahora tu compania en la nube!"

@@ -42,6 +42,15 @@ en:
       title: "Edit client"
     new:
       title: "New Client"
+  providers:
+    index:
+      title: "Providers"
+    show:
+      title: "Provider"
+    edit:
+      title: "Edit Provider"
+    new:
+      title: "New Provider"
   layouts:
     home:
       title: "Now your company in the cloud!"

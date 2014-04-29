@@ -35,7 +35,10 @@ en:
         update: "Update Brand"
       client:
         create: "Create Client"
-        update: "Update Client"                
+        update: "Update Client"   
+      provider:
+        create: "Create Provider"
+        update: "Update Provider"               
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -62,6 +65,22 @@ en:
         units: "Units"
         price: "Price"
       client:
+        code: "Code"
+        name: "Name"
+        address: "Address"
+        city: "City"
+        state: "State"
+        country: "Country"	
+        fax: "Fax"
+        telephone: "Telephone"
+        email: "Email"
+        web: "Web"	
+        contact: "Contact"
+        observations: "Observations"
+        zip_code: "Zip Code"
+        id_number1: "Id 1"
+        id_number2: "Id 2"
+      provider:
         code: "Code"
         name: "Name"
         address: "Address"
