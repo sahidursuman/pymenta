@@ -6,7 +6,8 @@ en:
       description: "Description"
       products: "Products"
       brands: "Brands"
-      categories: "Categories"      
+      categories: "Categories"
+      clients: "Clients"          
       brand: "Brand"
       category: "Category"
       units: "Units"
@@ -29,7 +30,10 @@ en:
         update: "Update Category"
       brand:
         create: "Create Brand"
-        update: "Update Brand"              
+        update: "Update Brand"
+      client:
+        create: "Create Client"
+        update: "Update Client"                
   simple_form:
     "yes": 'Yes'
     "no": 'No'

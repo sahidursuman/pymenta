@@ -6,7 +6,8 @@
       description: "Descripción"
       products: "Productos"
       brands: "Marcas"
-      categories: "Categorias"      
+      categories: "Categorias"
+      clients: "Clientes"        
       brand: "Marca"
       category: "Categoria"
       units: "Unidades"
@@ -29,7 +30,10 @@
         update: "Actualizar Categoria"
       brand:
         create: "Crear Marca"
-        update: "Actualizar Marca"       
+        update: "Actualizar Marca"
+      client:
+        create: "Crear Cliente"
+        update: "Actualizar Cliente"            
   simple_form:
     "yes": 'Sí'
     "no": 'No'
