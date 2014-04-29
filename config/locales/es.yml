@@ -51,6 +51,15 @@ es:
       title: "Editar Proveedor"
     new:
       title: "Nuevo Proveedor"
+  warehouses:
+    index:
+      title: "Almacenes"
+    show:
+      title: "Almacen"
+    edit:
+      title: "Editar Almacen"
+    new:
+      title: "Nuevo Almacen"
   layouts:
     home:
       title: "Ahora tu compania en la nube!"

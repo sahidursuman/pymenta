@@ -51,6 +51,15 @@ en:
       title: "Edit Provider"
     new:
       title: "New Provider"
+  warehouses:
+    index:
+      title: "Warehouses"
+    show:
+      title: "Warehouse"
+    edit:
+      title: "Edit Warehouse"
+    new:
+      title: "New Warehouse"
   layouts:
     home:
       title: "Now your company in the cloud!"

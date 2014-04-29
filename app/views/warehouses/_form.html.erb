@@ -1,0 +1,22 @@
+<%= simple_form_for @warehouse, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :code %>
+  <%= f.input :name %>
+  <%= f.input :id_number1 %>
+  <%= f.input :id_number2 %>
+  <%= f.input :address %>
+  <%= f.input :city %>
+  <%= f.input :state %>
+  <%= f.input :country %>
+  <%= f.input :zip_code %>
+  <%= f.input :telephone %>
+  <%= f.input :fax %>
+  <%= f.input :email %>
+  <%= f.input :web %>
+  <%= f.input :contact %>
+  <%= f.input :observations %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                warehouses_path, :class => 'btn' %>
+  </div>
+<% end %>

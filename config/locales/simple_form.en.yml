@@ -9,7 +9,9 @@ en:
       products: "Products"
       brands: "Brands"
       categories: "Categories"
-      clients: "Clients"          
+      clients: "Clients" 
+      providers: "Providers"
+      warehouses: "Warehouses"            
       brand: "Brand"
       category: "Category"
       units: "Units"
@@ -38,7 +40,10 @@ en:
         update: "Update Client"   
       provider:
         create: "Create Provider"
-        update: "Update Provider"               
+        update: "Update Provider"
+      warehouse:
+        create: "Create Warehouse"
+        update: "Update Warehouse"                
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -81,6 +86,22 @@ en:
         id_number1: "Id 1"
         id_number2: "Id 2"
       provider:
+        code: "Code"
+        name: "Name"
+        address: "Address"
+        city: "City"
+        state: "State"
+        country: "Country"	
+        fax: "Fax"
+        telephone: "Telephone"
+        email: "Email"
+        web: "Web"	
+        contact: "Contact"
+        observations: "Observations"
+        zip_code: "Zip Code"
+        id_number1: "Id 1"
+        id_number2: "Id 2"
+      warehouse:
         code: "Code"
         name: "Name"
         address: "Address"
