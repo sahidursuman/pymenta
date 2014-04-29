@@ -33,6 +33,15 @@ es:
       title: "Editar Marca"
     new:
       title: "Nueva Marca"
+  clients:
+    index:
+      title: "Clientes"
+    show:
+      title: "Cliente"
+    edit:
+      title: "Editar Cliente"
+    new:
+      title: "Nuevo Cliente"
   layouts:
     home:
       title: "Ahora tu compania en la nube!"

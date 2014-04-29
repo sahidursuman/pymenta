@@ -33,6 +33,15 @@ en:
       title: "Edit Brand"
     new:
       title: "New Brand"
+  clients:
+    index:
+      title: "Clients"
+    show:
+      title: "Client"
+    edit:
+      title: "Edit client"
+    new:
+      title: "New Client"
   layouts:
     home:
       title: "Now your company in the cloud!"

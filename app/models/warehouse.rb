@@ -1,3 +1,0 @@
-class Warehouse < Account
-
-end
