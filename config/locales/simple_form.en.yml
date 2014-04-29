@@ -75,6 +75,8 @@ en:
         contact: "Contact"
         observations: "Observations"
         zip_code: "Zip Code"
+        id_number1: "Id 1"
+        id_number2: "Id 2"
     hints:
       user:
         password: "Password must be at least 6 characters long"
