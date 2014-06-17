@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140429110129) do
+ActiveRecord::Schema.define(:version => 20140429131151) do
 
   create_table "accounts", :id => false, :force => true do |t|
     t.string   "id",           :limit => 36
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20140429110129) do
     t.string   "name"
     t.string   "type"
     t.boolean  "debit_credit"
-    t.decimal  "balance"
-    t.decimal  "balance_b"
+    t.decimal  "balance",                    :precision => 10, :scale => 0
+    t.decimal  "balance_b",                  :precision => 10, :scale => 0
     t.string   "id_number1"
     t.string   "id_number2"
     t.string   "address"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(:version => 20140429110129) do
     t.string   "web"
     t.string   "contact"
     t.string   "observations"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
   end
 
   create_table "brands", :id => false, :force => true do |t|
@@ -89,11 +89,17 @@ ActiveRecord::Schema.define(:version => 20140429110129) do
     t.string   "code"
     t.string   "description"
     t.string   "units"
-    t.decimal  "price"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.decimal  "price",                     :precision => 10, :scale => 0
+    t.datetime "created_at",                                               :null => false
+    t.datetime "updated_at",                                               :null => false
     t.string   "brand_id"
     t.string   "category_id"
+  end
+
+  create_table "providers", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "roles", :force => true do |t|
@@ -135,5 +141,11 @@ ActiveRecord::Schema.define(:version => 20140429110129) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "warehouses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

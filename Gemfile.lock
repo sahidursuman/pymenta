@@ -123,6 +123,7 @@ GEM
     mini_portile (0.5.3)
     multi_json (1.9.2)
     multi_test (0.1.1)
+    mysql2 (0.3.11-x86-mingw32)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     nokogiri (1.6.1-x86-mingw32)
@@ -245,6 +246,7 @@ DEPENDENCIES
   figaro
   jquery-rails
   launchy
+  mysql2 (~> 0.3.11)
   paperclip (~> 3.5.3)
   pg
   prawn
