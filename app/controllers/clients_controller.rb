@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   # GET /clients.json
   before_filter :authenticate_user!
   def index
-    @clients = Account.where("domain = ? AND type = ?",current_user.domain,"Client")
+    @clients = Account.where("domain = ? AND type = ?",current_user.domain,"Client").paginate(:page => params[:page], :per_page => 5)
 
     respond_to do |format|
       format.html # index.html.erb
