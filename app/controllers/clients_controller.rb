@@ -2,9 +2,13 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   before_filter :authenticate_user!
-  def index
-    @clients = Account.where("domain = ? AND type = ?",current_user.domain,"Client").paginate(:page => params[:page], :per_page => 5)
+  def search
+   @clients = Client.where("domain = ? AND code like ? AND name like ? AND city like ? ", current_user.domain,"%#{params[:code]}%","%#{params[:name]}%","%#{params[:city]}%").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+    render :index
+  end
 
+  def index
+    @clients = Account.where("domain = ? AND type = ?",current_user.domain,"Client").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @clients }

@@ -3,13 +3,13 @@ class ProductsController < ApplicationController
   # GET /products.json
   before_filter :authenticate_user!
   def search
-    @products = Product.where("code like ? and description like ? and brand_id = ? and category_id = ?", "%#{params[:code]}%","%#{params[:description]}%",params[:brand_id],params[:category_id]).paginate(:page => params[:page], :per_page => 5)
+    @products = Product.where("code like ? and description like ? and brand_id = ? and category_id = ?", "%#{params[:code]}%","%#{params[:description]}%",params[:brand_id],params[:category_id]).paginate(:page => params[:page], :per_page => 10, :order => 'description ASC')
 
     render :index
   end
     
   def index
-    @products = current_user.company.products.paginate(:page => params[:page], :per_page => 5)
+    @products = current_user.company.products.paginate(:page => params[:page], :per_page => 10, :order => 'description ASC')
 
     respond_to do |format|
       format.html # index.html.erb

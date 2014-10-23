@@ -41,7 +41,7 @@ CREATE TABLE `accounts` (
   `web` varchar(255) default NULL,
   `balance` decimal(10,0) NOT NULL,
   `debit_credit` tinyint(1) NOT NULL,
-  `balanceb` decimal(10,0) NOT NULL,
+  `balance_b` decimal(10,0) NOT NULL,
   `contact` varchar(255) default NULL,
   `observations` varchar(255) default NULL,
   `country` varchar(255) default NULL,
