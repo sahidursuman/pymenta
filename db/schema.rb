@@ -11,57 +11,60 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140429131151) do
+ActiveRecord::Schema.define(:version => 20141028192038) do
 
-  create_table "accounts", :id => false, :force => true do |t|
-    t.string   "id",           :limit => 36
+  create_table "accounts", :force => true do |t|
     t.string   "version"
-    t.string   "domain"
-    t.string   "username"
-    t.string   "code"
-    t.string   "name"
+    t.string   "code",                                        :null => false
+    t.string   "name",                                        :null => false
     t.string   "type"
-    t.boolean  "debit_credit"
-    t.decimal  "balance",                    :precision => 10, :scale => 0
-    t.decimal  "balance_b",                  :precision => 10, :scale => 0
     t.string   "id_number1"
     t.string   "id_number2"
     t.string   "address"
     t.string   "city"
     t.string   "state"
-    t.string   "country"
     t.string   "zip_code"
     t.string   "telephone"
     t.string   "fax"
     t.string   "email"
     t.string   "web"
+    t.decimal  "balance",      :precision => 10, :scale => 0, :null => false
+    t.boolean  "debit_credit",                                :null => false
+    t.decimal  "balance_b",    :precision => 10, :scale => 0, :null => false
     t.string   "contact"
     t.string   "observations"
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
+    t.string   "country"
+    t.string   "domain",                                      :null => false
+    t.string   "username",                                    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "brands", :id => false, :force => true do |t|
-    t.string   "id",          :limit => 36
+  add_index "accounts", ["domain", "code"], :name => "domain", :unique => true
+
+  create_table "brands", :force => true do |t|
     t.string   "version"
-    t.string   "domain"
-    t.string   "username"
-    t.string   "code"
-    t.string   "description"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.string   "code",        :null => false
+    t.string   "description", :null => false
+    t.string   "domain",      :null => false
+    t.string   "username",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "categories", :id => false, :force => true do |t|
-    t.string   "id",          :limit => 36
+  add_index "brands", ["domain", "code"], :name => "domain", :unique => true
+
+  create_table "categories", :force => true do |t|
     t.string   "version"
-    t.string   "domain"
-    t.string   "username"
-    t.string   "code"
-    t.string   "description"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.string   "code",        :null => false
+    t.string   "description", :null => false
+    t.string   "domain",      :null => false
+    t.string   "username",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "categories", ["domain", "code"], :name => "domain", :unique => true
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -81,19 +84,31 @@ ActiveRecord::Schema.define(:version => 20140429131151) do
     t.datetime "logo_updated_at"
   end
 
-  create_table "products", :id => false, :force => true do |t|
-    t.string   "id",          :limit => 36
+  create_table "document_types", :force => true do |t|
     t.string   "version"
     t.string   "domain"
     t.string   "username"
-    t.string   "code"
     t.string   "description"
-    t.string   "units"
-    t.decimal  "price",                     :precision => 10, :scale => 0
-    t.datetime "created_at",                                               :null => false
-    t.datetime "updated_at",                                               :null => false
-    t.string   "brand_id"
-    t.string   "category_id"
+    t.string   "account_type"
+    t.string   "stock_type"
+    t.boolean  "stock"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "products", :id => false, :force => true do |t|
+    t.string   "id",          :limit => 36, :default => "", :null => false
+    t.string   "version"
+    t.string   "code",                                      :null => false
+    t.string   "description",                               :null => false
+    t.string   "category_id",               :default => "", :null => false
+    t.string   "brand_id",                  :default => "", :null => false
+    t.string   "units",       :limit => 5
+    t.float    "price",                                     :null => false
+    t.string   "domain",                                    :null => false
+    t.string   "username",                                  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "providers", :force => true do |t|
