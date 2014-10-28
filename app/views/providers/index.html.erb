@@ -2,6 +2,20 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<div class="form-actions">
+	<div class="form-search">
+		<%= form_tag({:controller => "providers", :action => "search"}, :method => "post") do %>
+  		  <%= label_tag(:code, (t '.code', :default =>  t("helpers.labels.code")) ) %>
+              <%= text_field_tag(:code, nil, :class => 'input-small') %>
+              <%= label_tag(:name, (t '.name', :default =>  t("helpers.labels.name")) ) %>
+              <%= text_field_tag(:name) %>
+              <%= label_tag(:city, (t '.city', :default =>  t("helpers.labels.city")) ) %>
+              <%= text_field_tag(:city) %>  		
+
+          <%= submit_tag((t '.search', :default =>  t("helpers.labels.search")), :class => 'btn btn-danger') %>
+        <% end %>
+	</div>
+</div>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -36,3 +50,4 @@
             new_provider_path,
             :class => 'btn btn-primary' %>
 
+<%= will_paginate(@movies, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>

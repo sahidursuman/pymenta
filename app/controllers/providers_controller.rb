@@ -2,9 +2,13 @@ class ProvidersController < ApplicationController
   # GET /providers
   # GET /providers.json
   before_filter :authenticate_user!
-  def index
-    @providers = Account.where("domain = ? AND type = ?",current_user.domain,"Provider")
+  def search
+   @providers = Provider.where("domain = ? AND code like ? AND name like ? AND city like ? ", current_user.domain,"%#{params[:code]}%","%#{params[:name]}%","%#{params[:city]}%").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+    render :index
+  end
 
+  def index
+    @providers = Account.where("domain = ? AND type = ?",current_user.domain,"Provider").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @providers }

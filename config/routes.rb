@@ -21,6 +21,7 @@ Pymenta::Application.routes.draw do
     resources :users
     match '/:locale/products/search' => 'products#search', :as => :product_search
     match '/:locale/clients/search' => 'clients#search', :as => :client_search
+    match '/:locale/providers/search' => 'providers#search', :as => :provider_search
   end  
 
 end
