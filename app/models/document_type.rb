@@ -3,8 +3,14 @@ class DocumentType < ActiveRecord::Base
   include UUIDHelper
   attr_accessible :account_type, :description, :domain, :id, :stock, :stock_type, :username, :version
   
-  validates :code, presence: true
   validates :description, presence: true
 
   belongs_to :company, :foreign_key => 'domain'
+
+  ACCOUNT_TYPES = ["CLIENTS","PROVIDERS","WAREHOUSES"]
+  validates :account_type, inclusion: ACCOUNT_TYPES
+
+  STOCK_TYPES = ["DEBIT","CREDIT"]
+  validates :stock_type, inclusion: STOCK_TYPES
+
 end

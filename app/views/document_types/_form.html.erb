@@ -1,10 +1,7 @@
 <%= simple_form_for @document_type, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :version %>
-  <%= f.input :domain %>
-  <%= f.input :username %>
   <%= f.input :description %>
-  <%= f.input :account_type %>
-  <%= f.input :stock_type %>
+  <%= f.input :account_type, collection: DocumentType::ACCOUNT_TYPES, prompt: t('.select', :default => t("helpers.links.select")) %>
+  <%= f.input :stock_type, collection: DocumentType::STOCK_TYPES, prompt: t('.select', :default => t("helpers.links.select")) %>
   <%= f.input :stock %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
