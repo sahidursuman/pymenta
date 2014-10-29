@@ -7,10 +7,10 @@ class DocumentType < ActiveRecord::Base
 
   belongs_to :company, :foreign_key => 'domain'
 
-  ACCOUNT_TYPES = ["CLIENTS","PROVIDERS","WAREHOUSES"]
+  ACCOUNT_TYPES = ["Client","Provider","Warehouse"]
   validates :account_type, inclusion: ACCOUNT_TYPES
 
-  STOCK_TYPES = ["DEBIT","CREDIT"]
+  STOCK_TYPES = ["debit","credit"]
   validates :stock_type, inclusion: STOCK_TYPES
 
 end

@@ -379,6 +379,40 @@ LOCK TABLES `warehouses` WRITE;
 /*!40000 ALTER TABLE `warehouses` DISABLE KEYS */;
 /*!40000 ALTER TABLE `warehouses` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `document_type`
+--
+
+DROP TABLE IF EXISTS `document_types`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `document_types` (
+  `id` varchar(255) NOT NULL default '',
+  `version` varchar(255) default NULL,
+  `description` varchar(255) NOT NULL,
+  `account_type` varchar(255) default NULL,
+  `domain` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `created_at` datetime default NULL,
+  `stock` tinyint(1) NOT NULL,
+  `stock_type` varchar(55) NOT NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `domain` (`domain`,`description`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `document_types`
+--
+
+LOCK TABLES `document_types` WRITE;
+/*!40000 ALTER TABLE `document_types` DISABLE KEYS */;
+INSERT INTO `document_types` VALUES ('1','2','FACTURA','Client','402880e5316ad7d601316adb99060001','manfergo25','2009-01-27 00:00:00','','debit','2013-11-28 09:40:07'),('10','1','CREDITO RECIBIDO','Provider','402880e5316ad7d601316adb99060001','manfergo25','2009-01-27 00:00:00','','credit','2013-10-14 10:43:40'),('11','1','QUOTATION','Client','8a53c76f3288b65c013288be9af50001','ben','2011-09-20 17:47:25','\0','debit',NULL),('12','2','INVOICE','Client','8a53c76f3288b65c0132914e0e570002','guest','2011-09-22 09:26:52','','debit',NULL),('13','1','PRESUPUESTO','Client','8a53c76f3288b65c0132914e0e570002','guest','2011-09-22 09:27:05','\0','debit',NULL),('14','1','WAREHOUSE TRANSFER','Warehouse','8a53c76f3288b65c0132914e0e570002','guest','2011-09-22 09:27:34','\0','debit',NULL),('15','1','QUOTATION','Client','8a53c76f3288b65c0132914e0e570002','guest','2011-09-22 09:32:00','\0','debit',NULL),('16','2','Factura','Client','8a53c76f3288b65c0132914e0e570002','guest','2011-09-27 05:46:46','\0','debit',NULL),('17','2','REG. STOCK CREDITO','Warehouse','402880e5316ad7d601316adb99060001','manfergo25','2011-10-31 10:18:10','','credit',NULL),('18','0','REG. STOCK DEBITO','Warehouse','402880e5316ad7d601316adb99060001','manfergo25','2011-10-31 10:20:41','','debit',NULL),('19','0','CREDIT','Provider','8a53c76f3288b65c0132914e0e570002','guest','2011-11-19 12:38:37','','credit',NULL),('2','2','NOTA DE ENTREGA','Client','402880e5316ad7d601316adb99060001','manfergo25','2009-01-27 00:00:00','','debit','2013-10-30 16:54:18'),('20','0','Bill Of Ladding','Warehouse','8a53c76f3288b65c0132914e0e570002','guest','2011-12-13 05:44:56','','debit',NULL),('21','0','NOTA DE ENTREGA','Client','8a8ce6ed346cc2c4013485de799d0001','mocarman','2011-12-28 13:25:10','','debit',NULL),('22','0','INVENTARIO ( DEBITO )','Warehouse','8a8ce6ed346cc2c4013485de799d0001','mocarman','2011-12-28 13:55:05','','debit',NULL),('23','1','INVENTARIO ( CREDITO )','Warehouse','8a8ce6ed346cc2c4013485de799d0001','mocarman','2011-12-28 13:55:22','','credit',NULL),('24','0','MERCANCIA SPYDER','Provider','8a8ce6ed346cc2c4013485de799d0001','mocarman','2011-12-31 12:04:11','','credit',NULL),('26','0','COMPRA','Provider','8a8ce6ed346cc2c401349b71f9f90002','conchitagomez52','2012-01-02 20:33:26','','credit',NULL),('27','0','VENTA','Client','8a8ce6ed346cc2c401349b71f9f90002','conchitagomez52','2012-01-02 20:41:13','','debit',NULL),('28','0','ENTRADA INITIAL (CREDITO)','Warehouse','8a8ce6ed346cc2c40134f32bd7610004','mocar','2012-01-19 18:31:02','','credit',NULL),('29','0','NOTA DE ENTREGA','Client','8a8ce6ed346cc2c40134f32bd7610004','mocar','2012-01-19 19:14:00','','debit',NULL),('3','4','ENTREGA A TALLER','Client','402880e5316ad7d601316adb99060001','manfergo25','2009-01-27 00:00:00','','debit',NULL),('30','0','DEVOLUCION','Client','402880e5316ad7d601316adb99060001','delia','2012-02-06 10:54:03','\0','debit',NULL),('31','0','teste','Warehouse','8a73ed2e35bf77960136376eb2910001','gesualdo','2012-03-22 07:01:56','','credit',NULL),('32','0','NOTA DE ENTREGA','Client','8a8ce6ed346cc2c40134c30d760f0003','fundator','2012-04-30 05:22:41','','debit',NULL),('33','0','sad','Client','8a53c76f3288b65c0132914e0e570002','guest','2012-06-01 02:07:04','','debit',NULL),('34','0','FACTURA','Client','8a8ce6ed346cc2c40134c30d760f0003','fundator','2012-06-15 07:10:03','','debit',NULL),('35','0','oxe','Provider','8a569bd537e6d4c50137f861e7d90003','tester123','2012-06-16 23:37:01','','debit',NULL),('36','3','INVENTARIO','Warehouse','8a70dfd23829af7501382ef71ed50001','acaceres','2012-06-27 14:29:04','','debit',NULL),('37','0','sdadas','Provider','8a40572f3a272fab013a64e2ad450001','daipackadm','2012-10-15 10:47:32','\0','debit',NULL),('38','0','REG INVENTARIO','Warehouse','8a8ce6ed346cc2c401349b71f9f90002','conchitagomez52','2012-11-18 11:32:56','','debit',NULL),('39','0','INVOICE/FACTURA','Client','402880e53fc72bd9013fc774385f0000','acaceres','2013-07-10 09:20:52','','debit',NULL),('4','2','PRESUPUESTO','Client','402880e5316ad7d601316adb99060001','manfergo25','2009-01-27 00:00:00','\0','debit',NULL),('40','0','INVOICE/FACTURA','Client','402880e53fcc8ccd013fcc991a810000','netgsv','2013-07-11 09:19:13','','debit',NULL),('402880e441a98a140141b7bbd3df003a',NULL,'FACTURA','Client','402880e441a98a140141b7bbd2680036','compa','2013-10-14 11:40:42','','debit',NULL),('402880e441a98a140141b7bbd41e003b',NULL,'PRESUPUESTO','Client','402880e441a98a140141b7bbd2680036','compa','2013-10-14 11:40:42','\0','debit',NULL),('402880e441a98a140141b7bbd44d003c',NULL,'ENTRADA INVENTARIO','Warehouse','402880e441a98a140141b7bbd2680036','compa','2013-10-14 11:40:42','','credit',NULL),('402880e444e44a680144efbc3dd50008',NULL,'FACTURA','Client','402880e444e44a680144efbc3c4e0004','guest','2014-03-23 11:48:15','','debit',NULL),('402880e444e44a680144efbc3df40009',NULL,'PRESUPUESTO','Client','402880e444e44a680144efbc3c4e0004','guest','2014-03-23 11:48:15','\0','debit',NULL),('402880e444e44a680144efbc3e13000a',NULL,'ENTRADA INVENTARIO','Warehouse','402880e444e44a680144efbc3c4e0004','guest','2014-03-23 11:48:15','','credit',NULL),('41','0','INVOICE/FACTURA','Client','402880e53fecd6a4013fed20829b0000','guest','2013-07-17 16:54:59','','debit',NULL),('42','0','Entrada','Warehouse','402880e53fecd6a4013fed20829b0000','com.pymenta.main.User : 7','2013-07-17 17:33:53','','credit',NULL),('43',NULL,'FACTURA RECIBIDA','Provider','402880e53fecd6a4013fed20829b0000','com.pymenta.main.User : 7','2013-08-01 10:20:09','','credit',NULL),('44',NULL,'PREPUESTO','Client','402880e53fecd6a4013fed20829b0000','com.pymenta.main.User : 7','2013-08-01 13:34:47','\0','debit',NULL),('45',NULL,'INVOICE/FACTURA','Client','402880e5403a6ba701403a7ac4a80000','heroku','2013-08-01 17:24:19','','debit',NULL),('46',NULL,'PROVIDER INVOICE','Provider','402880e5403a6ba701403a7ac4a80000','com.pymenta.main.User : 8','2013-08-01 18:18:07','','credit',NULL),('7','2','RECIBIDO TALLER','Provider','402880e5316ad7d601316adb99060001','manfergo25','2009-01-27 00:00:00','','credit','2013-10-28 18:40:37'),('8','1','FACTURA RECIBIDA','Provider','402880e5316ad7d601316adb99060001','manfergo25','2009-01-27 00:00:00','','credit',NULL),('9','1','NOTA DE CREDITO','Client','402880e5316ad7d601316adb99060001','manfergo25','2009-01-27 00:00:00','','credit','2013-10-14 10:49:37');
+/*!40000 ALTER TABLE `document_types` ENABLE KEYS */;
+UNLOCK TABLES;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
