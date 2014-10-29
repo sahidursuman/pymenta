@@ -60,6 +60,15 @@ en:
       title: "Edit Warehouse"
     new:
       title: "New Warehouse"
+  document_types:
+    index:
+      title: "Document Types"
+    show:
+      title: "Document Type"
+    edit:
+      title: "Edit Document Type"
+    new:
+      title: "New Document Type"
   layouts:
     home:
       title: "Now your company in the cloud!"

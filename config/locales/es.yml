@@ -60,6 +60,15 @@ es:
       title: "Editar Almacen"
     new:
       title: "Nuevo Almacen"
+  document_types:
+    index:
+      title: "Tipos de Documentos"
+    show:
+      title: "Tipo de Documento"
+    edit:
+      title: "Editar Tipo de Documento"
+    new:
+      title: "Nuevo Tipo de Documento"
   layouts:
     home:
       title: "Ahora tu compania en la nube!"

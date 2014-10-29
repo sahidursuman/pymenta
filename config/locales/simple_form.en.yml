@@ -16,7 +16,10 @@ en:
       category: "Category"
       units: "Units"
       price: "Price"
-      search: "Search"      	
+      search: "Search"
+      account_type: "Account Type"
+      stock_type: "Stock Type"
+      document_types: "Document Types"      	
     links:
       cancel: "Cancel"
       select: "Select from the list.."	
@@ -43,7 +46,10 @@ en:
         update: "Update Provider"
       warehouse:
         create: "Create Warehouse"
-        update: "Update Warehouse"                
+        update: "Update Warehouse"
+      document_type:
+        create: "Create Document Type"
+        update: "Update Document Type"                       
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -117,6 +123,11 @@ en:
         zip_code: "Zip Code"
         id_number1: "Id 1"
         id_number2: "Id 2"
+      document_type:
+        description: "Description"
+        account_type: "Account Type"
+        stock_type: "Stock Type"
+        stock: "Stock" 
     hints:
       user:
         password: "Password must be at least 6 characters long"
