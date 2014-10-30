@@ -8,6 +8,7 @@ class Company < ActiveRecord::Base
   has_many :categories, :foreign_key => 'domain'
   has_many :accounts, :foreign_key => 'domain'
   has_many :document_types, :foreign_key => 'domain'
+  has_many :stocks, :foreign_key => 'domain'
 
 has_attached_file :logo, styles: {
     thumb: '100x100>',

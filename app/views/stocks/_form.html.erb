@@ -1,0 +1,12 @@
+<%= simple_form_for @stock, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :in_quantity %>
+  <%= f.input :out_quantity %>
+  <%= f.input :product_id %>
+  <%= f.input :stock %>
+  <%= f.input :warehouse_id %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                stocks_path, :class => 'btn' %>
+  </div>
+<% end %>
