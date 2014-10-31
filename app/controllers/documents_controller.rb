@@ -2,7 +2,7 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = current_user.company.documents.paginate(:page => params[:page], :per_page => 10, :order => 'created_at ASC')
+    @documents = current_user.company.documents.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb

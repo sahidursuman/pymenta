@@ -71,6 +71,68 @@
   <dt><strong><%= model_class.human_attribute_name(:paid) %>:</strong></dt>
   <dd><%= @document.paid %></dd>
 </dl>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%=t '.description', :default =>  t("helpers.labels.description") %></th>
+      <th><%=t '.quantity', :default =>  t("helpers.labels.quantity") %></th>
+      <th><%=t '.units', :default =>  t("helpers.labels.units") %></th>
+      <th><%=t '.price', :default =>  t("helpers.labels.price") %></th>
+      <th><%=t '.total', :default =>  t("helpers.labels.total") %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @document.document_lines.each do |document_line| %>
+      <tr>
+        <td><%= document_line.description %></td>
+        <td><%= document_line.out_quantity %></td>
+        <td><%= document_line.product.units %></td>
+        <td><%= document_line.price %></td>
+        <td><%= document_line.total %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_document_line_path(document_line), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      document_line_path(document_line),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%=t '.payment_type', :default =>  t("helpers.labels.payment_type") %></th>
+      <th><%=t '.date', :default =>  t("helpers.labels.date") %></th>
+      <th><%=t '.amount', :default =>  t("helpers.labels.amount") %></th>
+      <th><%=t '.notes', :default =>  t("helpers.labels.notes") %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @document.payments.each do |payment| %>
+      <tr>
+        <td><%= payment.payment_type %></td>
+        <td><%= payment.date %></td>
+        <td><%= payment.amount %></td>
+        <td><%= payment.notes %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_payment_path(payment), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      payment_path(payment),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

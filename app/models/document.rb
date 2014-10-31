@@ -9,4 +9,7 @@ class Document < ActiveRecord::Base
   belongs_to :account
   belongs_to :warehouse
 
+  has_many :document_lines, :foreign_key => 'header_id'
+  has_many :payments, :foreign_key => 'header_id'
+
 end

@@ -36,3 +36,5 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_payment_path,
             :class => 'btn btn-primary' %>
+
+<%= will_paginate(@movies, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>

@@ -1,8 +1,5 @@
 Pymenta::Application.routes.draw do
 
-  resources :payments
-
-
   resources :products do
     match "product_list_report", :on => :collection
   end
@@ -21,6 +18,7 @@ Pymenta::Application.routes.draw do
     resources :stocks
     resources :document_types
     resources :accounts
+    resources :payments
     authenticated :user do
       root :to => 'home#index'
     end
@@ -30,6 +28,7 @@ Pymenta::Application.routes.draw do
     match '/:locale/products/search' => 'products#search', :as => :product_search
     match '/:locale/clients/search' => 'clients#search', :as => :client_search
     match '/:locale/providers/search' => 'providers#search', :as => :provider_search
+    match '/:locale/companies/settings' => 'companies#settings', :as => :settings
   end  
 
 end
