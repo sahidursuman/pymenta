@@ -1,0 +1,12 @@
+class Document < ActiveRecord::Base
+  set_primary_key "id"
+  include UUIDHelper
+  attr_accessible :address, :city, :code, :country, :date, :discount_percentage, :discount_total, :document_number, :domain, :due, :email, :expire_date, :fax, :id, :id_number1, :id_number2, :month, :name, :observations, :paid, :paid_left, :state, :status, :sub_total, :tax, :tax_total, :telephone, :total, :type, :username, :version, :web, :year, :zip_code
+  self.inheritance_column = nil
+
+  belongs_to :company, :foreign_key => 'domain'
+  belongs_to :document_type
+  belongs_to :account
+  belongs_to :warehouse
+
+end

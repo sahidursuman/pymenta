@@ -9,8 +9,8 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :name
       t.string :type
       t.boolean :debit_credit
-      t.decimal :balance
-      t.decimal :balance_b
+      t.decimal :balance, :precision => 10, :scale => 2
+      t.decimal :balance_b, :precision => 10, :scale => 2
       t.string :id_number1
       t.string :id_number2
       t.string :address

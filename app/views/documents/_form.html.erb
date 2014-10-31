@@ -1,0 +1,40 @@
+<%= simple_form_for @document, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :version %>
+  <%= f.input :domain %>
+  <%= f.input :username %>
+  <%= f.input :code %>
+  <%= f.input :document_number %>
+  <%= f.input :type %>
+  <%= f.input :date %>
+  <%= f.input :expire_date %>
+  <%= f.input :name %>
+  <%= f.input :id_number1 %>
+  <%= f.input :id_number2 %>
+  <%= f.input :address %>
+  <%= f.input :city %>
+  <%= f.input :state %>
+  <%= f.input :country %>
+  <%= f.input :zip_code %>
+  <%= f.input :telephone %>
+  <%= f.input :fax %>
+  <%= f.input :email %>
+  <%= f.input :web %>
+  <%= f.input :discount_percentage %>
+  <%= f.input :discount_total %>
+  <%= f.input :sub_total %>
+  <%= f.input :tax_total %>
+  <%= f.input :total %>
+  <%= f.input :observations %>
+  <%= f.input :year %>
+  <%= f.input :month %>
+  <%= f.input :tax %>
+  <%= f.input :due %>
+  <%= f.input :status %>
+  <%= f.input :paid_left %>
+  <%= f.input :paid %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                documents_path, :class => 'btn' %>
+  </div>
+<% end %>

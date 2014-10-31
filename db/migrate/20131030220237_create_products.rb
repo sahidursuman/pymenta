@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :code
       t.string :description
       t.string :units
-      t.decimal :price
+      t.decimal :price, :precision => 10, :scale => 2
 
       t.timestamps
     end

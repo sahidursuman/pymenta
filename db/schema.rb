@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141030192201) do
+ActiveRecord::Schema.define(:version => 20141031130722) do
 
   create_table "accounts", :id => false, :force => true do |t|
     t.string   "id",           :limit => 36
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20141030192201) do
     t.string   "name"
     t.string   "type"
     t.boolean  "debit_credit"
-    t.decimal  "balance",                    :precision => 10, :scale => 0
-    t.decimal  "balance_b",                  :precision => 10, :scale => 0
+    t.decimal  "balance",                    :precision => 10, :scale => 2
+    t.decimal  "balance_b",                  :precision => 10, :scale => 2
     t.string   "id_number1"
     t.string   "id_number2"
     t.string   "address"
@@ -94,6 +94,44 @@ ActiveRecord::Schema.define(:version => 20141030192201) do
     t.datetime "updated_at",                 :null => false
   end
 
+  create_table "documents", :force => true do |t|
+    t.string   "version"
+    t.string   "domain"
+    t.string   "username"
+    t.string   "code"
+    t.string   "document_number"
+    t.string   "type"
+    t.string   "name"
+    t.string   "id_number1"
+    t.string   "id_number2"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zip_code"
+    t.string   "telephone"
+    t.string   "fax"
+    t.string   "email"
+    t.string   "web"
+    t.string   "observations"
+    t.string   "due"
+    t.string   "status"
+    t.date     "date"
+    t.date     "expire_date"
+    t.decimal  "discount_percentage", :precision => 10, :scale => 2
+    t.decimal  "discount_total",      :precision => 10, :scale => 2
+    t.decimal  "sub_total",           :precision => 10, :scale => 2
+    t.decimal  "tax",                 :precision => 10, :scale => 2
+    t.decimal  "tax_total",           :precision => 10, :scale => 2
+    t.decimal  "total",               :precision => 10, :scale => 2
+    t.decimal  "paid_left",           :precision => 10, :scale => 2
+    t.decimal  "paid",                :precision => 10, :scale => 2
+    t.integer  "year"
+    t.integer  "month"
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
+  end
+
   create_table "products", :id => false, :force => true do |t|
     t.string   "id",          :limit => 36
     t.string   "version"
@@ -102,7 +140,7 @@ ActiveRecord::Schema.define(:version => 20141030192201) do
     t.string   "code"
     t.string   "description"
     t.string   "units"
-    t.decimal  "price",                     :precision => 10, :scale => 0
+    t.decimal  "price",                     :precision => 10, :scale => 2
     t.datetime "created_at",                                               :null => false
     t.datetime "updated_at",                                               :null => false
     t.string   "brand_id"

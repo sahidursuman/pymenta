@@ -1,5 +1,8 @@
 Pymenta::Application.routes.draw do
 
+  resources :documents
+
+
   resources :stocks
 
 
