@@ -1,5 +1,8 @@
 Pymenta::Application.routes.draw do
 
+  resources :payments
+
+
   resources :products do
     match "product_list_report", :on => :collection
   end

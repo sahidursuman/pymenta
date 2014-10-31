@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141031143133) do
+ActiveRecord::Schema.define(:version => 20141031183439) do
 
   create_table "accounts", :id => false, :force => true do |t|
     t.string   "id",           :limit => 36
@@ -156,6 +156,19 @@ ActiveRecord::Schema.define(:version => 20141031143133) do
     t.string   "document_type_id"
     t.string   "account_id"
     t.string   "warehouse_id"
+  end
+
+  create_table "payments", :force => true do |t|
+    t.string   "version"
+    t.string   "domain"
+    t.string   "username"
+    t.string   "payment_type"
+    t.string   "notes"
+    t.date     "date"
+    t.decimal  "amount",       :precision => 10, :scale => 2
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.string   "header_id"
   end
 
   create_table "products", :id => false, :force => true do |t|
