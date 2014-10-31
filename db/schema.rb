@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141031130722) do
+ActiveRecord::Schema.define(:version => 20141031143133) do
 
   create_table "accounts", :id => false, :force => true do |t|
     t.string   "id",           :limit => 36
@@ -81,6 +81,29 @@ ActiveRecord::Schema.define(:version => 20141031130722) do
     t.datetime "logo_updated_at"
   end
 
+  create_table "document_lines", :force => true do |t|
+    t.string   "version"
+    t.string   "domain"
+    t.string   "username"
+    t.string   "code"
+    t.string   "document_number"
+    t.string   "type"
+    t.string   "description"
+    t.date     "date"
+    t.decimal  "in_quantity",     :precision => 10, :scale => 2
+    t.decimal  "out_quantity",    :precision => 10, :scale => 2
+    t.decimal  "price",           :precision => 10, :scale => 2
+    t.decimal  "total",           :precision => 10, :scale => 2
+    t.integer  "year"
+    t.integer  "month"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.string   "header_id"
+    t.string   "product_id"
+    t.string   "warehouse_id"
+    t.string   "stock_id"
+  end
+
   create_table "document_types", :id => false, :force => true do |t|
     t.string   "id",           :limit => 36
     t.string   "version"
@@ -130,6 +153,9 @@ ActiveRecord::Schema.define(:version => 20141031130722) do
     t.integer  "month"
     t.datetime "created_at",                                         :null => false
     t.datetime "updated_at",                                         :null => false
+    t.string   "document_type_id"
+    t.string   "account_id"
+    t.string   "warehouse_id"
   end
 
   create_table "products", :id => false, :force => true do |t|

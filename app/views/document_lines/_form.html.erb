@@ -1,0 +1,25 @@
+<%= simple_form_for @document_line, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :version %>
+  <%= f.input :domain %>
+  <%= f.input :username %>
+  <%= f.input :code %>
+  <%= f.input :document_number %>
+  <%= f.input :type %>
+  <%= f.input :description %>
+  <%= f.input :date %>
+  <%= f.input :in_quantity %>
+  <%= f.input :out_quantity %>
+  <%= f.input :price %>
+  <%= f.input :total %>
+  <%= f.input :year %>
+  <%= f.input :month %>
+  <%= f.input :header_id %>
+  <%= f.input :product_id %>
+  <%= f.input :warehouse_id %>
+  <%= f.input :stock_id %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                document_lines_path, :class => 'btn' %>
+  </div>
+<% end %>

@@ -1,15 +1,5 @@
 Pymenta::Application.routes.draw do
 
-  resources :documents
-
-
-  resources :stocks
-
-
-  resources :document_types
-
-
-  resources :accounts
   resources :products do
     match "product_list_report", :on => :collection
   end
@@ -23,6 +13,11 @@ Pymenta::Application.routes.draw do
     resources :providers
     resources :warehouses
     resources :document_types
+    resources :document_lines
+    resources :documents
+    resources :stocks
+    resources :document_types
+    resources :accounts
     authenticated :user do
       root :to => 'home#index'
     end
