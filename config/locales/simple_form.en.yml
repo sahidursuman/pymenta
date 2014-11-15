@@ -19,7 +19,10 @@ en:
       search: "Search"
       account_type: "Account Type"
       stock_type: "Stock Type"
-      document_types: "Document Types"      	
+      document_type: "Type"
+      document_number: "Number"
+      date: "Date"
+      status: "Status"
     links:
       cancel: "Cancel"
       select: "Select from the list.."	

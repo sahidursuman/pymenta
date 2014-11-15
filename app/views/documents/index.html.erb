@@ -5,27 +5,29 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:type) %></th>
-      <th><%= model_class.human_attribute_name(:document_number) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:date) %></th>
-      <th><%= model_class.human_attribute_name(:total) %></th>
-      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%=t '.type', :default =>  t("helpers.labels.document_type") %></th>
+      <th><%=t '.document_number', :default =>  t("helpers.labels.document_number") %></th>
+      <th><%=t '.name', :default =>  t("helpers.labels.name") %></th>
+      <th><%=t '.date', :default =>  t("helpers.labels.date") %></th>
+      <th><%=t '.total', :default =>  t("helpers.labels.total") %></th>
+      <th><%=t '.status', :default =>  t("helpers.labels.status") %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @documents.each do |document| %>
       <tr>
-        <td><%= link_to document.type, document_path(document) %></td>
+        <td><%= document.type %></td>
         <td><%= document.document_number %></td>
         <td><%= document.name %></td>
         <td><%= document.date %></td>
         <td><%= document.total %></td>
-        <td><%= document.status %></td>
+        <td><span class="label label-important"><%= document.status %></span></td>
         <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      document_path(document), :class => 'btn btn-mini' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_document_path(document), :class => 'btn btn-mini' %>
+                      edit_document_path(document), :class => 'btn btn-mini btn-warning' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       document_path(document),
                       :method => :delete,

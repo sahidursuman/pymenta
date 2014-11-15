@@ -19,7 +19,10 @@
       search: "Buscar"
       account_type: "Tipo de Cuenta"
       stock_type: "Tipo de Inventario"
-      document_types: "Tipo de Documentos"
+      document_type: "Tipo"
+      document_number: "Número"
+      date: "Fecha"
+      status: "Estado"
     links:
       cancel: "Cancelar"
       select: "Seleccion de la lista.."	
@@ -46,10 +49,7 @@
         update: "Actualizar Proveedor"
       warehouse:
         create: "Crear Almacenr"
-        update: "Actualizar Almacen"   
-      document_type:
-        create: "Crear Tipo de Documento"
-        update: "Actualizar Tipo de Documento"               
+        update: "Actualizar Almacen"              
   simple_form:
     "yes": 'Sí'
     "no": 'No'
@@ -123,11 +123,6 @@
         zip_code: "Código Postal"
         id_number1: "Numero Id 1"
         id_number2: "Numero Id 2"
-      document_type:
-        description: "Descripción"
-        account_type: "Tipo de Cuenta"
-        stock_type: "Tipo de Inventario"
-        stock: "Inventario" 
     hints:
       user:
         password: "La contraseña debe tener al menos 6 caracteres"
