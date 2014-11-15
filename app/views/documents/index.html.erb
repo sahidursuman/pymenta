@@ -22,7 +22,13 @@
         <td><%= document.name %></td>
         <td><%= document.date %></td>
         <td><%= document.total %></td>
-        <td><span class="label label-important"><%= document.status %></span></td>
+        <% if document.status == "NOT_PAID" %>
+          <td><span class="label label-important"><%= document.status %></span></td>
+        <% elsif document.status == "PARTIAL_PAID" %>
+          <td><span class="label label-warning"><%= document.status %></span></td>
+        <% else %>
+          <td><span class="label label-success"><%= document.status %></span></td>
+        <% end %>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       document_path(document), :class => 'btn btn-mini' %>

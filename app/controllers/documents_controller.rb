@@ -85,4 +85,10 @@ class DocumentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def is_document_not_paid
+    @document = Document.find(params[:id])
+    @document.status == "NOT_PAID"
+  end
+    
 end
