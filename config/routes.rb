@@ -3,7 +3,7 @@ Pymenta::Application.routes.draw do
   resources :products do
     match "product_list_report", :on => :collection
   end
-
+  
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :companies
     resources :brands
@@ -29,6 +29,8 @@ Pymenta::Application.routes.draw do
     match '/:locale/clients/search' => 'clients#search', :as => :client_search
     match '/:locale/providers/search' => 'providers#search', :as => :provider_search
     match '/:locale/companies/settings' => 'companies#settings', :as => :settings
+    match '/:locale/products/autocomplete' => 'products#autocomplete', :as => :product_autocomplete
+
   end  
 
 end
