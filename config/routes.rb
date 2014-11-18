@@ -30,7 +30,7 @@ Pymenta::Application.routes.draw do
     match '/:locale/providers/search' => 'providers#search', :as => :provider_search
     match '/:locale/companies/settings' => 'companies#settings', :as => :settings
     match '/:locale/products/autocomplete' => 'products#autocomplete', :as => :product_autocomplete
-
+    match '/:locale/documents/remove_document_line' => 'documents#remove_document_line', :as => :document_remove_document_line
   end  
 
 end

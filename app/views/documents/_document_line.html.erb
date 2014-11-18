@@ -18,11 +18,13 @@
         <td><%= document_line.price %></td>
         <td><%= document_line.total %></td>
         <td>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      document_line_path(document_line),
-                      :method => :delete,
-                      :remote => true,
-                      :class => 'btn btn-mini btn-danger' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),			    	
+                      {:controller => :documents,
+                      :action => :remove_document_line,
+                      :id => document_line.id},
+			    {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), 
+                      :method => :delete,            
+                      :class => 'btn btn-mini btn-danger'} %>
         </td>
       </tr>
     <% end %>

@@ -91,4 +91,15 @@ class DocumentsController < ApplicationController
     @document.status == "NOT_PAID"
   end
     
+  def remove_document_line
+    @document_line = DocumentLine.find(params[:id])
+    @document_line.destroy
+
+    respond_to do |format|
+        format.html { redirect_to @document_line.document, notice: 'Document was successfully updating.' }
+        format.json { render json: @document_line.document, status: :created, location: @document }
+        format.js
+    end
+  end
+
 end
