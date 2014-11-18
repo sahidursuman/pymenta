@@ -1,0 +1,30 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%=t '.description', :default =>  t("helpers.labels.description") %></th>
+      <th><%=t '.quantity', :default =>  t("helpers.labels.quantity") %></th>
+      <th><%=t '.units', :default =>  t("helpers.labels.units") %></th>
+      <th><%=t '.price', :default =>  t("helpers.labels.price") %></th>
+      <th><%=t '.total', :default =>  t("helpers.labels.total") %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @document.document_lines.each do |document_line| %>
+      <tr>
+        <td><%= document_line.description %></td>
+        <td><%= document_line.out_quantity %></td>
+        <td><%= document_line.product.units %></td>
+        <td><%= document_line.price %></td>
+        <td><%= document_line.total %></td>
+        <td>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      document_line_path(document_line),
+                      :method => :delete,
+                      :remote => true,
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
