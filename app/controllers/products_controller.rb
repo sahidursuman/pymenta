@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     @products = Product.where("domain = ? AND code like ? OR description like ?", current_user.domain,"%#{params[:query]}%","%#{params[:query]}%")
 
     result = @products.collect do |item|
-      { value:item.description }
+      { :value => item.code + " - " + item.description }
     end
     render json: result
   end
