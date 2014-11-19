@@ -104,6 +104,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def get_info_from_selected_product
+    @product = Product.find(params[:product_id])
+    render :partial => "documents/product", :object => @product
+  end
   
   def product_list_report
     products = current_user.company.products
