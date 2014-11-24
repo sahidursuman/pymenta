@@ -32,6 +32,8 @@ Pymenta::Application.routes.draw do
     match '/:locale/products/autocomplete' => 'products#autocomplete', :as => :product_autocomplete
     match '/:locale/products/get_info_product' => 'products#get_info_from_selected_product', :as => :get_info_product
     match '/:locale/documents/remove_document_line' => 'documents#remove_document_line', :as => :document_remove_document_line
+    match '/:locale/documents/create_document_line' => 'documents#create_document_line', :as => :create_document_line
+    match '/:locale/documents/create_payment_line' => 'documents#create_payment_line', :as => :create_payment_line
   end  
 
 end

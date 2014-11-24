@@ -76,22 +76,38 @@
 </div>
 <div id="product_description">
 </div>
-<div class="form-actions">
-  <div class="modal fade" id="product-modal"></div>
-  <div class="row-fluid">
-    <div class="span9">
-      <%= text_field_tag 'autocomplete', '',:style => "width:100%;","data-ajax_path" => product_autocomplete_path, "data-ajax_path_2" => get_info_product_path %>
-    </div>
-    <div class="span2">
-      <%= link_to t('.new', :default => t("helpers.links.new")),
+<div class="modal fade" id="product-modal"></div>
+<%= form_tag :action => 'create_document_line', :controller => 'documents', :header_id => @document do %>
+    <div class="row-fluid">
+      <div class="span11">
+        <%= text_field_tag 'autocomplete', '',:style => "width:100%;","data-ajax_path" => product_autocomplete_path, "data-ajax_path_2" => get_info_product_path %>
+      </div>
+      <div class="span1">
+        <%= link_to t('.new', :default => t("helpers.links.new")),
             new_product_path,
 		:remote => true,
             :class => 'btn btn-primary',
-            :style => 'width:100%;'  %>
-    </div>
-    <div class="span1"></div>
-  </div>
-</div>
+ 		:style => "width:70%;"%>
+      </div>
+      </div>
+      <div class="row-fluid">
+      <div class="span1">
+        <strong><%=t '.quantity', :default =>  t("helpers.labels.quantity") %></strong>
+      </div>
+      <div class="span4">
+        <%= text_field_tag 'quantity', '',:style => "width:100%;" %>
+      </div>
+      <div class="span1">
+        <strong><%=t '.price', :default =>  t("helpers.labels.price")  %></strong>
+      </div>
+      <div class="span4">
+        <%= text_field_tag 'price', '', :style => "width:100%;" %>
+      </div>
+      <div class="span2">
+        <%= submit_tag( "New Line", class: "btn btn-danger", :style => "width:100%;" ) %>
+      </div>
+	</div>
+<% end %>
 
 <div class="form-actions">
   <div class="row-fluid">
@@ -114,8 +130,8 @@
         <dd><h4><%= @document.paid %></h3></dd>  
       </dl>
       <dl class="dl-horizontal">
-        <dt><h4><%=t '.paid', :default =>  t("helpers.labels.paid_left") %></h4></dt>
-        <dd><h4><%= @document.paid %></h4></dd>  
+        <dt><h4><%=t '.paid_left', :default =>  t("helpers.labels.paid_left") %></h4></dt>
+        <dd><h4><%= @document.paid_left %></h4></dd>  
       </dl>
     </div>
     <div class="span2"></div>
@@ -140,8 +156,6 @@
         <td><%= payment.amount %></td>
         <td><%= payment.notes %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_payment_path(payment), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       payment_path(payment),
                       :method => :delete,
@@ -152,7 +166,34 @@
     <% end %>
   </tbody>
 </table>
-
+<%= form_tag :action => 'create_payment_line', :controller => 'documents', :header_id => @document do %>
+    <div class="row-fluid">
+      <div class="span3">
+        <%= select_date %>
+      </div>
+      <div class="span1">
+        <strong><%=t '.amount', :default =>  t("helpers.labels.amount")  %></strong>
+      </div>
+      <div class="span1">
+        <%= text_field_tag 'amount', '',:style => "width:100%;" %>
+      </div>
+      <div class="span1">
+        <strong><%=t '.payment_type', :default =>  t("helpers.labels.payment_type")  %></strong>
+      </div>
+      <div class="span2">
+        <%= text_field_tag 'payment_type', '',:style => "width:100%;" %>
+      </div>
+      <div class="span1">
+        <strong><%=t '.notes', :default =>  t("helpers.labels.notes")  %></strong>
+      </div>
+      <div class="span2">
+        <%= text_field_tag 'notes', '', :style => "width:100%;" %>
+      </div>
+      <div class="span1">
+        <%= submit_tag( "New", class: "btn btn-danger", :style => "width:100%;" ) %>
+	</div>
+  </div>
+<% end %>
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               documents_path, :class => 'btn'  %>

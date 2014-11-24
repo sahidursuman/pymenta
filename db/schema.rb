@@ -158,16 +158,17 @@ ActiveRecord::Schema.define(:version => 20141031183439) do
     t.string   "warehouse_id"
   end
 
-  create_table "payments", :force => true do |t|
+  create_table "payments", :id => false, :force => true do |t|
+    t.string   "id",           :limit => 36
     t.string   "version"
     t.string   "domain"
     t.string   "username"
     t.string   "payment_type"
     t.string   "notes"
     t.date     "date"
-    t.decimal  "amount",       :precision => 10, :scale => 2
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.decimal  "amount",                     :precision => 10, :scale => 2
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
     t.string   "header_id"
   end
 

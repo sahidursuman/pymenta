@@ -102,4 +102,48 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def create_document_line
+    product = Product.find(params[:autocomplete])
+    document = Document.find(params[:header_id])
+    quantity = params[:quantity].to_f
+    price = params[:price].to_f
+    total = quantity*price
+    document_line = DocumentLine.new(domain: current_user.domain, username: current_user.username,
+      code: product.code, date: DateTime.now, description: product.description, document_number: document.document_number,
+	header_id: document.id, product_id: product.id, warehouse_id: document.warehouse.id, 
+	in_quantity:0, out_quantity: quantity,price: price, total: total, type: document.type, month: DateTime.now.month, year: DateTime.now.year)
+    if document_line.save!
+      flash[:notice]='Your line was created'
+    else
+      flash[:notice]='Please verify your data'
+    end
+
+    respond_to do |format|
+      format.html{ redirect_to document }
+    end
+  end  
+
+  def create_payment_line
+    puts 'hola'
+    puts params[:payment_type]
+    puts params[:date]
+    puts 'hola'
+    document = Document.find(params[:header_id])
+    amount = params[:amount].to_f
+    #date = DateTime.new(params[:date])
+    payment_line = Payment.new(domain: current_user.domain, username: current_user.username,      
+	header_id: document.id, payment_type: params[:payment_type], date: DateTime.now,  amount: amount,
+	notes: params[:notes])
+    if payment_line.save!
+      flash[:notice]='Your payment was created'
+    else
+      flash[:notice]='Please verify your data'
+    end
+
+    respond_to do |format|
+      format.html{ redirect_to document }
+    end
+  end          
+
+
 end
