@@ -15,7 +15,7 @@ class Company < ActiveRecord::Base
 
 has_attached_file :logo, styles: {
     thumb: '100x100>',
-    square: '300x200#',
+    square: '500x200>',
     medium: '300x300>'
   }, :url => '/:class/:attachment/:id/:style_:basename.:extension'
 

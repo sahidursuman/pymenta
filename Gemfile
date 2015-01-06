@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-ruby '1.9.3'
+ruby '2.0.0'
 gem 'rails', '3.2.14'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -47,5 +47,5 @@ group :test do
   gem 'email_spec'
   gem 'launchy'
 end
-ruby '1.9.3'
+ruby '2.0.0'
 

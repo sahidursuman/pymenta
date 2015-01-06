@@ -27,7 +27,8 @@ $bodyBackground: #000;
 }
 
 body {
-  background: url('background.jpg') no-repeat center center fixed; 
+//  background: url('background.jpg') no-repeat center center fixed; 
+  background: $myWhite;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
