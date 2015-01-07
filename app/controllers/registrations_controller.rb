@@ -16,7 +16,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     if @user.save && @company.save
       sign_in(resource_name, resource)
-      defaults(@company,@user)
+      defaults @company,@user 
       flash[:notice] = "You have signed up successfully. If enabled, a confirmation was sent to your email"
         redirect_to documents_url
     else
@@ -28,7 +28,7 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
   
-  def defaults(company,user)
+  def defaults company,user
     brand = Brand.new(:code => '00', :description => 'NONE/NINGUNO', :domain => company.id, :username => user.username).save
     category = Category.new(:code => '00', :description => 'NONE/NINGUNO', :domain => company.id, :username => user.username).save
     warehouse = Warehouse.new(:code => '01', :name => 'MAIN/PRINCIPAL', :domain => company.id, :username => user.username).save
