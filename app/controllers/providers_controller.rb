@@ -7,6 +7,15 @@ class ProvidersController < ApplicationController
     render :index
   end
 
+  def autocomplete
+    @providers = Provider.where("domain = ? AND code like ? OR name like ?", current_user.domain,"%#{params[:query]}%","%#{params[:query]}%")
+
+    result = @providers.collect do |item|
+      { :value => item.id, :label => item.code + " - " + item.name }
+    end
+    render json: result
+  end
+
   def index
     @providers = Account.where("domain = ? AND type = ?",current_user.domain,"Provider").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
     respond_to do |format|
@@ -89,5 +98,10 @@ class ProvidersController < ApplicationController
       format.html { redirect_to providers_url }
       format.json { head :no_content }
     end
+  end
+  
+  def get_info_from_selected_account
+    @account = Provider.find(params[:provider_id])
+    render :partial => "documents/account", :object => @account
   end
 end

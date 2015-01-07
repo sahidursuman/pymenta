@@ -1,0 +1,39 @@
+<%- model_class = Warehouse -%>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<div class="row-fluid">
+  <div class="span6">
+	<div class="modal fade" id="warehouse-modal"></div>	
+    <%= form_for @document, :url => {:action => "create_document_account"}, :method => "post"  do |f| %>
+      <dl class="dl-horizontal">
+        <dt><strong><%=t '.warehouses', :default =>  t("helpers.labels.warehouses") %></strong></dt>
+        <dd><%= text_field_tag 'autocomplete_warehouse', '',:style => "width:100%;","data-ajax_autocomplete_path" => warehouse_autocomplete_path, "data-ajax_info_path" => get_info_warehouse_path %></dd>
+      </dl>
+      <dl class="dl-horizontal">
+	    <dt></dt>
+	    <dd><div id="warehouse_name"></div></dd>
+      </dl>
+	  <dl class="dl-horizontal">
+	    <dt><strong><%=t '.date', :default => t("helpers.labels.date") %>:</strong></dt>
+	    <dd><%= f.date_select(:date, :order => [:month, :day, :year]) %></dd>
+	  </dl>
+	  <dl class="dl-horizontal">
+	    <dt><strong><%=@type_description %> <%=t '.document_number', :default => t("helpers.labels.document_number") %>:</strong></dt>
+	    <dd><%= f.text_field :document_number %></dd>
+	  </dl>
+	  <dl class="dl-horizontal">
+	    <dt><strong><%=t '.warehouses', :default => t("helpers.labels.warehouses") %>:</strong></dt>
+	    <dd><%= f.collection_select :warehouse_id, Account.where("domain = ? AND type = ?",current_user.domain,"Warehouse"), :id, :name %></dd>
+	  </dl>
+	  <dl class="dl-horizontal">
+	    <dt><strong><%=t '.due', :default => t("helpers.labels.due") %>:</strong></dt>
+	    <dd><%= f.text_field :due %></dd>
+	  </dl>
+	  <dl class="dl-horizontal">
+	    <dt><strong><%=t '.tax', :default => t("helpers.labels.tax") %>:</strong></dt>
+	    <dd><%= f.text_field :tax %> % </dd>
+	  </dl>
+	  <%= f.hidden_field :type, :value => @type_description %>
+	  <%= f.hidden_field :document_type_id, :value => @type_id %>
+	  <%= f.button t('.new', :default => t("helpers.links.new")), :class => 'btn btn-primary' %>
+	<% end %>
+</div>

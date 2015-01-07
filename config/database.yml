@@ -15,17 +15,20 @@
 #   Ensure the MySQL 2 gem is defined in your Gemfile
 #   gem 'mysql2'
 development:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: pymenta_rails
+#  adapter: mysql2
+#  encoding: utf8
+#  reconnect: false
+#  database: pymenta_rails
+#  pool: 5
+#  username: root
+#  password: mf251176
+#  socket: /tmp/mysql.sock
+#  host: 127.0.0.1
+#  port: 3306
+  adapter: sqlite3
+  database: db/test.sqlite3
   pool: 5
-  username: root
-  password: mf251176
-  socket: /tmp/mysql.sock
-  host: 127.0.0.1
-  port: 3306
-
+  timeout: 5000
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.

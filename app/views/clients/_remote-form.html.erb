@@ -1,0 +1,11 @@
+<%= simple_form_for @client, :remote => true, :html => { :class => 'form-horizontal' } do |f| %>
+<div class="modal-body">
+  <ul class="errors"></ul>
+  <%= f.input :code %>
+  <%= f.input :name %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger", "data-dismiss" => "modal", "aria-hidden" => "true" %>
+  </div>
+</div>
+<% end %>

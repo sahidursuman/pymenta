@@ -7,6 +7,15 @@ class ClientsController < ApplicationController
     render :index
   end
 
+  def autocomplete
+    @clients = Client.where("domain = ? AND code like ? OR name like ?", current_user.domain,"%#{params[:query]}%","%#{params[:query]}%")
+
+    result = @clients.collect do |item|
+      { :value => item.id, :label => item.code + " - " + item.name }
+    end
+    render json: result
+  end
+
   def index
     @clients = Account.where("domain = ? AND type = ?",current_user.domain,"Client").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
     respond_to do |format|
@@ -34,6 +43,7 @@ class ClientsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @client }
+	    format.js {}
     end
   end
 
@@ -89,5 +99,10 @@ class ClientsController < ApplicationController
       format.html { redirect_to clients_url }
       format.json { head :no_content }
     end
+  end
+  
+  def get_info_from_selected_account
+    @account = Client.find(params[:client_id])
+    render :partial => "documents/account", :object => @account
   end
 end

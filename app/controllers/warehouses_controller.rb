@@ -10,6 +10,15 @@ class WarehousesController < ApplicationController
       format.json { render json: @warehouses }
     end
   end
+  
+  def autocomplete
+    @warehouses = Warehouse.where("domain = ? AND code like ? OR name like ?", current_user.domain,"%#{params[:query]}%","%#{params[:query]}%")
+
+    result = @wareshouses.collect do |item|
+      { :value => item.id, :label => item.code + " - " + item.name }
+    end
+    render json: result
+  end
 
   # GET /warehouses/1
   # GET /warehouses/1.json
@@ -85,5 +94,10 @@ class WarehousesController < ApplicationController
       format.html { redirect_to warehouses_url }
       format.json { head :no_content }
     end
+  end
+  
+  def get_info_from_selected_account
+    @account = Warehouse.find(params[:warehouse_id])
+    render :partial => "documents/account", :object => @account
   end
 end

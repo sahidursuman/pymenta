@@ -1,0 +1,8 @@
+$("ul.errors").html("")
+<% if @client.errors.any? %>
+  <% @client.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $("#client-modal").modal("hide")
+<% end %>

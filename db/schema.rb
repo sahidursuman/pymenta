@@ -209,11 +209,11 @@ ActiveRecord::Schema.define(:version => 20141031183439) do
     t.string   "version"
     t.string   "domain"
     t.string   "username"
-    t.decimal  "in_quantity",                :precision => 10, :scale => 0
-    t.decimal  "out_quantity",               :precision => 10, :scale => 0
-    t.decimal  "stock",                      :precision => 10, :scale => 0
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
+    t.decimal  "in_quantity"
+    t.decimal  "out_quantity"
+    t.decimal  "stock"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "product_id"
     t.string   "warehouse_id"
   end
