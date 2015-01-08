@@ -21,7 +21,7 @@ development:
 #  database: pymenta_rails
 #  pool: 5
 #  username: root
-#  password: mf251176
+#  password: 
 #  socket: /tmp/mysql.sock
 #  host: 127.0.0.1
 #  port: 3306
