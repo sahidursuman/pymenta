@@ -22,12 +22,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-		<% if user_signed_in? %>
-			<%= link_to current_user.company.name, root_path, :class => 'brand' %>
-		<% else %>
-			<%= link_to "PYMENTA", root_path, :class => 'brand' %>
-		<% end %>
         <div class="nav-collapse">
+	      <ul class="nav pull-left">
+		    <% if user_signed_in? %>
+			  <%= link_to "PYMENTA", root_path, :class => 'brand' %>
+		    <% else %>
+			  <%= link_to "PYMENTA", root_path, :class => 'brand' %>
+		    <% end %>
+          </ul>
           <ul class="nav pull-right">
             <%= render 'layouts/navigation' %>
           </ul>
