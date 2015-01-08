@@ -2,7 +2,7 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<%= form_for (Document.new) do |f| %>
+<%= form_for Document.new, :url => {:action => "new"}, :method => "post"  do |f| %>
   <%= f.collection_select :type, current_user.company.document_types, :id, :description %>
   <%= f.button t('.new', :default => t("helpers.links.new")), :class => 'btn btn-primary' %>
 <% end %>

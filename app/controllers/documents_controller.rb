@@ -37,31 +37,6 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
   end
 
-  # POST /documents
-  # POST /documents.json
-  def create
-    params[:document][:code] = ''
-    params[:document][:date] = Time.new
-    params[:document][:discount_percentage] = 0
-    params[:document][:discount_total] = 0
-    params[:document][:document_number] = 0
-    params[:document][:expire_date] = Date.new
-    params[:document][:month] = Date.new.month
-    params[:document][:year] = Date.new.year
-    params[:document][:name] = ''   
-    params[:document][:sub_total] = 0
-    params[:document][:total] = 0
-    params[:document][:tax_total] = 0
-    params[:document][:version] = ENV["VERSION"]
-    params[:document][:domain] = current_user.domain
-    params[:document][:username] = current_user.username
-    @document = Document.new(params[:document])
-
-    respond_to do |format|
-        format.html { render action: "new" }
-    end
-  end
-
   # PUT /documents/1
   # PUT /documents/1.json
   def update
@@ -116,8 +91,8 @@ class DocumentsController < ApplicationController
     total = quantity*price
     document_line = DocumentLine.new(domain: current_user.domain, username: current_user.username,
       code: product.code, date: DateTime.now, description: product.description, document_number: document.document_number,
-	header_id: document.id, product_id: product.id, warehouse_id: document.warehouse.id, 
-	in_quantity:0, out_quantity: quantity,price: price, total: total, type: document.type, month: DateTime.now.month, year: DateTime.now.year)
+	    header_id: document.id, product_id: product.id, warehouse_id: document.warehouse.id, 
+	    in_quantity:0, out_quantity: quantity,price: price, total: total, type: document.type, month: DateTime.now.month, year: DateTime.now.year)
     if document_line.save!
       flash[:notice]='Your line was created'
     else

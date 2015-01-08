@@ -41,6 +41,7 @@ Pymenta::Application.routes.draw do
     match '/:locale/documents/create_document_line' => 'documents#create_document_line', :as => :create_document_line
     match '/:locale/documents/create_payment_line' => 'documents#create_payment_line', :as => :create_payment_line
     match '/:locale/documents/create_document_account' => 'documents#create_document_account', :as => :create_document_account   
+    match '/:locale/documents/new' => 'documents#new', :as => :new
   end  
 
 end

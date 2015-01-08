@@ -20,11 +20,12 @@
     <li>
     <%= link_to 'Settings', settings_path %>
     </li>
-    <% language_links.each do |link| %>
-      <li>
-        <%= link %>,
-      </li>
-  <% end %> 
+    <li>
+	  <%= link_to t('header.english'), params.merge(locale: "en") %>
+     </li>
+     <li>
+      <%= link_to t('header.spanish'), params.merge(locale: "es") %> 
+     </li>
   <% else %>
     <li>
     <%= link_to 'Login', new_user_session_path %>
