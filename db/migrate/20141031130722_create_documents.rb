@@ -1,7 +1,7 @@
 class CreateDocuments < ActiveRecord::Migration
   def change
-    create_table :documents do |t|
-      t.string :id
+    create_table :documents, :id => false do |t|
+      t.string :id, :limit => 36, :primary => true
       t.string :version
       t.string :domain
       t.string :username

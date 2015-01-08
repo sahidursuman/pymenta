@@ -1,7 +1,7 @@
 class CreateDocumentLines < ActiveRecord::Migration
   def change
-    create_table :document_lines do |t|
-      t.string :id
+    create_table :document_lines, :id => false do |t|
+      t.string :id, :limit => 36, :primary => true
       t.string :version
       t.string :domain
       t.string :username

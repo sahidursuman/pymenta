@@ -81,7 +81,8 @@ ActiveRecord::Schema.define(:version => 20141031183439) do
     t.datetime "logo_updated_at"
   end
 
-  create_table "document_lines", :force => true do |t|
+  create_table "document_lines", :id => false, :force => true do |t|
+    t.string   "id",              :limit => 36
     t.string   "version"
     t.string   "domain"
     t.string   "username"
@@ -90,14 +91,14 @@ ActiveRecord::Schema.define(:version => 20141031183439) do
     t.string   "type"
     t.string   "description"
     t.date     "date"
-    t.decimal  "in_quantity",     :precision => 10, :scale => 2
-    t.decimal  "out_quantity",    :precision => 10, :scale => 2
-    t.decimal  "price",           :precision => 10, :scale => 2
-    t.decimal  "total",           :precision => 10, :scale => 2
+    t.decimal  "in_quantity",                   :precision => 10, :scale => 2
+    t.decimal  "out_quantity",                  :precision => 10, :scale => 2
+    t.decimal  "price",                         :precision => 10, :scale => 2
+    t.decimal  "total",                         :precision => 10, :scale => 2
     t.integer  "year"
     t.integer  "month"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
     t.string   "header_id"
     t.string   "product_id"
     t.string   "warehouse_id"
@@ -117,7 +118,8 @@ ActiveRecord::Schema.define(:version => 20141031183439) do
     t.datetime "updated_at",                 :null => false
   end
 
-  create_table "documents", :force => true do |t|
+  create_table "documents", :id => false, :force => true do |t|
+    t.string   "id",                  :limit => 36
     t.string   "version"
     t.string   "domain"
     t.string   "username"
@@ -141,18 +143,18 @@ ActiveRecord::Schema.define(:version => 20141031183439) do
     t.string   "status"
     t.date     "date"
     t.date     "expire_date"
-    t.decimal  "discount_percentage", :precision => 10, :scale => 2
-    t.decimal  "discount_total",      :precision => 10, :scale => 2
-    t.decimal  "sub_total",           :precision => 10, :scale => 2
-    t.decimal  "tax",                 :precision => 10, :scale => 2
-    t.decimal  "tax_total",           :precision => 10, :scale => 2
-    t.decimal  "total",               :precision => 10, :scale => 2
-    t.decimal  "paid_left",           :precision => 10, :scale => 2
-    t.decimal  "paid",                :precision => 10, :scale => 2
+    t.decimal  "discount_percentage",               :precision => 10, :scale => 2
+    t.decimal  "discount_total",                    :precision => 10, :scale => 2
+    t.decimal  "sub_total",                         :precision => 10, :scale => 2
+    t.decimal  "tax",                               :precision => 10, :scale => 2
+    t.decimal  "tax_total",                         :precision => 10, :scale => 2
+    t.decimal  "total",                             :precision => 10, :scale => 2
+    t.decimal  "paid_left",                         :precision => 10, :scale => 2
+    t.decimal  "paid",                              :precision => 10, :scale => 2
     t.integer  "year"
     t.integer  "month"
-    t.datetime "created_at",                                         :null => false
-    t.datetime "updated_at",                                         :null => false
+    t.datetime "created_at",                                                       :null => false
+    t.datetime "updated_at",                                                       :null => false
     t.string   "document_type_id"
     t.string   "account_id"
     t.string   "warehouse_id"
