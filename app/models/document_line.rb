@@ -11,10 +11,20 @@ class DocumentLine < ActiveRecord::Base
   belongs_to :warehouse
   belongs_to :stock
 
-  before_create :sum_totals
-  before_destroy :substract_totals
+  before_create :create_functions
+  before_destroy :destroy_functions
 
   protected
+
+  def create_functions
+    sum_totals
+    create_stock
+  end
+  
+  def destroy_functions
+    substract_totals
+    destroy_stock
+  end  
 
   def sum_totals
     total = (out_quantity+in_quantity)*price
@@ -34,4 +44,69 @@ class DocumentLine < ActiveRecord::Base
     document.paid_left = document.paid_left - total - (total*document.tax/100)
     document.save
   end
+  
+  def create_stock 
+    @stock = Stock.find_by_product_id_and_warehouse_id_and_domain(product_id, warehouse_id, domain)
+    quantity = in_quantity + out_quantity
+    puts "Create mode - quantity = " + quantity.to_s + " stock = " + document.document_type.stock.to_s + " stock type = " + document.document_type.stock_type
+    if @stock
+      if document.document_type.stock
+        if document.document_type.stock_type == 'credit'
+          @stock.in_quantity = @stock.in_quantity + quantity
+        elsif document.document_type.stock_type == 'debit'
+          @stock.out_quantity = @stock.out_quantity + quantity
+        end
+        @stock.save
+      end   
+    else
+      if document.document_type.stock
+        @stock = Stock.new
+        @stock.domain = domain
+        @stock.username = username
+        @stock.product_id = product_id
+        @stock.warehouse_id = warehouse_id
+        if document.document_type.stock_type == 'credit'
+          @stock.in_quantity = quantity
+          @stock.out_quantity = 0
+        elsif document.document_type.stock_type == 'debit'
+          @stock.out_quantity = quantity
+          @stock.in_quantity = 0
+        end
+        @stock.save
+      end  
+    end
+  end
+  
+  def destroy_stock
+    @stock = Stock.find_by_product_id_and_warehouse_id_and_domain(product_id, warehouse_id, domain)
+    quantity = in_quantity + out_quantity
+    puts "Destroy mode - quantity = " + quantity.to_s + " stock = " + document.document_type.stock.to_s + " stock type = " + document.document_type.stock_type
+    if @stock
+      if document.document_type.stock
+        if document.document_type.stock_type == 'credit'
+          @stock.in_quantity = @stock.in_quantity - quantity
+        elsif document.document_type.stock && document.document_type.stock_type == 'debit'
+          @stock.out_quantity = @stock.out_quantity - quantity
+        end
+        @stock.save
+      end
+    else
+      if document.document_type.stock
+        @stock = Stock.new
+        @stock.domain = domain
+        @stock.username = username
+        @stock.product_id = product_id
+        @stock.warehouse_id = warehouse_id
+        if document.document_type.stock_type == 'credit'
+          @stock.in_quantity = -quantity
+          @stock.out_quantity = 0
+        elsif document.document_type.stock_type == 'debit'
+          @stock.out_quantity = -quantity
+          @stock.in_quantity = 0
+        end
+        @stock.save
+      end  
+    end   
+  end
+      
 end

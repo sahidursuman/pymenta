@@ -8,7 +8,7 @@ class ProvidersController < ApplicationController
   end
 
   def autocomplete
-    @providers = Provider.where("domain = ? AND code like ? OR name like ?", current_user.domain,"%#{params[:query]}%","%#{params[:query]}%")
+    @providers = Provider.where("domain = ? AND (code like ? OR name like ?)", current_user.domain,"%#{params[:query]}%","%#{params[:query]}%")
 
     result = @providers.collect do |item|
       { :value => item.id, :label => item.code + " - " + item.name }

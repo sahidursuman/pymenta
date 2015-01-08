@@ -12,9 +12,9 @@ class WarehousesController < ApplicationController
   end
   
   def autocomplete
-    @warehouses = Warehouse.where("domain = ? AND code like ? OR name like ?", current_user.domain,"%#{params[:query]}%","%#{params[:query]}%")
+    @warehouses = Warehouse.where("domain = ? AND (code like ? OR name like ?)", current_user.domain,"%#{params[:query]}%","%#{params[:query]}%")
 
-    result = @wareshouses.collect do |item|
+    result = @warehouses.collect do |item|
       { :value => item.id, :label => item.code + " - " + item.name }
     end
     render json: result

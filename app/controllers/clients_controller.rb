@@ -8,7 +8,7 @@ class ClientsController < ApplicationController
   end
 
   def autocomplete
-    @clients = Client.where("domain = ? AND code like ? OR name like ?", current_user.domain,"%#{params[:query]}%","%#{params[:query]}%")
+    @clients = Client.where("domain = ? AND (code like ? OR name like ?)", current_user.domain,"%#{params[:query]}%","%#{params[:query]}%")
 
     result = @clients.collect do |item|
       { :value => item.id, :label => item.code + " - " + item.name }
