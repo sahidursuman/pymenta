@@ -2,7 +2,7 @@
   <% if user_signed_in? %>
     <% if current_user.has_role? :admin %>
       <li>
-        <%= link_to 'Admin', users_path %>
+        <%= link_to 'Admin', company_path(current_user.company) %>
       </li>
     <% else %>
       <li>

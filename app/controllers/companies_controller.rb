@@ -3,11 +3,12 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   before_filter :authenticate_user!
   def index
-    @companies = Company.all
+#    @companies = Company.all
+    @company = Company.find(params[:id])
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @companies }
+      format.html { redirect_to @company }
+      format.json { render json: @company }
     end
   end
 

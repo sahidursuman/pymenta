@@ -47,14 +47,12 @@
 				<div class="navbar">
 			    	<div class="navbar-inner">
 			    		<ul class="nav">
-						<li><%= link_to t('.documents', :default => t("helpers.labels.documents")), documents_path %></li>
+                          <li><%= link_to t('.documents', :default => t("helpers.labels.documents")), documents_path %></li>
 					      <li><%= link_to t('.clients', :default => t("helpers.labels.clients")), clients_path %></li>														
-	    				      <li><%= link_to t('.providers', :default => t("helpers.labels.providers")), providers_path %></li>
-                                   	<li><%= link_to t('.products', :default => t("helpers.labels.products")), products_path %></li>
-						<li><%= link_to t('.stocks', :default => t("helpers.labels.stocks")), stocks_path %></li>
-						<li><%= link_to t('.users', :default => t("helpers.labels.users")), users_path %></li>
-			    			<li><%= link_to t('.companies', :default => t("helpers.labels.companies")), companies_path %></li>
-					</ul>
+	    				  <li><%= link_to t('.providers', :default => t("helpers.labels.providers")), providers_path %></li>
+                          <li><%= link_to t('.products', :default => t("helpers.labels.products")), products_path %></li>
+						  <li><%= link_to t('.stocks', :default => t("helpers.labels.stocks")), stocks_path %></li>
+					    </ul>
 			    	</div>
 			    </div>
               <%= render 'layouts/messages' %>
