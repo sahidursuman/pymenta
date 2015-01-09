@@ -181,7 +181,7 @@
         <strong><%=t '.payment_type', :default =>  t("helpers.labels.payment_type")  %></strong>
       </div>
       <div class="span2">
-        <%= text_field_tag 'payment_type', '',:style => "width:100%;" %>
+	    <%= select_tag 'payment_type', options_for_select(["CHEQUE","DEPOSITO","EFECTIVO"], "CHEQUE"), :style => "width:100%;" %>
       </div>
       <div class="span1">
         <strong><%=t '.notes', :default =>  t("helpers.labels.notes")  %></strong>

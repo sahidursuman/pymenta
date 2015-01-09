@@ -22,8 +22,6 @@
         <td><%= stock.out_quantity %></td>
         <td><%= stock.stock %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_stock_path(stock), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       stock_path(stock),
                       :method => :delete,
@@ -34,9 +32,5 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_stock_path,
-            :class => 'btn btn-primary' %>
 
 <%= will_paginate(@movies, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
