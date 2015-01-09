@@ -1,0 +1,8 @@
+$("ul.errors").html("")
+<% if @warehouse.errors.any? %>
+  <% @warehouse.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $("#warehouse-modal").modal("hide")
+<% end %>

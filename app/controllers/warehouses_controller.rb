@@ -39,6 +39,7 @@ class WarehousesController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @warehouse }
+      format.js {}
     end
   end
 
@@ -59,9 +60,11 @@ class WarehousesController < ApplicationController
       if @warehouse.save
         format.html { redirect_to @warehouse, notice: 'Warehouse was successfully created.' }
         format.json { render json: @warehouse, status: :created, location: @warehouse }
+        format.js {}        
       else
         format.html { render action: "new" }
         format.json { render json: @warehouse.errors, status: :unprocessable_entity }
+        format.js {}
       end
     end
   end
