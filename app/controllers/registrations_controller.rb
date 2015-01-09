@@ -15,6 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     if @user.save && @company.save
+      @user.add_role :admin
       sign_in(resource_name, resource)
       defaults @company,@user 
       flash[:notice] = "You have signed up successfully. If enabled, a confirmation was sent to your email"

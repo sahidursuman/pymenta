@@ -24,6 +24,7 @@ Pymenta::Application.routes.draw do
     end
     root :to => "home#index"
     devise_for :users, :controllers => { :registrations => "registrations"}
+    devise_for :users 
     resources :users
     match '/:locale/products/search' => 'products#search', :as => :product_search
     match '/:locale/clients/search' => 'clients#search', :as => :client_search
