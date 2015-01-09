@@ -180,4 +180,11 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def document_report
+    #raise params.inspect
+    user = current_user
+    @document = Document.find(params[:format])
+    pdf = DocumentReport.new(@document, user)
+    send_data pdf.render, filename:'document_report.pdf',type: 'application/pdf', disposition: 'inline'
+  end
 end

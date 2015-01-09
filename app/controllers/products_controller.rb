@@ -111,7 +111,8 @@ class ProductsController < ApplicationController
   
   def product_list_report
     products = current_user.company.products
-    pdf = ProductListReport.new(products)
+    user = current_user
+    pdf = ProductListReport.new(products, user)
     send_data pdf.render, filename:'product_list_report.pdf',type: 'application/pdf', disposition: 'inline'
   end
   
