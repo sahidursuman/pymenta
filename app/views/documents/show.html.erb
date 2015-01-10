@@ -197,12 +197,5 @@
 <div class="form-actions">
   <%= link_to t('.pdf', :default => t("helpers.links.pdf")),
 	          document_report_documents_path(@document),
-	          :class => 'btn btn-primary' %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_document_path(@document), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              document_path(@document),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+	          :class => 'btn' %>
 </div>
