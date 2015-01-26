@@ -28,7 +28,7 @@ class DocumentReport < PdfReport
       text document.account.name, :style => :bold
       text document.id_number1, :size => 10
       text document.address, :size => 10
-      text document.city + " " + document.state, :size => 10
+      text document.city, :size => 10
       text document.telephone, :size => 10
     end  
     display_header_table

@@ -1,0 +1,6 @@
+0000000000000000000000000000000000000000 ac48cf843fbf84bb77bf614dec2a87ea944f4e78 Manuel Fernandez <manfergo25@gmail.com> 1420777512 -0430	clone: from https://github.com/manfergo25/pymenta.git
+ac48cf843fbf84bb77bf614dec2a87ea944f4e78 34f930bcc3e3c35b6c96175fee3dc0b14af350d8 Manuel Fernandez <manfergo25@gmail.com> 1420779114 -0430	commit: Fix logut,resgitration view,add role to user
+34f930bcc3e3c35b6c96175fee3dc0b14af350d8 2846f7df87f4b4fb6317834fbf7f86a123f9810a Manuel Fernandez <manfergo25@gmail.com> 1420827586 -0430	commit: Add new warehouse modal functionality
+2846f7df87f4b4fb6317834fbf7f86a123f9810a 035065310167c62c9e1c9679e0918f8b87ffa51e Manuel Fernandez <manfergo25@gmail.com> 1420830525 -0430	commit: Implementing Admin --> Company - User view
+035065310167c62c9e1c9679e0918f8b87ffa51e f702e0482e0670a6d77499d3348c3d8f5caffada Manuel Fernandez <manfergo25@gmail.com> 1420839211 -0430	commit: PDF Report for Document
+f702e0482e0670a6d77499d3348c3d8f5caffada 915b0044d067e3adf45e27b3f5433379edc5d5ff Manuel Fernandez <manfergo25@gmail.com> 1420865092 -0430	commit: Build of document_report

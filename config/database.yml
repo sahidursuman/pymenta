@@ -26,7 +26,7 @@ development:
 #  host: 127.0.0.1
 #  port: 3306
   adapter: sqlite3
-  database: db/test.sqlite3
+  database: db/developement.sqlite3
   pool: 5
   timeout: 5000
 # Warning: The database defined as "test" will be erased and
