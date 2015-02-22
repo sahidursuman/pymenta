@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141031183439) do
+ActiveRecord::Schema.define(:version => 20150222233731) do
 
   create_table "accounts", :id => false, :force => true do |t|
     t.string   "id",           :limit => 36
@@ -172,6 +172,22 @@ ActiveRecord::Schema.define(:version => 20141031183439) do
     t.datetime "created_at",                                                :null => false
     t.datetime "updated_at",                                                :null => false
     t.string   "header_id"
+  end
+
+  create_table "payments_documents", :force => true do |t|
+    t.string   "version"
+    t.string   "domain"
+    t.string   "username"
+    t.string   "type"
+    t.string   "number"
+    t.date     "date"
+    t.decimal  "total"
+    t.decimal  "paid"
+    t.decimal  "paid_left"
+    t.integer  "year"
+    t.integer  "month"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "products", :id => false, :force => true do |t|
