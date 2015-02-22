@@ -12,7 +12,8 @@ class Company < ActiveRecord::Base
   has_many :documents, :foreign_key => 'domain'
   has_many :document_lines, :foreign_key => 'domain'
   has_many :payments, :foreign_key => 'domain'
-
+  has_many :payments_documents, :foreign_key => 'domain'
+  
 has_attached_file :logo, styles: {
     thumb: '100x100>',
     square: '500x200>',

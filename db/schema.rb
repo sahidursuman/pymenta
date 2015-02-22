@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150222233731) do
+ActiveRecord::Schema.define(:version => 20150222234702) do
 
   create_table "accounts", :id => false, :force => true do |t|
     t.string   "id",           :limit => 36
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(:version => 20150222233731) do
   end
 
   create_table "documents", :id => false, :force => true do |t|
-    t.string   "id",                  :limit => 36
+    t.string   "id",                   :limit => 36
     t.string   "version"
     t.string   "domain"
     t.string   "username"
@@ -143,38 +143,40 @@ ActiveRecord::Schema.define(:version => 20150222233731) do
     t.string   "status"
     t.date     "date"
     t.date     "expire_date"
-    t.decimal  "discount_percentage",               :precision => 10, :scale => 2
-    t.decimal  "discount_total",                    :precision => 10, :scale => 2
-    t.decimal  "sub_total",                         :precision => 10, :scale => 2
-    t.decimal  "tax",                               :precision => 10, :scale => 2
-    t.decimal  "tax_total",                         :precision => 10, :scale => 2
-    t.decimal  "total",                             :precision => 10, :scale => 2
-    t.decimal  "paid_left",                         :precision => 10, :scale => 2
-    t.decimal  "paid",                              :precision => 10, :scale => 2
+    t.decimal  "discount_percentage",                :precision => 10, :scale => 2
+    t.decimal  "discount_total",                     :precision => 10, :scale => 2
+    t.decimal  "sub_total",                          :precision => 10, :scale => 2
+    t.decimal  "tax",                                :precision => 10, :scale => 2
+    t.decimal  "tax_total",                          :precision => 10, :scale => 2
+    t.decimal  "total",                              :precision => 10, :scale => 2
+    t.decimal  "paid_left",                          :precision => 10, :scale => 2
+    t.decimal  "paid",                               :precision => 10, :scale => 2
     t.integer  "year"
     t.integer  "month"
-    t.datetime "created_at",                                                       :null => false
-    t.datetime "updated_at",                                                       :null => false
+    t.datetime "created_at",                                                        :null => false
+    t.datetime "updated_at",                                                        :null => false
     t.string   "document_type_id"
     t.string   "account_id"
     t.string   "warehouse_id"
+    t.string   "payments_document_id"
   end
 
   create_table "payments", :id => false, :force => true do |t|
-    t.string   "id",           :limit => 36
+    t.string   "id",                   :limit => 36
     t.string   "version"
     t.string   "domain"
     t.string   "username"
     t.string   "payment_type"
     t.string   "notes"
     t.date     "date"
-    t.decimal  "amount",                     :precision => 10, :scale => 2
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
-    t.string   "header_id"
+    t.decimal  "amount",                             :precision => 10, :scale => 2
+    t.datetime "created_at",                                                        :null => false
+    t.datetime "updated_at",                                                        :null => false
+    t.string   "payments_document_id"
   end
 
-  create_table "payments_documents", :force => true do |t|
+  create_table "payments_documents", :id => false, :force => true do |t|
+    t.string   "id",               :limit => 36
     t.string   "version"
     t.string   "domain"
     t.string   "username"
@@ -186,8 +188,10 @@ ActiveRecord::Schema.define(:version => 20150222233731) do
     t.decimal  "paid_left"
     t.integer  "year"
     t.integer  "month"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.string   "document_type_id"
+    t.string   "account_id"
   end
 
   create_table "products", :id => false, :force => true do |t|

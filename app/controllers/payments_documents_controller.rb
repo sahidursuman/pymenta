@@ -2,7 +2,7 @@ class PaymentsDocumentsController < ApplicationController
   # GET /payments_documents
   # GET /payments_documents.json
   def index
-    @payments_documents = PaymentsDocument.all
+    @payments_documents = current_user.company.payments_documents.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,6 +40,9 @@ class PaymentsDocumentsController < ApplicationController
   # POST /payments_documents
   # POST /payments_documents.json
   def create
+    params[:payments_document][:version] = ENV["VERSION"]
+    params[:payments_document][:domain] = current_user.domain
+    params[:payments_document][:username] = current_user.username
     @payments_document = PaymentsDocument.new(params[:payments_document])
 
     respond_to do |format|
@@ -56,6 +59,8 @@ class PaymentsDocumentsController < ApplicationController
   # PUT /payments_documents/1
   # PUT /payments_documents/1.json
   def update
+    params[:payments_document][:version] = ENV["VERSION"]
+    params[:payments_document[:username] = current_user.username
     @payments_document = PaymentsDocument.find(params[:id])
 
     respond_to do |format|
