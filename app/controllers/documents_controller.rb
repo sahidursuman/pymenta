@@ -1,6 +1,7 @@
 class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
+  before_filter :authenticate_user!
   def index
     @documents = current_user.company.documents.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
 

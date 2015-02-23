@@ -1,5 +1,17 @@
 <%- model_class = PaymentsDocument -%>
+
+<% @type = params[:payments_document][:type] %>
+<% @type_account = DocumentType.find(@type).account_type %>
+<% @type_description = DocumentType.find(@type).description %>
+<% @type_id = DocumentType.find(@type).id %>
+
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
-<%= render :partial => 'form' %>
+<% if @type_account == 'Client'%>
+  <%= render :partial => 'client' %>
+<% elsif @type_account == 'Provider'%>
+  <%= render :partial => 'provider' %>
+<% elsif @type_account == 'Warehouse'%>
+  <%= render :partial => 'warehouse' %>
+<% end %>

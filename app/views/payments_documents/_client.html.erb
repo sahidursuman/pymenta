@@ -1,0 +1,28 @@
+<%- model_class = Client -%>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<div class="row-fluid">
+  <div class="span10">
+	<div class="modal fade" id="client-modal"></div>
+    <%= form_for @payments_document, :url => {:action => "create_payments_document_account"}, :method => "post"  do |f| %>
+      <dl class="dl-horizontal">
+	    <dt><strong><%=t '.clients', :default =>  t("helpers.labels.clients") %></strong></dt>
+	    <dd><%= text_field_tag 'autocomplete_client', '',:style => "width:100%;","data-ajax_autocomplete_path" => client_autocomplete_path, "data-ajax_info_path" => get_info_client_path %>
+		<%= link_to t('.new', :default => t("helpers.links.new")), new_client_path, :remote => true, :class => 'btn btn-primary', :style => "width:10%;"%></dd>
+      </dl>
+      <dl class="dl-horizontal">
+	    <dt></dt>
+	    <dd><div id="client_name"></div></dd>
+      </dl>
+	  <dl class="dl-horizontal">
+	    <dt><strong><%=t '.date', :default => t("helpers.labels.date") %>:</strong></dt>
+	    <dd><%= f.date_select(:date, :order => [:month, :day, :year]) %></dd>
+	  </dl>
+	  <dl class="dl-horizontal">
+	    <dt><strong><%=@type_description %> <%=t '.number', :default => t("helpers.labels.number") %>:</strong></dt>
+	    <dd><%= f.text_field :number %></dd>
+	  </dl>
+	  <%= f.hidden_field :type, :value => @type_description %>
+	  <%= f.hidden_field :document_type_id, :value => @type_id %>
+	  <%= f.button t('.new', :default => t("helpers.links.new")), :class => 'btn btn-primary' %>
+	<% end %>
+</div>

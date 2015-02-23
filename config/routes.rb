@@ -1,8 +1,5 @@
 Pymenta::Application.routes.draw do
 
-  resources :payments_documents
-
-
   resources :products do
     match "product_list_report", :on => :collection
   end
@@ -26,6 +23,8 @@ Pymenta::Application.routes.draw do
     resources :document_types
     resources :accounts
     resources :payments
+    resources :payments_documents
+
     authenticated :user do
       root :to => 'home#index'
     end
@@ -50,6 +49,8 @@ Pymenta::Application.routes.draw do
     match '/:locale/documents/create_payment_line' => 'documents#create_payment_line', :as => :create_payment_line
     match '/:locale/documents/create_document_account' => 'documents#create_document_account', :as => :create_document_account   
     match '/:locale/documents/new' => 'documents#new', :as => :new
+    match '/:locale/payments_documents/new' => 'payments_documents#new', :as => :new
+    match '/:locale/payments_documents/create_payments_document_account' => 'payments_documents#create_payments_document_account', :as => :create_payments_document_account   
   end  
 
 end

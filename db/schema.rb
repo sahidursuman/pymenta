@@ -182,6 +182,8 @@ ActiveRecord::Schema.define(:version => 20150222234702) do
     t.string   "username"
     t.string   "type"
     t.string   "number"
+    t.string   "name"
+    t.string   "status"
     t.date     "date"
     t.decimal  "total"
     t.decimal  "paid"
