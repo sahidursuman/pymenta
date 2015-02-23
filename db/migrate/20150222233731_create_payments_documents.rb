@@ -7,6 +7,7 @@ class CreatePaymentsDocuments < ActiveRecord::Migration
       t.string :username
       t.string :type
       t.string :number
+      t.string :status
       t.date :date
       t.decimal :total
       t.decimal :paid
