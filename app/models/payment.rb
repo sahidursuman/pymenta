@@ -1,7 +1,7 @@
 class Payment < ActiveRecord::Base
   set_primary_key "id"
   include UUIDHelper
-  attr_accessible :amount, :date, :domain, :id, :notes, :payment_type, :username, :version, :header_id
+  attr_accessible :amount, :date, :domain, :id, :notes, :payment_type, :username, :version, :payments_document_id
 
   belongs_to :company, :foreign_key => 'domain'
   belongs_to :payments_document
@@ -15,29 +15,29 @@ class Payment < ActiveRecord::Base
   protected
 
   def sum_payments
-    document.paid = document.paid + amount
-    document.paid_left = document.total - document.paid
-    if (document.paid > 0 && document.paid_left > 0) 
-      document.status = "PARTIAL_PAID"
-    elsif (document.paid > 0 && document.paid_left == 0) 
-      document.status = "PAID"
-    elsif document.paid == 0 
-      document.status = "NOT_PAID"
+    payments_document.paid = payments_document.paid + amount
+    payments_document.paid_left = payments_document.total - payments_document.paid
+    if (payments_document.paid > 0 && payments_document.paid_left > 0) 
+      payments_document.status = "PARTIAL_PAID"
+    elsif (payments_document.paid > 0 && payments_document.paid_left == 0) 
+      payments_document.status = "PAID"
+    elsif payments_document.paid == 0 
+      payments_document.status = "NOT_PAID"
     end		
-    document.save
+    payments_document.save
   end
 
   def substract_payments
-    document.paid = document.paid - amount
-    document.paid_left = document.paid_left + amount
-    if (document.paid > 0 && document.paid_left > 0) 
-      document.status = "PARTIAL_PAID"
-    elsif (document.paid > 0 && document.paid_left == 0) 
-      document.status = "PAID"
-    elsif document.paid == 0 
-      document.status = "NOT_PAID"
+    payments_document.paid = payments_document.paid - amount
+    payments_document.paid_left = payments_document.paid_left + amount
+    if (payments_document.paid > 0 && payments_document.paid_left > 0) 
+      payments_document.status = "PARTIAL_PAID"
+    elsif (payments_document.paid > 0 && payments_document.paid_left == 0) 
+      payments_document.status = "PAID"
+    elsif payments_document.paid == 0 
+      payments_document.status = "NOT_PAID"
     end
-    document.save
+    payments_document.save
   end
 
 end

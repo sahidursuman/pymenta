@@ -46,11 +46,14 @@ Pymenta::Application.routes.draw do
     match '/:locale/warehouses/get_info_account' => 'warehouses#get_info_from_selected_account', :as => :get_info_warehouse            
     match '/:locale/documents/remove_document_line' => 'documents#remove_document_line', :as => :document_remove_document_line
     match '/:locale/documents/create_document_line' => 'documents#create_document_line', :as => :create_document_line
-    match '/:locale/documents/create_payment_line' => 'documents#create_payment_line', :as => :create_payment_line
     match '/:locale/documents/create_document_account' => 'documents#create_document_account', :as => :create_document_account   
+    match '/:locale/payments_documents/add_payments_document_id' => 'payments_documents#add_payments_document_id', :as => :add_payments_document_id  
+    match '/:locale/payments_documents/remove_payments_document_id' => 'payments_documents#remove_payments_document_id', :as => :remove_payments_document_id  
+    match '/:locale/payments_documents/create_payment_line' => 'payments_documents#create_payment_line', :as => :create_payment_line
     match '/:locale/documents/new' => 'documents#new', :as => :new
     match '/:locale/payments_documents/new' => 'payments_documents#new', :as => :new
     match '/:locale/payments_documents/create_payments_document_account' => 'payments_documents#create_payments_document_account', :as => :create_payments_document_account   
+ 
   end  
 
 end

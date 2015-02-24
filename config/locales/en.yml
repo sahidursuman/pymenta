@@ -103,6 +103,15 @@ en:
       title: "Edit Document Type"
     new:
       title: "New Document Type"
+  payments_documents:
+    index:
+      title: "Payments"
+    show:
+      title: "Payment"
+    edit:
+      title: "Edit Payment"
+    new:
+      title: "New Payment"
   layouts:
     home:
       title: "Now your company in the cloud!"

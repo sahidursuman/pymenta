@@ -14,6 +14,7 @@
       warehouses: "Almacenes" 
       documents: "Documentos"
       stocks: "Inventarios"
+      payments_documents: "Pagos"
       users: "Usuarios"
       companies: "Companias"             
       brand: "Marca"

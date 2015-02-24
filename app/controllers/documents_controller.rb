@@ -105,27 +105,6 @@ class DocumentsController < ApplicationController
     end
   end  
 
-  def create_payment_line
-    puts 'hola'
-    puts params[:payment_type]
-    puts params[:date]
-    puts 'hola'
-    document = Document.find(params[:header_id])
-    amount = params[:amount].to_f
-    #date = DateTime.new(params[:date])
-    payment_line = Payment.new(domain: current_user.domain, username: current_user.username,      
-	header_id: document.id, payment_type: params[:payment_type], date: DateTime.now,  amount: amount,
-	notes: params[:notes])
-    if payment_line.save!
-      flash[:notice]='Your payment was created'
-    else
-      flash[:notice]='Please verify your data'
-    end
-
-    respond_to do |format|
-      format.html{ redirect_to document }
-    end
-  end          
 
   def create_document_account
 
@@ -181,6 +160,7 @@ class DocumentsController < ApplicationController
     end
   end
 
+ 
   def document_report
     #raise params.inspect
     user = current_user

@@ -1,4 +1,5 @@
 <%- model_class = PaymentsDocument -%>
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
@@ -34,9 +35,13 @@
     </dl>  
    </div>
 </div>
-<%= form_for Document.new, :url => {:action => "update"}, :method => "post"  do |f| %>
-  <%= f.collection_select :payments_document_id, Document.where("domain = ? AND account_id = ?", current_user.domain, @payments_document.account_id), :id, :document_number %>
-  <%= f.button t('.new', :default => t("helpers.links.new")), :class => 'btn btn-primary' %>
+
+<%= form_for Document.new, :url => {:controller => "payments_documents" , :action => "add_payments_document_id"}, :method => "post"  do |f| %>
+  <div class="row-fluid">
+    <div class="span10"><%= f.collection_select :payments_document_id, Document.where("domain = ? AND account_id = ? AND payments_document_id IS NULL", current_user.domain,   @payments_document.account_id), :id, :full_name,  {:include_blank=> true}, {:class => "span12"} %></div>
+    <%= f.hidden_field :payment_id, :value => @payments_document.id %>
+    <div class="span2"><%= f.button t('.add', :default => t("helpers.links.add")), :class => 'btn btn-primary', :style => "width:100%;"  %></div>
+  </div>
 <% end %>
 
 <div id="document">
@@ -92,7 +97,7 @@
     <% end %>
   </tbody>
 </table>
-<%= form_tag :action => 'create_payment_line', :controller => 'documents', :header_id => @payments_document do %>
+<%= form_tag :action => 'create_payment_line', :controller => 'payments_documents', :header_id => @payments_document do %>
     <div class="row-fluid">
       <div class="span3">
         <%= select_date %>
@@ -120,4 +125,5 @@
 	</div>
   </div>
 <% end %>
+
 

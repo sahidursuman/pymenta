@@ -14,6 +14,7 @@ en:
       warehouses: "Warehouses"
       documents: "Documents"
       stocks: "Stocks"
+      payments_documents: "Payments"
       users: "Users"
       companies: "Companies"                  
       brand: "Brand"

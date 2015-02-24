@@ -104,6 +104,15 @@ es:
       title: "Editar Tipo de Documento"
     new:
       title: "Nuevo Tipo de Documento"
+  payments_documents:
+    index:
+      title: "Pagos"
+    show:
+      title: "Pago"
+    edit:
+      title: "Editar Pago"
+    new:
+      title: "Nuevo Pago"
   layouts:
     home:
       title: "Ahora tu compania en la nube!"

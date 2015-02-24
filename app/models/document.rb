@@ -13,4 +13,7 @@ class Document < ActiveRecord::Base
 
   has_many :document_lines, :foreign_key => 'header_id'
 
+  def full_name
+     "#{type} -------- #{document_number} --------- #{name} ---------- #{date} ------------ #{total}"
+   end
 end

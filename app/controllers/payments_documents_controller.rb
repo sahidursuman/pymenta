@@ -126,4 +126,66 @@ class PaymentsDocumentsController < ApplicationController
     end
   end
 
+  def add_payments_document_id
+
+     @payments_document = PaymentsDocument.find(params[:document][:payment_id])   
+
+     @document = Document.find(params[:document][:payments_document_id] )
+     @document.payments_document = @payments_document
+  
+     @payments_document.total = @payments_document.total + @document.total
+
+     respond_to do |format|
+       if @document.save && @payments_document.save
+         format.html { redirect_to @payments_document, notice: 'Add Document was successfully created.' }
+         format.json { render json: @payments_document, status: :created, location: @document }
+       else
+         format.html { render action: "new" }
+         format.json { render json: @payments_document.errors, status: :unprocessable_entity }
+       end
+     end
+   end
+
+   def remove_payments_document_id
+
+      @payments_document = PaymentsDocument.find(params[:id])
+
+      @document = Document.find(params[:payments_document_id])
+      @document.payments_document_id = nil
+
+      @payments_document.total = @payments_document.total - @document.total 
+
+      respond_to do |format|
+        if @document.save  && @payments_document.save
+          format.html { redirect_to @payments_document, notice: 'Remove Document was successfully created.' }
+          format.json { render json: @payments_document, status: :created, location: @document }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @payments_document.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+    def create_payment_line
+      puts 'hola'
+      puts params[:payment_type]
+      puts params[:date]
+      puts 'hola'
+      payments_document = PaymentsDocument.find(params[:header_id])
+      amount = params[:amount].to_f
+      #date = DateTime.new(params[:date])
+      payment_line = Payment.new(domain: current_user.domain, username: current_user.username,      
+  	payments_document_id: payments_document.id, payment_type: params[:payment_type], date: DateTime.now,  amount: amount,
+  	notes: params[:notes])
+      if payment_line.save!
+        flash[:notice]='Your payment was created'
+      else
+        flash[:notice]='Please verify your data'
+      end
+
+      respond_to do |format|
+        format.html{ redirect_to payments_document }
+      end
+    end
+
 end
