@@ -16,7 +16,6 @@
 //= require twitter/bootstrap
 //= require bootstrap
 //= require_tree .
-//= require bootstrap-select
 
 //jQuery to collapse the navbar on scroll
 $(window).scroll(function() {
@@ -155,4 +154,3 @@ var myOptions = {
 };
 
 var map = new google.maps.Map(document.getElementById('map'), myOptions);
-
