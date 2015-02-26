@@ -1,103 +1,134 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Pymenta" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Pymenta" %>">
-    <%= stylesheet_link_tag "devise", :media => "all" %>
+    <%= stylesheet_link_tag "bootstrap3", :media => "all" %>
+    <%= stylesheet_link_tag "home", :media => "all" %>
+    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>   
 	<script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
 	<script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
-	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>  
-        <style type="text/css">
-          body {
-            padding-top: 20px;
-            padding-bottom: 40px;
-        }
+	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 
-    	  /* Custom container */
-          .container-narrow {
-            margin: 0 auto;
-            max-width: 600px;
-          }
-          .container-narrow > hr {
-            margin: 30px 0;
-          }
+    <!-- Fonts -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-          /* Main marketing message and sign up button */
-          .jumbotron {
-            margin: 60px 0;
-            text-align: center;
-          }
-          .jumbotron h1 {
-            font-size: 72px;
-            line-height: 1;
-          }
-          .jumbotron .btn {
-            font-size: 21px;
-            padding: 14px 24px;
-          }
+</head>
 
-          /* Supporting marketing content */
-          .marketing {
-            margin: 60px 0;
-          }
-          .marketing p + h4 {
-            margin-top: 28px;
-          }
-        </style>
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 
-  </head>
-  <body class="<%= controller_name %> <%= action_name %>">
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <div class="nav-collapse">
-	      <ul class="nav pull-left">
-		    <% if user_signed_in? %>
-			  <%= link_to "PYMENTA", root_path, :class => 'brand' %>
-		    <% else %>
-			  <%= link_to "PYMENTA", root_path, :class => 'brand' %>
-		    <% end %>
-          </ul>
-          <ul class="nav pull-right">
-            <%= render 'layouts/navigation' %>
-          </ul>
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	        </a>
+	        <div class="nav-collapse">
+		      <ul class="nav pull-left">
+                <a class="brand" href="#page-top">PYMENTA</a>
+	          </ul>
+	        </div>	
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">          
+                        <a href="#about">Nuestro Producto</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Contactanos</a>
+                    </li>
+                    <li class="page-scroll">
+                        <li><%= link_to "Entrar", new_user_session_path %></li>
+                    </li>
+                    <li class="page-scroll">
+	                   <%= link_to "Sign up today", new_user_registration_path , :class=>"btn btn-default" %>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-      </div>
-    </div>
-  </div>
-    <div id="main" role="main">
-      <div class="container-narrow">
+        <!-- /.container -->
+    </nav>
 
-     <div class="jumbotron">
-        <h1><%=t '.title', :default => 'Now your company in the cloud!' %></h1>
-        <p class="lead"><%=t '.description', :default => 'Pymenta is a very simple Cloud ERP System created for small companies to create, manage and print documents. You can manage warehouses, providers, clients, products and stock. Designed to work in the Cloud.' %></p>
-<%= link_to "Sign up today", new_user_registration_path , :class=>"btn btn-danger btn-large" %>
-        
-      </div>
+    <section class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1><%=t '.title', :default => 'Now your company in the cloud!' %></h1>
+                        <p class="intro-text">Relax, ahora nosotros nos encargamos de lo complicado.</p>
+                        <div class="page-scroll">
+                            <a href="#about" class="btn btn-circle">
+                                <i class="fa fa-angle-double-down animated"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+				  <h2>Nuestro Producto</h2>      
+                  <p class="lead"><%=t '.description', :default => 'Pymenta is a very simple Cloud ERP System created for small companies to create, manage and print documents. You can manage warehouses, providers, clients, products and stock. Designed to work in the Cloud.' %></p>
+				  <%= link_to "Sign up today", new_user_registration_path , :class=>"btn btn-danger btn-large" %>	
+            </div>
+        </div>
+    </section>
 
-      <footer class="footer">
-		    <div class="container" style="margin:0 auto;">
-		        <div class="row">
-		            <div class="span12">
-		                <h5 style="color:#FFFFFF">Copyright 2013</h4>
-		            </div>
-		        </div>
-		    </div>
-		</footer>
+    <section id="contact" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+	                <h2>Contactanos</h2>
+	                <p>Cualquier duda, comentario o sugerencia siéntase libre de escribirnos a la siguiente direccion:</p>
+	                <p>papayalabs@gmail.com</p>
+	                <ul class="list-inline banner-social-buttons">
+	                    <li><a href="https://twitter.com/papayalabs" class="btn btn-danger"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+	                    </li>
+	                    <li><a href="https://github.com/papayalabs" class="btn btn-info"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+	                    </li>
+	                    <li><a href="https://facebook.com" class="btn btn-primary"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+	                    </li>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section id="footer" class="content-section text-center">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+			    </div>
+			</div>
+    </section>	
+    <!-- <div id="map"></div> -->
 
-    </div> <!-- /container -->
+    <!-- Core JavaScript Files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-    </div> <!--! end of #main -->
-  </body>
+    <!-- Google Maps API Key - You will need to use your own API key to use the map feature -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/grayscale.js"></script>
+
+</body>
+
 </html>
