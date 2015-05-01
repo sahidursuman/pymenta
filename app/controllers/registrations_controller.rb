@@ -7,21 +7,40 @@ class RegistrationsController < Devise::RegistrationsController
   
   def create
     @company = Company.new(:name => params[:user][:company_name])
+    @company.plan = "GRATIS"
+    @company.initial_cycle = Time.new
+    @company.final_cycle = Time.now.months_since(1)
+    @company.counter = 0
+    @company.limit = 3
+    @company.unit = "Bs."
+    @company.separator = ","
+    @company.delimiter = "."
+    @company.date_format = "%d/%m/%Y"
     @user = User.new(params[:user])
     User.transaction do
-       @company.save!
-       @user.domain = @company.id
-       @user.save
-    end
+       if @company.save
+         @user.domain = @company.id
 
-    if @user.save && @company.save
-      @user.add_role :admin
-      sign_in(resource_name, resource)
-      defaults @company,@user 
-      flash[:notice] = "You have signed up successfully. If enabled, a confirmation was sent to your email"
-        redirect_to documents_url
-    else
-      render :action => :new
+         if Guest.exists?(:email => params[:user][:email]) # Guest list stage
+           if @user.save
+             Notifier.welcome_email(@user).deliver
+             @user.add_role :admin
+             sign_in(resource_name, resource)
+             defaults @company,@user   
+             flash[:notice] = t("devise.sessions.signed_in")
+             redirect_to documents_url
+           else
+             render :action => :new
+           end
+         else # Guest list stage
+           @user.errors[:base] << t("devise.registrations.not_in_guest_list") # Guest list stage
+           render :action => :new # Guest list stage
+         end # Guest list stage
+ 
+       else
+        @user.errors[:base] << @company.errors.full_messages
+        render :action => :new
+       end
     end
   end
   
@@ -38,4 +57,4 @@ class RegistrationsController < Devise::RegistrationsController
     document_type_3 = DocumentType.new(:description => 'IN STOCK/ENTRADA', :account_type => 'Warehouse', :stock => true, :stock_type => 'credit', :domain => company.id, :username => user.username).save     
   end  
 end
-            
+           

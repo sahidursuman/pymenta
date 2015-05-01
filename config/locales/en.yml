@@ -3,6 +3,9 @@
 
 en:
   hello: "Hello world"
+  will_paginate:
+    previous_label:  ← Previous
+    next_label: Next →
   date:
     formats:
       # Use the strftime parameters for formats.
@@ -40,42 +43,15 @@ en:
   translation:
     en: "English"
     es: "Spanish"
-  products:
+  documents:
     index:
-      title: "Products"
+      title: "Invoices"
     show:
-      title: "Product"
+      title: "Invoice"
     edit:
-      title: "Edit Product"
+      title: "Edit Invoice"
     new:
-      title: "New Product"
-  categories:
-    index:
-      title: "Categories"
-    show:
-      title: "Category"
-    edit:
-      title: "Edit Category"
-    new:
-      title: "New Category"      
-  brands:
-    index:
-      title: "Brands"
-    show:
-      title: "Brand"
-    edit:
-      title: "Edit Brand"
-    new:
-      title: "New Brand"
-  clients:
-    index:
-      title: "Clients"
-    show:
-      title: "Client"
-    edit:
-      title: "Edit client"
-    new:
-      title: "New Client"
+      title: "New Invoice"
   providers:
     index:
       title: "Providers"
@@ -85,24 +61,6 @@ en:
       title: "Edit Provider"
     new:
       title: "New Provider"
-  warehouses:
-    index:
-      title: "Warehouses"
-    show:
-      title: "Warehouse"
-    edit:
-      title: "Edit Warehouse"
-    new:
-      title: "New Warehouse"
-  document_types:
-    index:
-      title: "Document Types"
-    show:
-      title: "Document Type"
-    edit:
-      title: "Edit Document Type"
-    new:
-      title: "New Document Type"
   payments_documents:
     index:
       title: "Payments"
@@ -112,7 +70,21 @@ en:
       title: "Edit Payment"
     new:
       title: "New Payment"
-  layouts:
-    home:
-      title: "Now your company in the cloud!"
-      description: "Pymenta is a very simple Cloud ERP System created for small companies to create, manage and print documents. You can manage warehouses, providers, clients, products and stock. Designed to work in the Cloud." 
+  companies:
+    index:
+      title: "Companies Info"
+    show:
+      title: "Company Info"
+    edit:
+      title: "Edit Company Info"
+    new:
+      title: "New Company Info"
+  users:
+    index:
+      title: "Usuarios"
+    show:
+      title: "Usuario"
+    edit:
+      title: "Editar Usuario"
+    new:
+      title: "Nuevo Usuario"

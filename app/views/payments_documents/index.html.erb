@@ -2,10 +2,35 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript">
+  $(document).ready(function()
+  {
+    $("#start_at").datepicker($.extend({dateFormat:'dd/mm/yy'},$.datepicker.regional['es']));
+    $("#end_at").datepicker({dateFormat: 'dd/mm/yy'});
+  });
+</script>
 <%= form_for PaymentsDocument.new, :url => {:action => "new"}, :method => "post"  do |f| %>
   <%= f.collection_select :type, current_user.company.document_types, :id, :description %>
   <%= f.button t('.new', :default => t("helpers.links.new")), :class => 'btn btn-primary' %>
 <% end %>
+<div class="form-actions">
+	<div class="form-search">
+        <div class="text-center">
+		<%= form_tag({:controller => "payments_documents", :action => "search"}, :method => "post") do %>
+              <%= label_tag(:name, (t '.name', :default =>  t("helpers.labels.name")) ) %>
+              <%= text_field_tag(:name) %>
+              <%= label_tag(:start_at, (t '.start_at', :default =>  t("helpers.labels.start_at")) ) %>
+              <%= text_field_tag(:start_at, nil, :class => "input-small") %>  
+              <%= label_tag(:end_at, (t '.end_at', :default =>  t("helpers.labels.end_at")) ) %>
+              <%= text_field_tag(:end_at, nil, :class => "input-small") %>
+ 			  <%= label_tag(:status, (t '.status', :default =>  t("helpers.labels.status")) ) %>
+              <%= select_tag 'status', options_for_select([['' , '' ],[t("helpers.labels.NOT_PAID"),'NOT_PAID'], [t("helpers.labels.PARTIAL_PAID"),'PARTIAL_PAID'], [t("helpers.labels.PAID"),'PAID']]) %>		  		
+              <%= submit_tag((t '.search', :default =>  t("helpers.labels.search")), :class => 'btn btn-danger') %>
+            <% end %>
+	  </div>
+	</div>
+</div>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -26,13 +51,7 @@
         <td><%= payments_document.account.name %></td>
         <td><%= payments_document.date %></td>
         <td><%= payments_document.total %></td>
-        <% if payments_document.status == "NOT_PAID" %>
-          <td><span class="label label-important"><%= payments_document.status %></span></td>
-        <% elsif payments_document.status == "PARTIAL_PAID" %>
-          <td><span class="label label-warning"><%= payments_document.status %></span></td>
-        <% else %>
-          <td><span class="label label-success"><%= payments_document.status %></span></td>
-        <% end %>
+        <%= display_status payments_document.status %>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       payments_document_path(payments_document), :class => 'btn btn-mini' %>

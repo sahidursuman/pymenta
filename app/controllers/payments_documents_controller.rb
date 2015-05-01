@@ -2,6 +2,18 @@ class PaymentsDocumentsController < ApplicationController
   # GET /payments_documents
   # GET /payments_documents.json
   before_filter :authenticate_user!
+  def search
+   @start_at = params[:start_at].blank? ? DateTime.parse("01/01/1901") : DateTime.parse(params[:start_at])
+   @end_at = params[:end_at].blank? ? DateTime.parse("01/01/2901") : DateTime.parse(params[:end_at])
+   @status = params[:status]
+   if @status.blank?
+     @payments_documents = PaymentsDocument.where("domain = ? AND name like ? AND date > ? AND date < ? ", current_user.domain,"%#{params[:name]}%","#{@start_at}","#{@end_at}").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+   else      
+     @payments_documents = PaymentsDocument.where("domain = ? AND name like ? AND date > ? AND date < ? AND status = ? ", current_user.domain,"%#{params[:name]}%","#{@start_at}","#{@end_at}","#{@status}").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+   end
+    render :index
+  end
+    
   def index
     @payments_documents = current_user.company.payments_documents.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
 

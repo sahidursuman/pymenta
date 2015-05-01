@@ -8,21 +8,9 @@ class CreateDocuments < ActiveRecord::Migration
       t.string :code
       t.string :document_number
       t.string :type
-      t.string :name
-      t.string :id_number1
-      t.string :id_number2
-      t.string :address
-      t.string :city
-      t.string :state
-      t.string :country
-      t.string :zip_code
-      t.string :telephone
-      t.string :fax
-      t.string :email
-      t.string :web
-      t.string :observations
       t.string :due
       t.string :status
+      t.string :details
 
       t.date :date
       t.date :expire_date

@@ -7,4 +7,6 @@ class Account < ActiveRecord::Base
   validates :name, presence: true
   
   belongs_to :company, :foreign_key => 'domain'
+  
+  has_many :documents
 end

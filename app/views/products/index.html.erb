@@ -4,6 +4,7 @@
 </div>
 <div class="form-actions">
 	<div class="form-search">
+      <div class="text-center">
 		<%= form_tag({:controller => "products", :action => "search"}, :method => "post") do %>
   		  <%= label_tag(:code, (t '.code', :default =>  t("helpers.labels.code")) ) %>
           <%= text_field_tag(:code, nil, :class => 'input-small') %>
@@ -15,6 +16,7 @@
            <%= select_tag(:category_id, options_for_select(current_user.company.categories.collect{|x| [x.description,x.id]})) %>
           <%= submit_tag((t '.search', :default =>  t("helpers.labels.search")), :class => 'btn btn-danger') %>
         <% end %>
+	  </div>
 	</div>
 </div>		
 <table class="table table-striped">
@@ -31,7 +33,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= link_to product.code, product_path(product) %></td>
+        <td><%= product.code %></td>
         <td><%= product.description %></td>
         <td><%= product.brand.description %></td>
         <td><%= product.category.description %></td>
@@ -39,6 +41,8 @@
         <td><%= product.price %></td>
 
         <td>
+	      <%= link_to t('.show', :default => t("helpers.links.show")),
+                      product_path(product), :class => 'btn btn-mini' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_product_path(product), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -57,8 +61,8 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_product_path,
             :class => 'btn btn-primary' %>
-<%= link_to t('.pdf', :default => t("helpers.links.pdf")),
+<%= link_to t('.print', :default => t("helpers.links.print")),
             product_list_report_products_path,
-            :class => 'btn btn-primary' %>
+            :class => 'btn' %>
 
 <%= will_paginate(@movies, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>

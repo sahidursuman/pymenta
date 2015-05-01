@@ -113,7 +113,47 @@
     </section>
 
     <div id="map"></div>
+	<div class="wet-asphalt">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4><%= t('.paymentmethod', :default => t("layouts.home.paymentmethod")) %></h4>
+                    <%= image_tag("tarjeta.png",  width: "140", alt: "") %>
+                    <%= image_tag("mercadopago.png", width: "140", alt: "") %>
+                </div><!--/.col-md-3-->
 
+                <div class="col-lg-6">
+                    <h4><%= t('.contact', :default => t("layouts.home.contact")) %></h4>
+                    <address>
+                        <strong><%= t('.companyname', :default => t("layouts.home.companyname")) %></strong><br>
+                        papayalabs@gmail.com<br>
+                    </address>
+                    
+                </div> <!--/.col-md-3-->
+            </div>
+        </div>
+    </div><!--/#bottom-->
+	    <div class="midnight-blue">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-sm-12">
+	                    <b><%= t('.madewith', :default => t("layouts.home.madewith")) %></b> <%= image_tag("heart-icon.png", width: "24", alt: "") %> <b><%= t('.invenezuela', :default => t("layouts.home.invenezuela")) %></b>
+	                </div>
+	            </div>
+	            <div class="row">
+	                <div class="col-sm-6">
+	                    <%= t('.copyright', :default => t("layouts.home.copyright")) %><a target="_blank" href="http://www.twitter.com/papayalabs" title="Lapapaya"><%= t('.companyname', :default => t("layouts.home.companyname")) %>
+	</a>. <%= t('.allrightreserved', :default => t("layouts.home.allrightreserved")) %>
+	                </div>
+	                <div class="col-sm-6">
+	                  <ul class="nav navbar-nav navbar-right">
+	                    <li><%= link_to t('.termsofservice', :default => t("helpers.home.termsofservice")), terms_path, :class => 'decorated_link'  %></li>
+	                    <li><%= link_to t('.privacypolicy', :default => t("helpers.home.privacypolicy")), privacy_path, :class => 'decorated_link'  %></li>
+	                  </ul>
+	                </div>
+	            </div>
+	        </div>
+	    </div><!--/#footer-->
     <!-- Google Maps API Key - You will need to use your own API key to use the map feature -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

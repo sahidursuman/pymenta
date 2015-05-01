@@ -4,6 +4,7 @@
 </div>
 <div class="form-actions">
 	<div class="form-search">
+      <div class="text-center">
 		<%= form_tag({:controller => "clients", :action => "search"}, :method => "post") do %>
   		  <%= label_tag(:code, (t '.code', :default =>  t("helpers.labels.code")) ) %>
               <%= text_field_tag(:code, nil, :class => 'input-small') %>
@@ -14,6 +15,7 @@
 
           <%= submit_tag((t '.search', :default =>  t("helpers.labels.search")), :class => 'btn btn-danger') %>
         <% end %>
+	  </div>
 	</div>
 </div>	
 <table class="table table-striped">
@@ -21,20 +23,25 @@
     <tr>
       <th><%=t '.code', :default =>  t("helpers.labels.code") %></th>
       <th><%=t '.name', :default =>  t("helpers.labels.name") %></th>
-	<th><%=t '.city', :default =>  t("helpers.labels.city") %></th>
-
+      <th><%=t '.id_number1', :default =>  t("helpers.labels.id_number1") %></th>
+      <th><%=t '.telephone', :default =>  t("helpers.labels.telephone") %></th>
+      <th><%=t '.city', :default =>  t("helpers.labels.city") %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
    <tbody>
     <% @clients.each do |client| %>
       <tr>
-        <td><%= link_to client.code, client_path(client) %></td>
+        <td><%= client.code %></td>
         <td><%= client.name %></td>
+        <td><%= client.id_number1 %></td>
+        <td><%= client.telephone %></td>
         <td><%= client.city %></td>
         <td>
+	      <%= link_to t('.show', :default => t("helpers.links.show")),
+                      client_path(client), :class => 'btn btn-mini btn-warning' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_client_path(client), :class => 'btn btn-mini' %>
+                      edit_client_path(client), :class => 'btn btn-mini btn-primaryi' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       client_path(client),
                       :method => :delete,

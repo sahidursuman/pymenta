@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
   before_filter :authenticate_user!
   def index
 #    @companies = Company.all
-    @company = Company.find(params[:id])
+    @company = Company.find(current_user.company.id)
 
     respond_to do |format|
       format.html { redirect_to @company }
@@ -36,6 +36,11 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1/edit
   def edit
+    @company = Company.find(params[:id])
+  end
+
+  # GET /companies/1/edit
+  def edit_formats
     @company = Company.find(params[:id])
   end
 
@@ -82,4 +87,65 @@ class CompaniesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def subscribe_month
+    @company = Company.find(current_user.company.id)
+    @company.plan = "PAGO"
+    @company.initial_cycle = Time.new
+    @company.final_cycle = Time.now.months_since(1)
+    @company.counter = 0
+    @company.limit = 1000000
+
+    respond_to do |format|
+      if @company.save
+  	    format.js {} 
+      else
+  	    format.js { @company.errors[:base] << "Error al actualizar plan"} 
+      end
+    end  
+  end
+  
+  def subscribe_year
+    @company = Company.find(current_user.company.id)
+    @company.plan = "PAGO"
+    @company.initial_cycle = Time.new
+    @company.final_cycle = Time.now.years_since(1)
+    @company.counter = 0
+    @company.limit = 1000000
+
+    respond_to do |format|
+       if @company.save
+         format.js { } 
+       else
+         format.js { @company.errors[:base] << "Error al actualizar plan"} 
+       end
+     end
+  end
+
+   def subscribe_alert
+      @company = Company.find(current_user.company.id)
+
+      respond_to do |format|
+     	  format.js { @company.errors[:base] << params[:msg] }  
+      end
+   end
+
+   # ############# Para Pruebas 
+   #  def became_free
+   #     @company = Company.find(current_user.company.id)
+   #     @company.plan = "GRATIS"
+   #     @company.initial_cycle = Time.new
+   #     @company.final_cycle = Time.now.months_since(1)
+   #     @company.counter = 0
+   #     @company.limit = 3
+   #     
+   #     respond_to do |format|
+   #        if @company.save
+   #    	    format.js { @company.errors[:base] << "SE puso gratis" } 
+   #        else
+   #          format.js { @company.errors[:base] << "Error al actualizar plan"} 
+   #        end
+   #      end
+   #   end
+   ####################   
 end

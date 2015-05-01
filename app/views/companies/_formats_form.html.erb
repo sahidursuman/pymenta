@@ -1,0 +1,11 @@
+<%= simple_form_for @company, :html => { :multipart => true , :class => 'form-horizontal' } do |f| %>
+  <%= f.input :unit %>
+  <%= f.input :separator %>
+  <%= f.input :delimiter %>
+  <%= f.label :date_format %><span style="padding: 0 7px">&nbsp;</span><%= f.select :date_format, options_for_select([['01/01/2001', '%d/%m/%Y'], ['01-01-2001', '%d-%m-%Y'], ['01/Ene/2001', '%d/%B/%Y']],:disabled => ["Select One"]) %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                companies_path, :class => 'btn' %>
+  </div>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150222234702) do
+ActiveRecord::Schema.define(:version => 20150323145447) do
 
   create_table "accounts", :id => false, :force => true do |t|
     t.string   "id",           :limit => 36
@@ -73,6 +73,27 @@ ActiveRecord::Schema.define(:version => 20150222234702) do
     t.string   "id",                :limit => 36
     t.string   "name"
     t.string   "address"
+    t.string   "id_number1"
+    t.string   "id_number2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zip_code"
+    t.string   "telephone"
+    t.string   "fax"
+    t.string   "email"
+    t.string   "web"
+    t.string   "contact"
+    t.date     "initial_cycle"
+    t.date     "final_cycle"
+    t.string   "plan"
+    t.integer  "counter"
+    t.integer  "limit"
+    t.string   "note"
+    t.string   "date_format"
+    t.string   "unit"
+    t.string   "separator"
+    t.string   "delimiter"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.string   "logo_file_name"
@@ -126,21 +147,9 @@ ActiveRecord::Schema.define(:version => 20150222234702) do
     t.string   "code"
     t.string   "document_number"
     t.string   "type"
-    t.string   "name"
-    t.string   "id_number1"
-    t.string   "id_number2"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "country"
-    t.string   "zip_code"
-    t.string   "telephone"
-    t.string   "fax"
-    t.string   "email"
-    t.string   "web"
-    t.string   "observations"
     t.string   "due"
     t.string   "status"
+    t.string   "details"
     t.date     "date"
     t.date     "expire_date"
     t.decimal  "discount_percentage",                :precision => 10, :scale => 2
@@ -159,6 +168,12 @@ ActiveRecord::Schema.define(:version => 20150222234702) do
     t.string   "account_id"
     t.string   "warehouse_id"
     t.string   "payments_document_id"
+  end
+
+  create_table "guests", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "payments", :id => false, :force => true do |t|
@@ -185,6 +200,7 @@ ActiveRecord::Schema.define(:version => 20150222234702) do
     t.string   "name"
     t.string   "status"
     t.date     "date"
+    t.decimal  "percentage"
     t.decimal  "total"
     t.decimal  "paid"
     t.decimal  "paid_left"

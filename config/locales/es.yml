@@ -1,8 +1,11 @@
-# Sample localization file for English. Add more files in this directory for other locales.
+﻿# Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 es:
   hello: "Hola Mundo"
+  will_paginate:
+    previous_label:  ← Anterior
+    next_label: Proximo →
   date:
     formats:
       # Use the strftime parameters for formats.
@@ -12,12 +15,12 @@ es:
       short: "%b %d"
       long: "%B %d, %Y"
 
-    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
-    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+    day_names: [Domingo, Lunes, Martes, Miercoles, Jueves, Viernes, Sabado]
+    abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab]
 
     # Don't forget the nil at the beginning; there's no such thing as a 0th month
-    month_names: [~, January, February, March, April, May, June, July, August, September, October, Noviembre, Diciembre]
-    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dec]
     # Used in date_select and datetime_select.
     order:
       - :year
@@ -41,42 +44,15 @@ es:
   translation:
     en: "Ingles"
     es: "Espanol"
-  products:
+  documents:
     index:
-      title: "Productos"
+      title: "Facturas"
     show:
-      title: "Producto"
+      title: "Factura"
     edit:
-      title: "Editar Producto"
+      title: "Editar Factura"
     new:
-      title: "Nuevo Producto"
-  categories:
-    index:
-      title: "Categorias"
-    show:
-      title: "Categoria"
-    edit:
-      title: "Editar Categoria"
-    new:
-      title: "Nueva Categoria"      
-  brands:
-    index:
-      title: "Marcas"
-    show:
-      title: "Marca"
-    edit:
-      title: "Editar Marca"
-    new:
-      title: "Nueva Marca"
-  clients:
-    index:
-      title: "Clientes"
-    show:
-      title: "Cliente"
-    edit:
-      title: "Editar Cliente"
-    new:
-      title: "Nuevo Cliente"
+      title: "Nueva Factura"      
   providers:
     index:
       title: "Proveedores"
@@ -113,9 +89,21 @@ es:
       title: "Editar Pago"
     new:
       title: "Nuevo Pago"
-  layouts:
-    home:
-      title: "Ahora tu compania en la nube!"
-      description: "Pymenta es un sistema ERP en la nube creado para que pequenas companias pudieran crear, administrar e imprimir documentos. Tambien pueden administrar almacenes, proveedores, clientes, productos e Inventario. Disenado para trabajar en la nube." 
-
-
+  companies:
+    index:
+      title: "Compañias"
+    show:
+      title: "Información de la Compañia"
+    edit:
+      title: "Editar Información de la Compañia"
+    new:
+      title: "Nueva Compañia"       
+  users:
+    index:
+      title: "Usuarios"
+    show:
+      title: "Usuario"
+    edit:
+      title: "Editar Usuario"
+    new:
+      title: "Nuevo Usuario"

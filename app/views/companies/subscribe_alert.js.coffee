@@ -1,0 +1,1 @@
+$("#subscribe").html("<%= escape_javascript(render 'subscribe') %>")

@@ -78,10 +78,11 @@ class PaymentsController < ApplicationController
   # DELETE /payments/1.json
   def destroy
     @payment = Payment.find(params[:id])
+    @payments_document = PaymentsDocument.find(@payment.payments_document.id)
     @payment.destroy
 
     respond_to do |format|
-      format.html { redirect_to payments_url }
+      format.html { redirect_to @payments_document, notice: 'Payment was successfully deleted.'  }
       format.json { head :no_content }
     end
   end

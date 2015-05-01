@@ -10,6 +10,7 @@ class CreatePaymentsDocuments < ActiveRecord::Migration
       t.string :name
       t.string :status
       t.date :date
+      t.decimal :percentage
       t.decimal :total
       t.decimal :paid
       t.decimal :paid_left

@@ -1,6 +1,16 @@
 <%= simple_form_for @company, :html => { :multipart => true , :class => 'form-horizontal' } do |f| %>
   <%= f.input :name %>
-  <%= f.input :address %>
+  <%= f.input :id_number1 %>
+  <%= f.input :address , input_html: { style: "width:50%;" } %>
+  <%= f.input :city %>
+  <%= f.input :state %>
+  <%= f.input :country %>
+  <%= f.input :zip_code %>
+  <%= f.input :telephone %>
+  <%= f.input :fax %>
+  <%= f.input :email %>
+  <%= f.input :web %>
+  <%= f.input :contact %>
   <%= f.file_field :logo %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

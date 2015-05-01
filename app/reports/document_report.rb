@@ -26,10 +26,10 @@ class DocumentReport < PdfReport
     grid(1,2).bounding_box do
       text "CLIENTE", :style => :bold
       text document.account.name, :style => :bold
-      text document.id_number1, :size => 10
-      text document.address, :size => 10
-      text document.city, :size => 10
-      text document.telephone, :size => 10
+      text document.account.id_number1, :size => 10
+      text document.account.address, :size => 10
+      text document.account.city, :size => 10
+      text document.account.telephone, :size => 10
     end  
     display_header_table
     display_lines_table

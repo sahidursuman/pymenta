@@ -1,8 +1,8 @@
 class Document < ActiveRecord::Base
   set_primary_key "id"
   include UUIDHelper
-  attr_accessible :address, :city, :code, :country, :date, :discount_percentage, :discount_total, :document_number, :domain, :due, :email, :expire_date, :fax, :id, :id_number1, :id_number2, :month, :name,
-   :observations, :paid, :paid_left, :state, :status, :sub_total, :tax, :tax_total, :telephone, :total, :type, :username, :version, :web, :year, :zip_code, :account_id, :warehouse_id, :document_type_id
+  attr_accessible :code, :date, :discount_percentage, :discount_total, :document_number, :domain, :due, :expire_date, :id, :month, :paid, :paid_left,
+   :status, :sub_total, :tax, :tax_total, :total, :type, :username, :version, :year, :account_id, :warehouse_id, :document_type_id, :details, :control_number
   self.inheritance_column = nil
 
   belongs_to :company, :foreign_key => 'domain'
@@ -13,7 +13,13 @@ class Document < ActiveRecord::Base
 
   has_many :document_lines, :foreign_key => 'header_id'
 
+  before_save :default_values
+  
+  def default_values
+      self.status ||= 'NOT_PAID'
+  end
+
   def full_name
-     "#{type} -------- #{document_number} --------- #{name} ---------- #{date} ------------ #{total}"
+     "#{type} ------ #{document_number} ------- #{account.name} -------- #{date} ---------- #{sub_total}---------- #{tax_total}---------- #{total}"
    end
 end

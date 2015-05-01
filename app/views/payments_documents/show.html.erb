@@ -21,13 +21,7 @@
   <div class="span6">
     <dl class="dl-horizontal">
       <dt><strong><%=t '.status', :default =>  t("helpers.labels.status") %></strong></dt>
-      <% if @payments_document.status == "NOT_PAID" %>
-        <dd><td><span class="label label-important"><%= @payments_document.status %></span></td></dd>
-      <% elsif @payments_document.status == "PARTIAL_PAID" %>
-        <dd><td><span class="label label-warning"><%= @payments_document.status %></span></td></dd>
-      <% else %>
-        <dd><td><span class="label label-success"><%= @payments_document.status %></span></td></dd>
-      <% end %>
+      <dd><%= display_status @payments_document.status %></dd>
     </dl>
     <dl class="dl-horizontal">
       <dt><strong><%=t '.number', :default =>  t("helpers.labels.number") %></strong></dt>

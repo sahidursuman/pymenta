@@ -26,4 +26,15 @@ module ApplicationHelper
         links
       end 
 
+   def display_status status
+     if status == "NOT_PAID"
+          html = "<td><span class='label label-important'>" + t('helpers.labels.NOT_PAID') + "</span></td>"
+      elsif status == "PARTIAL_PAID"
+          html = "<td><span class='label label-warning'>" + t('helpers.labels.PARTIAL_PAID') + "</span></td>"
+      elsif status == "PAID"
+          html = "<td><span class='label label-success'>" + t('helpers.labels.PAID') + "</span></td>"
+      end
+      html.html_safe
+    end  
+
 end

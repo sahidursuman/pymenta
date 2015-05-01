@@ -2,6 +2,19 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   before_filter :authenticate_user!
+  def search
+   @start_at = params[:start_at].blank? ? DateTime.parse("01/01/1901") : DateTime.parse(params[:start_at])
+   @end_at = params[:end_at].blank? ? DateTime.parse("01/01/2901") : DateTime.parse(params[:end_at])
+   @name = params[:name]
+   @status = params[:status]
+   if @status.blank?
+     @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+   else
+     @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}","#{@status}").paginate(:page => params[:page], :per_page => 10, :order => 'accounts.name ASC')
+   end      
+    render :index
+  end
+  
   def index
     @documents = current_user.company.documents.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
 
@@ -104,48 +117,52 @@ class DocumentsController < ApplicationController
       format.html{ redirect_to document }
     end
   end  
-
-
+  
   def create_document_account
-
-    params[:document][:version] = ENV["VERSION"]
-    params[:document][:domain] = current_user.domain
-    params[:document][:username] = current_user.username
-
-    account_type = DocumentType.find(params[:document][:document_type_id]).account_type
-    puts "esta es " + account_type
-    if(account_type=='Client')
-        account = Client.find(params[:autocomplete_client])
-    elsif(account_type=='Provider')
-         account = Provider.find(params[:autocomplete_provider])     
-    elsif(account_type=='Warehouse')
-         account = Warehouse.find(params[:autocomplete_warehouse])           
+    begin
+      account_type = DocumentType.find(params[:document][:document_type_id]).account_type
+      puts "esta es " + account_type
+      if(account_type=='Client')
+          account = Client.find(params[:autocomplete_client])
+      elsif(account_type=='Provider')
+           account = Provider.find(params[:autocomplete_provider])     
+      elsif(account_type=='Warehouse')
+           account = Warehouse.find(params[:autocomplete_warehouse])           
+      end
+    rescue ActiveRecord::RecordNotFound => e
+      account = nil
     end
 
-    params[:document][:account_id] = account.id
-    params[:document][:name] = account.name
-    params[:document][:expire_date] = Time.new
-    params[:document][:id_number1] = account.id_number1
-    params[:document][:id_number2] = account.id_number2
-    params[:document][:address] = account.address
-    params[:document][:city] = account.city
-    params[:document][:state] = account.state
-    params[:document][:country] = account.country
-    params[:document][:zip_code] = account.zip_code
-    params[:document][:telephone] = account.telephone
-    params[:document][:email] = account.email         
-    params[:document][:web] = account.web 
-    params[:document][:code] = account.code
-    params[:document][:discount_percentage] = 0
-    params[:document][:discount_total] = 0
-    params[:document][:sub_total] = 0
-    params[:document][:total] = 0
-    params[:document][:tax_total] = 0
-    params[:document][:paid] = 0
-    params[:document][:paid_left] = 0    
-    params[:document][:month] = Time.new.month+1
-    params[:document][:year] = Time.new.year+1900
-    params[:document][:status] = "NOT_PAID"
+    if account
+      create_document(account) 
+    else
+      @document = Document.new(params[:document]) 
+      @document.errors[:base] << t("helpers.labels.not_provider_present") # Not provider
+      render :action => :new # Not provider
+    end    
+  end
+
+
+
+
+    def create_document(account) 
+
+
+      params[:document][:version] = ENV["VERSION"]
+      params[:document][:domain] = current_user.domain
+      params[:document][:username] = current_user.username
+      params[:document][:account_id] = account.id
+      params[:document][:code] = account.code
+      params[:document][:discount_percentage] = 0
+      params[:document][:discount_total] = 0
+      params[:document][:sub_total] = (params[:document][:sub_total].blank? ? 0 : params[:document][:sub_total])
+      params[:document][:tax_total] = ((params[:document][:tax].to_f)*(params[:document][:sub_total].to_f)/100).round(2)
+      params[:document][:total] = (params[:document][:sub_total].to_f + params[:document][:tax_total].to_f).round(2)
+      params[:document][:paid] = 0
+      params[:document][:paid_left] = 0    
+      params[:document][:month] = Time.new.month+1
+      params[:document][:year] = Time.new.year+1900
+      params[:document][:status] = "NOT_PAID"
       
     @document = Document.new(params[:document])
 
@@ -161,11 +178,27 @@ class DocumentsController < ApplicationController
   end
 
  
-  def document_report
+  def documents_report
     #raise params.inspect
-    user = current_user
-    @document = Document.find(params[:format])
-    pdf = DocumentReport.new(@document, user)
-    send_data pdf.render, filename:'document_report.pdf',type: 'application/pdf', disposition: 'inline'
+    @user = current_user
+    @start_at = params[:start_at].blank? ? DateTime.parse("01/01/1901") : DateTime.parse(params[:start_at])
+    @end_at = params[:end_at].blank? ? DateTime.parse("01/01/2901") : DateTime.parse(params[:end_at])
+    @name = params[:name]
+    @status = params[:status]
+     if @status.blank?
+       @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}")
+     else
+       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}","#{@status}")
+     end
+    pdf = DocumentsReport.new(@documents, @user, @start_at, @end_at)
+    send_data pdf.render, filename:'documents_report.pdf',type: 'application/pdf', disposition: 'inline'
   end
+  
+  def document_report
+      #raise params.inspect
+      user = current_user
+      @document = Document.find(params[:format])
+      pdf = DocumentReport.new(@document, user)
+      send_data pdf.render, filename:'document_report.pdf',type: 'application/pdf', disposition: 'inline'
+    end
 end

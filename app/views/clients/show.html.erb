@@ -1,58 +1,105 @@
 <%- model_class = Client -%>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
-
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:version) %>:</strong></dt>
-  <dd><%= @client.version %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:domain) %>:</strong></dt>
-  <dd><%= @client.domain %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:username) %>:</strong></dt>
-  <dd><%= @client.username %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:code) %>:</strong></dt>
-  <dd><%= @client.code %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @client.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:type) %>:</strong></dt>
-  <dd><%= @client.type %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:debit_credit) %>:</strong></dt>
-  <dd><%= @client.debit_credit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:balance) %>:</strong></dt>
-  <dd><%= @client.balance %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:balance_b) %>:</strong></dt>
-  <dd><%= @client.balance_b %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:id_number1) %>:</strong></dt>
-  <dd><%= @client.id_number1 %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:id_number2) %>:</strong></dt>
-  <dd><%= @client.id_number2 %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
-  <dd><%= @client.address %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
-  <dd><%= @client.city %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
-  <dd><%= @client.state %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:country) %>:</strong></dt>
-  <dd><%= @client.country %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:zip_code) %>:</strong></dt>
-  <dd><%= @client.zip_code %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:telephone) %>:</strong></dt>
-  <dd><%= @client.telephone %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:fax) %>:</strong></dt>
-  <dd><%= @client.fax %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
-  <dd><%= @client.email %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:web) %>:</strong></dt>
-  <dd><%= @client.web %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:contact) %>:</strong></dt>
-  <dd><%= @client.contact %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:observations) %>:</strong></dt>
-  <dd><%= @client.observations %></dd>
-</dl>
-
+<div class="row-fluid">
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.code', :default =>  t("helpers.labels.code") %></strong></dt>
+      <dd><%=  @client.code %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.name', :default =>  t("helpers.labels.name") %></strong></dt>
+      <dd><%= @client.name %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.id_number1', :default =>  t("helpers.labels.id_number1") %></strong></dt>
+      <dd><%= @client.id_number1 %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.address', :default =>  t("helpers.labels.address") %></strong></dt>
+      <dd><%= @client.address %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.city', :default =>  t("helpers.labels.city") %></strong></dt>
+      <dd><%= @client.city %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.state', :default =>  t("helpers.labels.state") %></strong></dt>
+      <dd><%=  @client.state %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.country', :default =>  t("helpers.labels.country") %></strong></dt>
+      <dd><%= @client.country %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.zip_code', :default =>  t("helpers.labels.zip_code") %></strong></dt>
+      <dd><%= @client.zip_code %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.telephone', :default =>  t("helpers.labels.telephone") %></strong></dt>
+      <dd><%= @client.telephone %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.fax', :default =>  t("helpers.labels.fax") %></strong></dt>
+      <dd><%= @client.fax %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.email', :default =>  t("helpers.labels.email") %></strong></dt>
+      <dd><%= @client.email %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.web', :default =>  t("helpers.labels.web") %></strong></dt>
+      <dd><%= @client.web %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.contact', :default =>  t("helpers.labels.contact") %></strong></dt>
+      <dd><%= @client.contact %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.observations', :default =>  t("helpers.labels.observations") %></strong></dt>
+      <dd><%= @client.observations %></dd>  
+    </dl>
+</div>
+<div id="accordion">
+  <h3><%=t '.documents', :default =>  t("helpers.labels.documents") %></h3>
+					<table class="table table-striped">
+					  <thead>
+					    <tr>
+					      <th><%=t '.document_number', :default =>  t("helpers.labels.document_number") %></th>
+					      <th><%=t '.name', :default =>  t("helpers.labels.name") %></th>
+					      <th><%=t '.date', :default =>  t("helpers.labels.date") %></th>
+					      <th><%=t '.total', :default =>  t("helpers.labels.total") %></th>
+					      <th><%=t '.status', :default =>  t("helpers.labels.status") %></th>
+					      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <% @client.documents.each do |document| %>
+					      <tr>
+					        <td><%= document.document_number %></td>
+					        <td><%= document.account.nil? ? '' : document.account.name %></td>
+					        <td><%= document.date.strftime(current_user.company.date_format) %></td>
+					        <td><%= number_to_currency(document.total, unit: "", separator: current_user.company.separator , delimiter: current_user.company.delimiter, format: "%u %n") %></td>
+					        <% if document.payments_document == nil || document.payments_document.status == "NOT_PAID" %>
+					          <td><span class="label label-important">NOT_PAID</span></td>
+					        <% elsif document.payments_document != nil && document.payments_document.status == "PARTIAL_PAID" %>
+					          <td><span class="label label-warning"><%= document.payments_document.status %></span></td>
+					        <% elsif document.payments_document != nil %>
+					          <td><span class="label label-success"><%= document.payments_document.status %></span></td>
+					        <% end %>
+					        <td>
+					          <%= link_to t('.show', :default => t("helpers.links.show")),
+					                      document_path(document), :class => 'btn btn-mini btn-warning' %>
+					        </td>
+					      </tr>
+					    <% end %>
+					  </tbody>
+					</table>
+</div>
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              clients_path, :class => 'btn'  %>
+  <%= link_to t('.print', :default => t("helpers.links.print")),
+	            account_report_clients_path(:id => @client.id), :class => 'btn' %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_client_path(@client), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
