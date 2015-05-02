@@ -1,7 +1,14 @@
 class Company < ActiveRecord::Base
   set_primary_key "id"
   include UUIDHelper
-  attr_accessible :address, :city, :code, :contact, :country, :domain, :email, :fax, :id, :id_number1, :id_number2, :name, :observations, :state, :telephone,  :username, :version, :web, :zip_code, :logo
+  attr_accessible :address, :name, :id_number1, :city, :state, :country, :telephone, :fax, :zip_code, 
+    :email, :web, :contact, :plan, :date_format, :decimal_format, :unit, :separator, :delimiter, :logo
+ 
+  validates :name, presence: true
+
+  PLANS = ["GRATIS","PAGO"]
+  validates :plan, inclusion: PLANS
+  
   has_many :users, :foreign_key => 'domain'
   has_many :products, :foreign_key => 'domain'
   has_many :brands, :foreign_key => 'domain'
