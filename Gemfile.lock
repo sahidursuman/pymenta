@@ -147,6 +147,7 @@ GEM
     prawn (1.0.0)
       pdf-core (~> 0.2.2)
       ttfunk (~> 1.1.1)
+    prawn-table (0.2.1)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
@@ -259,6 +260,7 @@ DEPENDENCIES
   paperclip (~> 3.5.3)
   pg
   prawn
+  prawn-table
   quiet_assets
   rails (= 3.2.14)
   rails_12factor
