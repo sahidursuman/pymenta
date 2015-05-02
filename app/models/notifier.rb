@@ -3,7 +3,7 @@ class Notifier < ActionMailer::Base
 
   def guest_list(recipient)
     mail(to: 'papayalabs@gmail.com',
-         subject: "Cliente Especial - Lista de invitados",
+         subject: "[Pymenta] - Lista de invitados",
          body: "#{recipient} quiere estar en la lista de invitados" )
   end
   

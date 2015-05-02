@@ -70,6 +70,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
+	                    <% if flash[:notice] %>
+                          <h1><%= flash[:notice] %></h1>
+                        <% end %>
                         <h1><%=t '.title' %></h1>
                         <p class="intro-text"><%=t '.title2' %></p>
                         <div class="page-scroll">
@@ -88,7 +91,11 @@
             <div class="col-lg-8 col-lg-offset-2">
 				  <h2><%=t '.ourproduct' %></h2>      
                   <p class="lead"><%=t '.description', :default => 'Pymenta is a very simple Cloud ERP System created for small companies to create, manage and print documents. You can manage warehouses, providers, clients, products and stock. Designed to work in the Cloud.' %></p>
-				  <%= link_to t("helpers.links.sign_up"), new_user_registration_path , :class=>"btn btn-danger btn-large" %>	
+				  <%= form_tag({:controller => "guest", :action => "guest_list"}, :method => "post") do %>
+                     <%= text_field_tag(:email, nil, :class => "form-control", :placeholder => t("helpers.labels.email")) %>
+                     </br>
+                     <%= submit_tag((t '.request_guest_list', :default =>  t("helpers.labels.request_guest_list")), :class=>"btn btn-danger" ) %>
+                  <% end %>
             </div>
         </div>
     </section>
@@ -97,9 +104,9 @@
         <div class="download-section">
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
-	                <h2>Contactanos</h2>
-	                <p>Cualquier duda, comentario o sugerencia siéntase libre de escribirnos a la siguiente direccion:</p>
-	                <p>papayalabs@gmail.com</p>
+	                <h2><%=t '.contact' %></h2>
+	                <p><%=t '.contact_description' %></p>
+	                <p><%=t '.email' %></p>
 	                <ul class="list-inline banner-social-buttons">
 	                    <li><a href="https://twitter.com/papayalabs" class="btn btn-danger"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
 	                    </li>
