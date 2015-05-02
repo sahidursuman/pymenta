@@ -14,6 +14,7 @@ gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'bootstrap-select-rails'
 gem 'cancan'
 gem 'prawn'
+gem 'prawn-table'
 group :development, :test do
   gem 'sqlite3'
   gem 'mysql2', '~> 0.3.11'
