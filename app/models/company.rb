@@ -1,7 +1,7 @@
 class Company < ActiveRecord::Base
   set_primary_key "id"
   include UUIDHelper
-  attr_accessible :address, :name, :logo
+  attr_accessible :address, :city, :code, :contact, :country, :domain, :email, :fax, :id, :id_number1, :id_number2, :name, :observations, :state, :telephone,  :username, :version, :web, :zip_code, :logo
   has_many :users, :foreign_key => 'domain'
   has_many :products, :foreign_key => 'domain'
   has_many :brands, :foreign_key => 'domain'

@@ -44,15 +44,24 @@ es:
   translation:
     en: "Ingles"
     es: "Espanol"
+  products:
+    index:
+      title: "Productos"
+    show:
+      title: "Producto"
+    edit:
+      title: "Editar Producto"
+    new:
+      title: "Nuevo Producto"    
   documents:
     index:
-      title: "Facturas"
+      title: "Documentos"
     show:
-      title: "Factura"
+      title: "Documento"
     edit:
-      title: "Editar Factura"
+      title: "Editar Documento"
     new:
-      title: "Nueva Factura"      
+      title: "Nuevo Documento"      
   providers:
     index:
       title: "Proveedores"
@@ -62,6 +71,15 @@ es:
       title: "Editar Proveedor"
     new:
       title: "Nuevo Proveedor"
+  clients:
+    index:
+      title: "Clientes"
+    show:
+      title: "Cliente"
+    edit:
+      title: "Editar Cliente"
+    new:
+      title: "Nuevo Cliente"      
   warehouses:
     index:
       title: "Almacenes"

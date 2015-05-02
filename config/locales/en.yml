@@ -43,15 +43,24 @@ en:
   translation:
     en: "English"
     es: "Spanish"
+  products:
+    index:
+      title: "Products"
+    show:
+      title: "Product"
+    edit:
+      title: "Edit Product"
+    new:
+      title: "New Product"    
   documents:
     index:
-      title: "Invoices"
+      title: "Documents"
     show:
-      title: "Invoice"
+      title: "Document"
     edit:
-      title: "Edit Invoice"
+      title: "Edit Document"
     new:
-      title: "New Invoice"
+      title: "New Document"
   providers:
     index:
       title: "Providers"
@@ -61,6 +70,24 @@ en:
       title: "Edit Provider"
     new:
       title: "New Provider"
+  clients:
+    index:
+      title: "Clients"
+    show:
+      title: "Client"
+    edit:
+      title: "Edit Client"
+    new:
+      title: "New Client"
+  warehouses:
+    index:
+      title: "Warehouses"
+    show:
+      title: "Warehouse"
+    edit:
+      title: "Edit Warehouse"
+    new:
+      title: "New Warehouse"                    
   payments_documents:
     index:
       title: "Payments"

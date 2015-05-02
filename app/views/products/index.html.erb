@@ -42,9 +42,9 @@
 
         <td>
 	      <%= link_to t('.show', :default => t("helpers.links.show")),
-                      product_path(product), :class => 'btn btn-mini' %>
+                      product_path(product), :class => 'btn btn-mini btn-warning' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_product_path(product), :class => 'btn btn-mini' %>
+                      edit_product_path(product), :class => 'btn btn-mini btn-primary' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       product_path(product),
                       :method => :delete,

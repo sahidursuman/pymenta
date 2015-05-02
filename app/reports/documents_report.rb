@@ -39,7 +39,7 @@ class DocumentsReport < PdfReport
   end
 
   def display_header_table
-      data = [['Fecha de la Factura', 'Nro. de Factura', 'Nro. de Control','Nombre','Total con IVA', 'Base Imponible', '% Alicuota', 'Impuesto IVA', 'Estado']]
+      data = [['Fecha de la Factura', 'Nro. de Factura', 'Nro. de RIF','Nombre','Total con IVA', 'Base Imponible', '% Alicuota', 'Impuesto IVA', 'Estado']]
       table(data, :row_colors => ["F0F0F0"],column_widths: TABLE_WIDTHS, :cell_style => { size: 10 } )
   end
 
@@ -62,7 +62,7 @@ class DocumentsReport < PdfReport
   end
 
   def table_data
-    @table_data ||= @invoices.map { |e| [e.date.strftime('%d/%m/%Y'), e.document_number, e.control_number, e.account.name, format_currency(e.total), format_currency(e.sub_total), e.tax, format_currency(e.tax_total), status_name(e.payments_document.status)] }
+    @table_data ||= @invoices.map { |e| [e.date.strftime('%d/%m/%Y'), e.document_number, e.account.id_number1, e.account.name, format_currency(e.total), format_currency(e.sub_total), e.tax, format_currency(e.tax_total), status_name(e)] }
   end
 
   def display_total_table
@@ -74,7 +74,12 @@ class DocumentsReport < PdfReport
     number_to_currency(value, unit: '', separator: ',' , delimiter: '.', format: "%u %n")  
   end
   
-  def status_name(value) 
+  def status_name(e)
+    if e.payments_document != nil
+      value = e.payments_document.status
+    else
+      value = "NOT_PAID"
+    end     
     if value == nil || value == "NOT_PAID"
       "NO PAGADO"
     elsif value == "PARTIAL_PAID"

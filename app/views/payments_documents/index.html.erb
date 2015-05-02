@@ -54,9 +54,9 @@
         <%= display_status payments_document.status %>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      payments_document_path(payments_document), :class => 'btn btn-mini' %>
+                      payments_document_path(payments_document), :class => 'btn btn-mini btn-warning' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_payments_document_path(payments_document), :class => 'btn btn-mini btn-warning' %>
+                      edit_payments_document_path(payments_document), :class => 'btn btn-mini btn-primary' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       payments_document_path(payments_document),
                       :method => :delete,

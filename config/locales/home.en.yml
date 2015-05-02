@@ -1,11 +1,11 @@
 en:
   layouts:
     home:
-      brand: "Cliente Especial"    
-      title: "Now your retentions"
-      title2: "in the cloud!"
+      brand: "Pymenta"    
+      title: "Now your company in the cloud!"
+      title2: "Relax, now we handle the complicated."
       ourproduct: "Our Product"
-      description: "Cliente Especial is a very simple service created to work in the cloud for small companies to create, manage and print tax retentions documents."
+      description: "Pymenta is a very simple Cloud ERP System designed to work in the cloud and allow small companies to create, manage and print documents ( invoices, notes, quotations, credits, etc). You can manage warehouses, providers, clients, products and stock."
       subtitle1: "Recived Invoices"
       subdescription1: "Allow to create and save the invoices recived from the providers."
       subtitle2: "Providers"
@@ -14,7 +14,7 @@ en:
       subdescription3: "You can select the invoices that want to pay in just one document with the options of many payments."
       paymentmethod: "Payment Method"
       contact: "Contact Information"	 
-      copyright: "(c)2015 "
+      copyright: "©2015 "
       companyname: "Papaya Labs"
       allrightreserved: "All Right Reserved"
       madewith: "Made with"

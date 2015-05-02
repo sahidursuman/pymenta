@@ -22,35 +22,33 @@
     </div>
   </div>
 	<div id="wrap">
-      <div id="main" role="main">
+    <div id="main" role="main">
+      <div class="jumbotron vertical-center"> 
         <div class="container">
-		  </br>	
-		  </br>	
-		  </br>	
-		  </br>	
-		  </br>				
           <div class="row">
 	        <div class="span4"></div>	
 	        <div class="span4 pull-center">
 	          <div class="content">
-    		    <%= render 'layouts/messages' %>
-    			<%= yield %>
+  		    <%= render 'layouts/messages' %>
+  			<%= yield %>
 			  </div>
 		    </div>	
-			<div class="span4"></div>
+		  <div class="span4"></div>
           </div>
 	    </div>
       </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+    </div> <!--! end of .jumbotron -->
+  </div> <!--! end of #main -->
 	</div> <!--! end of #wrap -->
-    <footer class="footer">
-        <div class="container" style="margin:0 auto;">
-            <div class="row">
-                <div class="col-sm-6">
-                    &copy; 2015 <a target="_blank" href="http://www.papayalabs.net/" title="PapayaLabs">PapayaLabs, c.a.</a>. Todos los derechos reservados.
-                </div>
-            </div>
-        </div>
-    </footer><!--/#footer-->
+	    <footer class="footer">
+	        <div class="container" style="margin:0 auto;">
+	            <div class="row">
+	                <div class="col-sm-6">
+	                    <%=  t('.copyright', :default => t("layouts.home.copyright")) %><a target="_blank" href="http://www.twitter.com/papayalabs" title="Lapapaya"><%= t('.companyname', :default => t("layouts.home.companyname")) %>
+	</a>. <%= t('.allrightreserved', :default => t("layouts.home.allrightreserved")) %>
+	                </div>
+	            </div>
+	        </div>
+	    </footer><!--/#footer-->
   </body>
 </html>

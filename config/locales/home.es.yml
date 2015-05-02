@@ -1,11 +1,12 @@
 es:
   layouts:
     home:
-      brand: "Cliente Especial"    
-      title: "Ahora tus retenciones"
-      title2: "en la nube!"
+      brand: "Pymenta"    
+      title: "Ahora tu compañia en la nube!"
+      title2: "Relajate, ahora nosotros nos encargamos de lo complicado."
       ourproduct: "Nuestro Producto"
-      description: "Cliente Especial es un sistema muy simple diseñado para trabajar en la nube y creado para que pequeñas empresas bajo el régimen de contribuyentes especiales puedan crear, administrar e imprimir sus retenciones de IVA."
+      description: "Pymenta es un Sistema ERP muy simple diseñado para trabajar en la nube que permite a las pequeñas compañias crear, administrar e imprimir documentos ( facturas, notas, presupuestos, notas de creditos, etc). Tambien puede administrar almacenes, proveedores, clientes, productos e inventario."
+      subtitle1: "Recived Invoices"
       subtitle1: "Facturas Recibidas"
       subdescription1: "Permite archivar las facturas recibidas de los proveedores."
       subtitle2: "Proveedores"
@@ -16,7 +17,7 @@ es:
       contact: "Datos de Contacto"	
       madewith: "Hecho con"
       invenezuela: "en Venezuela"
-      copyright: "(c)2015 "
+      copyright: "©2015 "
       companyname: "Papaya Labs"
       allrightreserved: "Todos los derechos reservados"
       contactus: "Contactanos"

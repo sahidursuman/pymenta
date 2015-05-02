@@ -47,16 +47,16 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">          
-                        <a href="#about">Nuestro Producto</a>
+                        <a href="#about"><%=t '.ourproduct' %></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">Contactanos</a>
+                        <a href="#contact"><%=t '.contact' %></a>
                     </li>
                     <li class="page-scroll">
-                        <li><%= link_to "Entrar", new_user_session_path %></li>
+                        <li><%= link_to t("helpers.links.sign_in"), new_user_session_path %></li>
                     </li>
                     <li class="page-scroll">
-	                   <%= link_to "Sign up today", new_user_registration_path , :class=>"btn btn-default" %>
+	                   <%= link_to t("helpers.links.sign_up"), new_user_registration_path , :class=>"btn btn-default" %>
                     </li>
                 </ul>
             </div>
@@ -70,8 +70,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1><%=t '.title', :default => 'Now your company in the cloud!' %></h1>
-                        <p class="intro-text">Relax, ahora nosotros nos encargamos de lo complicado.</p>
+                        <h1><%=t '.title' %></h1>
+                        <p class="intro-text"><%=t '.title2' %></p>
                         <div class="page-scroll">
                             <a href="#about" class="btn btn-circle">
                                 <%= image_tag("arrow.png", class: "img-responsive") %>
@@ -86,9 +86,9 @@
     <section id="about" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-				  <h2>Nuestro Producto</h2>      
+				  <h2><%=t '.ourproduct' %></h2>      
                   <p class="lead"><%=t '.description', :default => 'Pymenta is a very simple Cloud ERP System created for small companies to create, manage and print documents. You can manage warehouses, providers, clients, products and stock. Designed to work in the Cloud.' %></p>
-				  <%= link_to "Sign up today", new_user_registration_path , :class=>"btn btn-danger btn-large" %>	
+				  <%= link_to t("helpers.links.sign_up"), new_user_registration_path , :class=>"btn btn-danger btn-large" %>	
             </div>
         </div>
     </section>
@@ -113,27 +113,7 @@
     </section>
 
     <div id="map"></div>
-	<div class="wet-asphalt">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h4><%= t('.paymentmethod', :default => t("layouts.home.paymentmethod")) %></h4>
-                    <%= image_tag("tarjeta.png",  width: "140", alt: "") %>
-                    <%= image_tag("mercadopago.png", width: "140", alt: "") %>
-                </div><!--/.col-md-3-->
-
-                <div class="col-lg-6">
-                    <h4><%= t('.contact', :default => t("layouts.home.contact")) %></h4>
-                    <address>
-                        <strong><%= t('.companyname', :default => t("layouts.home.companyname")) %></strong><br>
-                        papayalabs@gmail.com<br>
-                    </address>
-                    
-                </div> <!--/.col-md-3-->
-            </div>
-        </div>
-    </div><!--/#bottom-->
-	    <div class="midnight-blue">
+	    <div class="wet-asphalt">
 	        <div class="container">
 	            <div class="row">
 	                <div class="col-sm-12">

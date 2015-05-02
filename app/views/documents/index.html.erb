@@ -59,9 +59,9 @@
         <% end %>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      document_path(document), :class => 'btn btn-mini' %>
+                      document_path(document), :class => 'btn btn-mini btn-warning' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_document_path(document), :class => 'btn btn-mini btn-warning' %>
+                      edit_document_path(document), :class => 'btn btn-mini btn-primary' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       document_path(document),
                       :method => :delete,
