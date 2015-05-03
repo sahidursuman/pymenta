@@ -200,14 +200,14 @@ ActiveRecord::Schema.define(:version => 20150323145447) do
     t.string   "name"
     t.string   "status"
     t.date     "date"
-    t.decimal  "percentage"
-    t.decimal  "total"
-    t.decimal  "paid"
-    t.decimal  "paid_left"
+    t.decimal  "percentage",                     :precision => 10, :scale => 0
+    t.decimal  "total",                          :precision => 10, :scale => 0
+    t.decimal  "paid",                           :precision => 10, :scale => 0
+    t.decimal  "paid_left",                      :precision => 10, :scale => 0
     t.integer  "year"
     t.integer  "month"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
     t.string   "document_type_id"
     t.string   "account_id"
   end
@@ -249,11 +249,11 @@ ActiveRecord::Schema.define(:version => 20150323145447) do
     t.string   "version"
     t.string   "domain"
     t.string   "username"
-    t.decimal  "in_quantity"
-    t.decimal  "out_quantity"
-    t.decimal  "stock"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.decimal  "in_quantity",                :precision => 10, :scale => 0
+    t.decimal  "out_quantity",               :precision => 10, :scale => 0
+    t.decimal  "stock",                      :precision => 10, :scale => 0
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
     t.string   "product_id"
     t.string   "warehouse_id"
   end

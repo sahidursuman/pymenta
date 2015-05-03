@@ -18,31 +18,29 @@ class RegistrationsController < Devise::RegistrationsController
     @company.date_format = "%d/%m/%Y"
     @user = User.new(params[:user])
     User.transaction do
+     if Guest.exists?(:email => params[:user][:email]) # Guest list stage
        if @company.save
          @user.domain = @company.id
-
-         if Guest.exists?(:email => params[:user][:email]) # Guest list stage
-           if @user.save
-             Notifier.welcome_email(@user).deliver
-             @user.add_role :admin
-             sign_in(resource_name, resource)
-             defaults @company,@user   
-             flash[:notice] = t("devise.sessions.signed_in")
-             redirect_to documents_url
-           else
-             render :action => :new
-           end
-         else # Guest list stage
-           @user.errors[:base] << t("devise.registrations.not_in_guest_list") # Guest list stage
-           render :action => :new # Guest list stage
-         end # Guest list stage
- 
+         if @user.save
+           Notifier.welcome_email(@user).deliver
+           @user.add_role :admin
+           sign_in(resource_name, resource)
+           defaults @company,@user   
+           flash[:notice] = t("devise.sessions.signed_in")
+           redirect_to documents_url
+         else
+           render :action => :new
+         end
        else
-        @user.errors[:base] << @company.errors.full_messages
-        render :action => :new
+         @user.errors[:base] << @company.errors.full_messages
+          render :action => :new
        end
-    end
-  end
+     else # Guest list stage
+       @user.errors[:base] << t("devise.registrations.not_in_guest_list") # Guest list stage
+       render :action => :new # Guest list stage
+     end # Guest list stage
+    end #End of User.transaction
+  end #End of create
   
   def update
     super
