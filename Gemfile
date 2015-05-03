@@ -24,7 +24,7 @@ group :production do
   gem 'rails_12factor'
 end
 gem 'paperclip', "~> 3.5.3"
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 gem 'devise'
 gem 'figaro'
 gem 'rolify'
