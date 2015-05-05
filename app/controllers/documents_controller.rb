@@ -201,4 +201,20 @@ class DocumentsController < ApplicationController
       pdf = DocumentReport.new(@document, user)
       send_data pdf.render, filename:'document_report.pdf',type: 'application/pdf', disposition: 'inline'
     end
+
+  def document_report2
+      #raise params.inspect
+      user = current_user
+      @document = Document.find(params[:format])
+      pdf = DocumentReport2.new(@document, user)
+      send_data pdf.render, filename:'document_report2.pdf',type: 'application/pdf', disposition: 'inline'
+    end
+
+  def document_report3
+      #raise params.inspect
+      user = current_user
+      @document = Document.find(params[:format])
+      pdf = DocumentReport3.new(@document, user)
+      send_data pdf.render, filename:'document_report3.pdf',type: 'application/pdf', disposition: 'inline'
+    end
 end

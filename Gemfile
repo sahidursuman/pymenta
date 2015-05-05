@@ -17,7 +17,6 @@ gem 'prawn'
 gem 'prawn-table'
 group :development, :test do
   gem 'sqlite3'
-  gem 'mysql2', '~> 0.3.11'
 end
 group :production do
   gem 'pg'
