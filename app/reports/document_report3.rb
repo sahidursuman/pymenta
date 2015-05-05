@@ -14,7 +14,7 @@ class DocumentReport3 < PdfReport
     @document = document
     @user = user
  
-    draw_text user.company.city + "            " + document.date.day.to_s + "        " + document.date.month.to_s  + "       " + document.date.year.to_s, :size => FONT_SIZE, :at => [LEFT_MARGIN+300, TOP_MARGIN]   
+    draw_text (user.company.city.nil? ? '' : user.company.city.upcase.to_s) + "            " + document.date.day.to_s + "        " + document.date.month.to_s  + "       " + document.date.year.to_s, :size => FONT_SIZE, :at => [LEFT_MARGIN+300, TOP_MARGIN]   
     draw_text document.account.name.to_s, :size => FONT_SIZE, :at => [LEFT_MARGIN+80, TOP_MARGIN-40]  
     draw_text document.account.id_number1.to_s, :size => FONT_SIZE, :at => [LEFT_MARGIN+400, TOP_MARGIN-40]  
     draw_text document.account.address.to_s, :size => FONT_SIZE, :at => [LEFT_MARGIN, TOP_MARGIN-60]  

@@ -22,7 +22,7 @@ class DocumentReport2 < PdfReport
     draw_text document.account.address.to_s, :size => FONT_SIZE, :style => :bold, :at => [120, 540]  
     draw_text document.account.city.to_s, :size => FONT_SIZE, :style => :bold, :at => [120, 520]  
     draw_text document.account.state.to_s, :size => FONT_SIZE, :style => :bold, :at => [120+100, 520]  
-    draw_text document.account.country.upcase.to_s, :size => FONT_SIZE, :style => :bold, :at => [120+320, 520]  
+    draw_text (document.account.country.nil? ? '' : document.account.country.upcase.to_s), :size => FONT_SIZE, :style => :bold, :at => [120+320, 520]  
     draw_text document.account.telephone.to_s, :size => FONT_SIZE, :style => :bold, :at => [120, 500] 
     draw_text document.due.to_s, :size => FONT_SIZE, :style => :bold, :at => [120+320, 500]   
     move_down 260
