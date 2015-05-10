@@ -2,7 +2,7 @@ es:
   layouts:
     home:
       brand: "Pymenta"    
-      title: "Ahora tu compañia en la nube!"
+      title: "Ahora tu pyme en la nube!"
       title2: "Relajate, ahora nosotros nos encargamos de lo complicado."
       ourproduct: "Nuestro Producto"
       description: "Pymenta es un Sistema ERP muy simple diseñado para trabajar en la nube que permite a las pequeñas compañias crear, administrar e imprimir documentos ( facturas, notas, presupuestos, notas de creditos, etc). Tambien puede administrar almacenes, proveedores, clientes, productos e inventario."
