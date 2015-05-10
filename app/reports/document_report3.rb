@@ -19,7 +19,7 @@ class DocumentReport3 < PdfReport
     draw_text document.account.id_number1.to_s, :size => FONT_SIZE, :at => [LEFT_MARGIN+400, TOP_MARGIN-40]  
     draw_text document.account.address.to_s, :size => FONT_SIZE, :at => [LEFT_MARGIN, TOP_MARGIN-60]  
     draw_text document.account.city.to_s, :size => FONT_SIZE, :at => [LEFT_MARGIN, TOP_MARGIN-80]  
-    draw_text document.account.state.to_s, :size => FONT_SIZE, :at => [LEFT_MARGIN+100, TOP_MARGIN-80]  
+    draw_text document.account.state.to_s, :size => FONT_SIZE, :at => [LEFT_MARGIN+200, TOP_MARGIN-80]  
     draw_text document.account.telephone.to_s, :size => FONT_SIZE,  :at => [LEFT_MARGIN+320, TOP_MARGIN-80] 
  
     move_down 180
