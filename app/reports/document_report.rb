@@ -1,36 +1,39 @@
 class DocumentReport < PdfReport
-  TABLE_WIDTHS = [60, 210, 60, 70, 70, 70]
+  include ActionView::Helpers::NumberHelper
+  TABLE_WIDTHS = [100, 200, 60, 60, 60, 60]
   RAILS_ROOT = Rails.root
+  PAGE_MARGIN = [30, 30, 30, 30]
 
   def initialize(document,user)
-    super()
+    super(:page_size => "LETTER",  margin: PAGE_MARGIN, :page_layout => :portrait)
     @document = document
     @user = user
-    define_grid(:columns => 3, :rows => 8, :gutter => 10)
+    define_grid(:columns => 2, :rows => 8, :gutter => 25)
     #grid.show_all
     logo
-    grid(0,2).bounding_box do
+    grid(0,1).bounding_box do
       text document.type + " N# " + document.document_number, :size => 14, :style => :bold
-      text "FECHA " + document.date.to_s, :size => 10
+      text "FECHA " + document.date.strftime('%d/%m/%Y'), :size => 10
       text "COND DE PAGO " + document.due, :size => 10
     end 
     company = @user.company
     grid(1,0).bounding_box do
       text ""
       text company.name, :style => :bold
-      #text document.id_number1
-      text company.address, :size => 10
-      #text document.city + " " + document.state
-      #text document.telephone
+      text company.id_number1, :size => 9
+      text company.address, :size => 9
+      text company.city, :size => 9
+      text company.telephone, :size => 9
     end
-    grid(1,2).bounding_box do
+    grid(1,1).bounding_box do
       text "CLIENTE", :style => :bold
       text document.account.name, :style => :bold
-      text document.account.id_number1, :size => 10
-      text document.account.address, :size => 10
-      text document.account.city, :size => 10
-      text document.account.telephone, :size => 10
+      text document.account.id_number1, :size => 9
+      text document.account.address, :size => 9
+      text document.account.city, :size => 9
+      text document.account.telephone, :size => 9
     end  
+    move_down 10
     display_header_table
     display_lines_table
     footer
@@ -43,14 +46,14 @@ class DocumentReport < PdfReport
   def logo
     puts "directory RAILS_ROOT = #{RAILS_ROOT}"
     if "#{RAILS_ROOT}" == "/app"
-      image open(@user.company.logo.url(:square).sub(/\?.+\Z/, '')), :width => 250, :height => 100
+      image open(@user.company.logo.url(:square).sub(/\?.+\Z/, '')), :width => 225, :height => 60
     else
-      image "#{RAILS_ROOT}/public"+@user.company.logo.url(:square).sub(/\?.+\Z/, ''), :width => 250, :height => 100
+      image "#{RAILS_ROOT}/public"+@user.company.logo.url(:square).sub(/\?.+\Z/, ''), :width => 225, :height => 60
     end
   end
 
   def display_header_table
-      data = [%w[CODE DESCRIPTION UNITS QUANTITY PRICE TOTAL]]
+      data = [%w[COD DESCRIPCION UND CANT PRECIO TOTAL]]
       table(data, :row_colors => ["F0F0F0"],column_widths: TABLE_WIDTHS)
   end
 
@@ -58,28 +61,30 @@ class DocumentReport < PdfReport
     if table_data.empty?
       text "No Lines Found"
     else
-      table(table_data,column_widths: TABLE_WIDTHS,:cell_style => {:borders => []})
+      table(table_data,column_widths: TABLE_WIDTHS,:cell_style => {:borders => [], size: 10})
     end
   end
 
   def table_data
-    @table_data ||= @document.document_lines.map { |e| [e.code, e.description, e.product.units, e.in_quantity + e.out_quantity, e.price, e.total] }
+    @table_data ||= @document.document_lines.map { |e| [e.code, e.description, e.product.units, e.in_quantity + e.out_quantity, format_currency(e.price), format_currency(e.total)] }
   end
 
   def footer
-    grid(7,1).bounding_box do
+    grid(7,0).bounding_box do
       text "SUB-TOTAL", :align => :right, :style => :bold, :size => 18 
       text "IVA " + " " + @document.tax.to_s + " % ", :align => :right, :style => :bold, :size => 18
       text "TOTAL", :align => :right, :style => :bold, :size => 18 
     end
-    grid(7,2).bounding_box do
-      text @document.sub_total.to_s, :align => :right, :size => 18
-      text @document.tax_total.to_s, :align => :right, :size => 18
-      text @document.total.to_s, :align => :right, :size => 18
+    grid(7,1).bounding_box do
+      text format_currency(@document.sub_total).to_s, :align => :right, :size => 18
+      text format_currency(@document.tax_total).to_s, :align => :right, :size => 18
+      text format_currency(@document.total).to_s, :align => :right, :size => 18
     end
   end      
     
-    
+  def format_currency(value)
+    number_to_currency(value, unit: '', separator: ',' , delimiter: '.', format: "%u %n")  
+  end   
     
     
 end
