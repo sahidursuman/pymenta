@@ -16,6 +16,7 @@ gem 'cancan'
 gem 'prawn'
 gem 'prawn-table'
 group :development, :test do
+  gem 'pg'
   gem 'sqlite3'
 end
 group :production do
