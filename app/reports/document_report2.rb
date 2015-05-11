@@ -1,6 +1,6 @@
 class DocumentReport2 < PdfReport
   include ActionView::Helpers::NumberHelper
-  TABLE_WIDTHS = [160, 220, 80, 70]
+  TABLE_WIDTHS = [160, 210, 80, 80]
   PAGE_MARGIN = [50, 50, 30, 30]
   FONT_SIZE = 13
   RAILS_ROOT = Rails.root
@@ -19,9 +19,9 @@ class DocumentReport2 < PdfReport
     draw_text document.date.day.to_s + "  /  " + document.date.month.to_s  + "  /  " + document.date.year.to_s, :size => FONT_SIZE, :style => :bold, :at => [120, 600]   
     draw_text document.account.name.to_s, :size => FONT_SIZE, :style => :bold, :at => [120+20, 560]  
     draw_text document.account.id_number1.to_s, :size => FONT_SIZE, :style => :bold, :at => [120+320, 560]  
-    draw_text document.account.address.to_s, :size => FONT_SIZE, :style => :bold, :at => [120, 540]  
+    draw_text document.account.address.to_s, :size => FONT_SIZE, :style => :bold, :at => [120-60, 540]  
     draw_text document.account.city.to_s, :size => FONT_SIZE, :style => :bold, :at => [120, 520]  
-    draw_text document.account.state.to_s, :size => FONT_SIZE, :style => :bold, :at => [120+200, 520]  
+    draw_text document.account.state.to_s, :size => FONT_SIZE, :style => :bold, :at => [120+150, 520]  
     draw_text (document.account.country.nil? ? '' : document.account.country.upcase.to_s), :size => FONT_SIZE, :style => :bold, :at => [120+320, 520]  
     draw_text document.account.telephone.to_s, :size => FONT_SIZE, :style => :bold, :at => [120, 500] 
     draw_text document.due.to_s, :size => FONT_SIZE, :style => :bold, :at => [120+320, 500]   
