@@ -101,11 +101,9 @@ class PaymentsDocumentsController < ApplicationController
 
   def create_payments_document_account
 
-    params[:payments_document][:version] = ENV["VERSION"]
-    params[:payments_document][:domain] = current_user.domain
-    params[:payments_document][:username] = current_user.username
-
-    account_type = DocumentType.find(params[:payments_document][:document_type_id]).account_type
+    @document_type_id = params[:payments_document] != nil ? params[:payments_document][:document_type_id] : params[:document_type_id] 
+    document_type = DocumentType.find(@document_type_id)
+    account_type = document_type.account_type
     puts "esta es " + account_type
     if(account_type=='Client')
         account = Client.find(params[:autocomplete_client])
@@ -115,17 +113,25 @@ class PaymentsDocumentsController < ApplicationController
          account = Warehouse.find(params[:autocomplete_warehouse])           
     end
 
-    params[:payments_document][:account_id] = account.id
-    params[:payments_document][:name] = account.name
-    params[:payments_document][:date] = Time.new
-    params[:payments_document][:total] = 0
-    params[:payments_document][:paid] = 0
-    params[:payments_document][:paid_left] = 0    
-    params[:payments_document][:month] = Time.new.month+1
-    params[:payments_document][:year] = Time.new.year+1900
-    params[:payments_document][:status] = "NOT_PAID"
-      
-    @payments_document = PaymentsDocument.new(params[:payments_document])
+    @payments_document = PaymentsDocument.new
+    @payments_document.version = ENV["VERSION"]
+    @payments_document.domain = current_user.domain
+    @payments_document.username = current_user.username
+    @payments_document.account_id = account.id
+    @payments_document.document_type_id = document_type.id
+    @payments_document.type = document_type.description
+    @payments_document.name = account.name
+    @payments_document.total = 0
+    @payments_document.paid = 0
+    @payments_document.paid_left = 0
+    @payments_document.month  = Time.new.month+1
+    @payments_document.year  = Time.new.year+1900
+    @payments_document.status  = "NOT_PAID"
+
+    @payments_document.percentage = params[:payments_document] != nil ? params[:payments_document][:percentage] : 0.75
+    @payments_document.number = params[:payments_document] != nil ? params[:payments_document][:number] : ''
+    @payments_document.date = params[:payments_document] != nil ? Time.parse("#{params[:payments_document]['date(3i)']}-#{params[:payments_document]['date(2i)']}-#{params[:payments_document]['date(1i)']}") : Time.now
+
 
     respond_to do |format|
       if @payments_document.save

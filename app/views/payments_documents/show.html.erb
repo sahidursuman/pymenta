@@ -119,5 +119,9 @@
 	</div>
   </div>
 <% end %>
+<div class="form-actions">
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                 edit_payments_document_path(@payments_document), :class => 'btn btn-large btn-primary' %>
+</div>
 
 

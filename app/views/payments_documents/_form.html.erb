@@ -1,15 +1,6 @@
 <%= simple_form_for @payments_document, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :version %>
-  <%= f.input :domain %>
-  <%= f.input :username %>
-  <%= f.input :type %>
   <%= f.input :number %>
   <%= f.input :date %>
-  <%= f.input :total %>
-  <%= f.input :paid %>
-  <%= f.input :paid_left %>
-  <%= f.input :year %>
-  <%= f.input :month %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

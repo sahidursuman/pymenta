@@ -12,7 +12,7 @@ en:
       clients: "Clients" 
       providers: "Providers"
       warehouses: "Warehouses"
-      documents: "Invoices"
+      documents: "Documents"
       stocks: "Stocks"
       payments_documents: "Payments"
       users: "Users"

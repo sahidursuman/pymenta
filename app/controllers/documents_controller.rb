@@ -7,10 +7,19 @@ class DocumentsController < ApplicationController
    @end_at = params[:end_at].blank? ? DateTime.parse("01/01/2901") : DateTime.parse(params[:end_at])
    @name = params[:name]
    @status = params[:status]
+   @type = params[:type]
    if @status.blank?
-     @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+     if @type.blank?
+       @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+     else
+       @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND documents.type = ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+     end
    else
-     @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}","#{@status}").paginate(:page => params[:page], :per_page => 10, :order => 'accounts.name ASC')
+     if @type.blank?
+       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}","#{@status}").paginate(:page => params[:page], :per_page => 10, :order => 'accounts.name ASC')
+     else
+       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.type = ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}","#{@status}").paginate(:page => params[:page], :per_page => 10, :order => 'accounts.name ASC')
+     end
    end      
     render :index
   end
@@ -185,11 +194,20 @@ class DocumentsController < ApplicationController
     @end_at = params[:end_at].blank? ? DateTime.parse("01/01/2901") : DateTime.parse(params[:end_at])
     @name = params[:name]
     @status = params[:status]
-     if @status.blank?
+    @type = params[:type]
+    if @status.blank?
+     if @type.blank?
        @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}")
      else
-       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}","#{@status}")
+       @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND documents.type = ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}")
      end
+    else
+     if @type.blank?
+       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}","#{@status}")
+     else
+       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.type = ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}","#{@status}")
+     end
+    end      
     pdf = DocumentsReport.new(@documents, @user, @start_at, @end_at)
     send_data pdf.render, filename:'documents_report.pdf',type: 'application/pdf', disposition: 'inline'
   end

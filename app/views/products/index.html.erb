@@ -11,9 +11,9 @@
           <%= label_tag(:description, (t '.description', :default =>  t("helpers.labels.description")) ) %>
           <%= text_field_tag(:description) %>
   		  <%= label_tag(:brand_id, (t '.brand', :default =>  t("helpers.labels.brand") ) ) %>
-          <%= select_tag(:brand_id, options_for_select(current_user.company.brands.collect{|x| [x.description,x.id]})) %>
+          <%= select_tag(:brand_id, options_for_select(current_user.company.brands.collect{|x| [x.description,x.id]}),:include_blank => true) %>
           <%= label_tag(:category_id, (t '.category', :default =>  t("helpers.labels.category") ) ) %>
-           <%= select_tag(:category_id, options_for_select(current_user.company.categories.collect{|x| [x.description,x.id]})) %>
+           <%= select_tag(:category_id, options_for_select(current_user.company.categories.collect{|x| [x.description,x.id]}),:include_blank => true) %>
           <%= submit_tag((t '.search', :default =>  t("helpers.labels.search")), :class => 'btn btn-danger') %>
         <% end %>
 	  </div>

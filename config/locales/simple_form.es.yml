@@ -12,7 +12,7 @@
       clients: "Clientes"  
       providers: "Proveedores"
       warehouses: "Almacenes" 
-      documents: "Facturas"
+      documents: "Documentos"
       stocks: "Inventarios"
       payments_documents: "Pagos"
       users: "Usuarios"

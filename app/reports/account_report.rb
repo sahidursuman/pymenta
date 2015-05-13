@@ -11,7 +11,7 @@ class AccountReport < PdfReport
     #text ""
     #text company.id, :style => :bold
     #text company.name, :size => 10
-    text "PROVEEDOR", :style => :bold
+    text account.type.upcase, :style => :bold
     move_down 10
     text "NOMBRE: " + account.name, :style => :bold
     move_down 10
@@ -23,7 +23,7 @@ class AccountReport < PdfReport
     move_down 10
     text "EMAIL: " + (account.email.nil? ? '' : account.email), :size => 10
     move_down 10
-    text "CONTACTO: " + account.contact, :style => :bold
+    text "CONTACTO: " + (account.contact.nil? ? '' : account.contact), :style => :bold
   end
 
   private

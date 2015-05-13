@@ -107,4 +107,23 @@ class ClientsController < ApplicationController
     @account = Client.find(params[:client_id])
     render :partial => "documents/account", :object => @account
   end
+
+  def clients_report
+    #raise params.inspect
+    @user = current_user
+    @code = params[:code]
+    @name = params[:name]
+    @city = params[:city]
+    @clients = Client.where("domain = ? AND (code like ? OR name like ? OR city like ?)", current_user.domain,"%#{@code}%","%#{@name}%","%#{@city}%") 
+    pdf = ProvidersReport.new(@clients, @user, @code, @name, @city)
+    send_data pdf.render, filename:'clients_report.pdf',type: 'application/pdf', disposition: 'inline'
+  end
+  
+  def account_report
+    #raise params.inspect
+    @user = current_user
+    @account = Client.find(params[:id])
+    pdf = AccountReport.new(@account, @user)
+    send_data pdf.render, filename:'account_report.pdf',type: 'application/pdf', disposition: 'inline'
+  end
 end
