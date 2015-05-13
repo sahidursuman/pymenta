@@ -27,7 +27,7 @@ class DocumentReport2 < PdfReport
     draw_text document.due.to_s, :size => FONT_SIZE, :style => :bold, :at => [120+320, 500]   
     move_down 260
     display_lines_table
-    move_cursor_to 110
+    move_cursor_to 90
     footer
   end
 
