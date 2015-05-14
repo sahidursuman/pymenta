@@ -11,9 +11,9 @@ class CreatePaymentsDocuments < ActiveRecord::Migration
       t.string :status
       t.date :date
       t.decimal :percentage
-      t.decimal :total
-      t.decimal :paid
-      t.decimal :paid_left
+      t.decimal :total, :precision => 10, :scale => 2
+      t.decimal :paid, :precision => 10, :scale => 2
+      t.decimal :paid_left, :precision => 10, :scale => 2
       t.integer :year
       t.integer :month
 

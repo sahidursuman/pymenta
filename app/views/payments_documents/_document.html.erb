@@ -15,8 +15,8 @@
         <td><%= document.type %></td>
         <td><%= document.document_number %></td>
         <td><%= document.account.name %></td>
-        <td><%= document.date %></td>
-        <td><%= document.total %></td>
+        <td><%= document.date.strftime(current_user.company.date_format)  %></td>
+        <td><%= number_to_currency(document.total, unit: "", separator: current_user.company.separator , delimiter: current_user.company.delimiter, format: "%u %n")   %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       document_path(document), :class => 'btn btn-mini' %>

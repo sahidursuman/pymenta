@@ -15,7 +15,7 @@ class Payment < ActiveRecord::Base
   protected
 
   def sum_payments
-    payments_document.paid = payments_document.paid + amount
+    payments_document.paid = payments_document.paid + amount.round(2)
     payments_document.paid_left = payments_document.total - payments_document.paid
     if (payments_document.paid > 0 && payments_document.paid_left > 0) 
       payments_document.status = "PARTIAL_PAID"
@@ -28,7 +28,7 @@ class Payment < ActiveRecord::Base
   end
 
   def substract_payments
-    payments_document.paid = payments_document.paid - amount
+    payments_document.paid = payments_document.paid - amount.round(2)
     payments_document.paid_left = payments_document.paid_left + amount
     if (payments_document.paid > 0 && payments_document.paid_left > 0) 
       payments_document.status = "PARTIAL_PAID"

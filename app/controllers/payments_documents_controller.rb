@@ -152,6 +152,7 @@ class PaymentsDocumentsController < ApplicationController
      @document.payments_document = @payments_document
   
      @payments_document.total = @payments_document.total + @document.total
+     @payments_document.paid_left = (@payments_document.paid_left.nil? ? 0 : @payments_document.paid_left) + (@document.total.round(2)) 
 
      respond_to do |format|
        if @document.save && @payments_document.save
@@ -172,6 +173,7 @@ class PaymentsDocumentsController < ApplicationController
       @document.payments_document_id = nil
 
       @payments_document.total = @payments_document.total - @document.total 
+      @payments_document.paid_left = (@payments_document.paid_left.nil? ? 0 : @payments_document.paid_left)- (@document.total.round(2))
 
       respond_to do |format|
         if @document.save  && @payments_document.save
@@ -191,9 +193,9 @@ class PaymentsDocumentsController < ApplicationController
       puts 'hola'
       payments_document = PaymentsDocument.find(params[:header_id])
       amount = params[:amount].to_f
-      #date = DateTime.new(params[:date])
+      date = Date.parse("#{params[:date]['day']}-#{params[:date]['month']}-#{params[:date]['year']}") if params[:date]
       payment_line = Payment.new(domain: current_user.domain, username: current_user.username,      
-  	payments_document_id: payments_document.id, payment_type: params[:payment_type], date: DateTime.now,  amount: amount,
+  	payments_document_id: payments_document.id, payment_type: params[:payment_type], date: date,  amount: amount,
   	notes: params[:notes])
       if payment_line.save!
         flash[:notice]='Your payment was created'

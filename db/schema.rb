@@ -201,13 +201,13 @@ ActiveRecord::Schema.define(:version => 20150323145447) do
     t.string   "status"
     t.date     "date"
     t.decimal  "percentage"
-    t.decimal  "total"
-    t.decimal  "paid"
-    t.decimal  "paid_left"
+    t.decimal  "total",                          :precision => 10, :scale => 2
+    t.decimal  "paid",                           :precision => 10, :scale => 2
+    t.decimal  "paid_left",                      :precision => 10, :scale => 2
     t.integer  "year"
     t.integer  "month"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
     t.string   "document_type_id"
     t.string   "account_id"
   end

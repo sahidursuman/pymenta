@@ -7,7 +7,7 @@
   <div class="span6">
     <dl class="dl-horizontal">
       <dt><strong><%=t '.date', :default =>  t("helpers.labels.date") %></strong></dt>
-      <dd><%= @payments_document.date %></dd>  
+      <dd><%= @payments_document.date.strftime(current_user.company.date_format)  %></dd>  
     </dl>
     <dl class="dl-horizontal">
       <dt><strong><%=t '.document_type', :default =>  t("helpers.labels.document_type") %></strong></dt>
@@ -48,15 +48,15 @@
     <div class="span4">
       <dl class="dl-horizontal">
         <dt><h3><%=t '.total', :default =>  t("helpers.labels.total") %></h3></dt>
-        <dd><h3><%= @payments_document.total %></h3></dd>  
+        <dd><h3><%= number_to_currency(@payments_document.total, unit: current_user.company.unit, separator: current_user.company.separator , delimiter: current_user.company.delimiter, format: "%u %n")  %></h3></dd>  
       </dl>
       <dl class="dl-horizontal">
         <dt><h4><%=t '.paid', :default =>  t("helpers.labels.paid") %></h4></dt>
-        <dd><h4><%= @payments_document.paid %></h3></dd>  
+        <dd><h4><%= number_to_currency(@payments_document.paid, unit: current_user.company.unit, separator: current_user.company.separator , delimiter: current_user.company.delimiter, format: "%u %n")   %></h3></dd>  
       </dl>
       <dl class="dl-horizontal">
         <dt><h4><%=t '.paid_left', :default =>  t("helpers.labels.paid_left") %></h4></dt>
-        <dd><h4><%= @payments_document.paid_left %></h4></dd>  
+        <dd><h4><%= number_to_currency(@payments_document.paid_left, unit: current_user.company.unit, separator: current_user.company.separator , delimiter: current_user.company.delimiter, format: "%u %n")   %></h4></dd>  
       </dl>
     </div>
     <div class="span2"></div>
@@ -77,8 +77,8 @@
     <% @payments_document.payments.each do |payment| %>
       <tr>
         <td><%= payment.payment_type %></td>
-        <td><%= payment.date %></td>
-        <td><%= payment.amount %></td>
+        <td><%= payment.date.strftime(current_user.company.date_format)  %></td>
+        <td><%= number_to_currency(payment.amount, unit: "", separator: current_user.company.separator , delimiter: current_user.company.delimiter, format: "%u %n") %></td>
         <td><%= payment.notes %></td>
         <td>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
