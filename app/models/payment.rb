@@ -6,7 +6,7 @@ class Payment < ActiveRecord::Base
   belongs_to :company, :foreign_key => 'domain'
   belongs_to :payments_document
 
-  TYPES = ["CHEQUE","DEPOSITO","EFECTIVO"]
+  TYPES = ["CHEQUE","DEPOSITO","EFECTIVO","RETENCION","TRANSFERENCIA"]
   validates :payment_type, inclusion: TYPES
 
   before_create :sum_payments
