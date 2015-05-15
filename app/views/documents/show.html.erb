@@ -140,9 +140,14 @@
 		          :class => 'btn btn-large btn-primary' %>
          <% end %> 
 	   <% if @document.payments_document == nil %>
-				    <%= link_to t('.create_payments_document', :default => t("helpers.links.create_payments_document")),
-					          create_payments_document_account_path(:autocomplete_client => @document.account.id, :document_type_id => @document.document_type_id),
-					          :class => 'btn btn-large btn-success' %>
+		    <%= link_to t('.create_payments_document', :default => t("helpers.links.create_payments_document")),
+		          create_payments_document_account_path(:autocomplete_client => @document.account.id, :document_type_id => @document.document_type_id),
+		          :class => 'btn btn-large btn-success' %>
+	   <% else %>
+		    <%= link_to t('.go_to_payments_document', :default => t("helpers.links.go_to_payments_document")),
+		          payments_document_path(:id => @document.payments_document.id),
+		          :class => 'btn btn-large btn' %>
+
 	   <% end %>		
 </div>
 

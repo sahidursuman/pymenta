@@ -95,6 +95,7 @@ en:
       subscribe_year: "Subscribe Year"
       edit_formats: "Edit Date and Currency Formats "
       create_payments_document: "Create Payment"
+      go_to_payments_document: "Go to Payment"
       beta: "This is a beta version. Only emails in the invitation list can register."
       print: "Print"
     submit:
