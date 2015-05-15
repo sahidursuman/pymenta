@@ -8,7 +8,7 @@ class DocumentReport < PdfReport
     super(:page_size => "LETTER",  margin: PAGE_MARGIN, :page_layout => :portrait)
     @document = document
     @user = user
-    define_grid(:columns => 2, :rows => 8, :gutter => 25)
+    define_grid(:columns => 2, :rows => 7, :gutter => 15)
     #grid.show_all
     logo
     grid(0,1).bounding_box do
@@ -19,23 +19,23 @@ class DocumentReport < PdfReport
     company = @user.company
     grid(1,0).bounding_box do
       text ""
-      text company.name, :style => :bold
+      text company.name, :size => 10,:style => :bold
       text company.id_number1, :size => 9
-      text company.address, :size => 9
+      text company.address.truncate(94,omission: ''), :size => 9
       text company.city, :size => 9
       text company.telephone, :size => 9
     end
     grid(1,1).bounding_box do
-      text "CLIENTE", :style => :bold
-      text document.account.name, :style => :bold
+      text document.account.name, :size => 10, :style => :bold
       text document.account.id_number1, :size => 9
-      text document.account.address, :size => 9
+      text document.account.address.truncate(94,omission: ''), :size => 9
       text document.account.city, :size => 9
       text document.account.telephone, :size => 9
     end  
     move_down 10
     display_header_table
     display_lines_table
+    move_cursor_to 90
     footer
   end
 
@@ -70,12 +70,12 @@ class DocumentReport < PdfReport
   end
 
   def footer
-    grid(7,0).bounding_box do
+    grid(6,0).bounding_box do
       text "SUB-TOTAL", :align => :right, :style => :bold, :size => 18 
       text "IVA " + " " + @document.tax.to_s + " % ", :align => :right, :style => :bold, :size => 18
       text "TOTAL", :align => :right, :style => :bold, :size => 18 
     end
-    grid(7,1).bounding_box do
+    grid(6,1).bounding_box do
       text format_currency(@document.sub_total).to_s, :align => :right, :size => 18
       text format_currency(@document.tax_total).to_s, :align => :right, :size => 18
       text format_currency(@document.total).to_s, :align => :right, :size => 18
