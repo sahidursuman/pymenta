@@ -10,22 +10,22 @@ class DocumentsController < ApplicationController
    @type = params[:type]
    if @status.blank?
      if @type.blank?
-       @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+       @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}").paginate(:page => params[:page], :per_page => 10, :order => 'date DESC')
      else
-       @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND documents.type = ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+       @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND documents.type = ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}").paginate(:page => params[:page], :per_page => 10, :order => 'date DESC')
      end
    else
      if @type.blank?
-       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}","#{@status}").paginate(:page => params[:page], :per_page => 10, :order => 'accounts.name ASC')
+       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}","#{@status}").paginate(:page => params[:page], :per_page => 10, :order => 'documents.date DESC')
      else
-       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.type = ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}","#{@status}").paginate(:page => params[:page], :per_page => 10, :order => 'accounts.name ASC')
+       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.type = ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}","#{@status}").paginate(:page => params[:page], :per_page => 10, :order => 'documents.date DESC')
      end
    end      
     render :index
   end
   
   def index
-    @documents = current_user.company.documents.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
+    @documents = current_user.company.documents.paginate(:page => params[:page], :per_page => 10, :order => 'date DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -197,15 +197,15 @@ class DocumentsController < ApplicationController
     @type = params[:type]
     if @status.blank?
      if @type.blank?
-       @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}")
+       @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}").order('date DESC')
      else
-       @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND documents.type = ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}")
+       @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND documents.type = ? AND date > ? AND date < ? ", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}").order('date DESC')
      end
     else
      if @type.blank?
-       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}","#{@status}")
+       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}","#{@status}").order('documents.date DESC')
      else
-       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.type = ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}","#{@status}")
+       @documents = Document.joins(:account, :payments_document).where("documents.domain = ? AND accounts.name like ? AND documents.type = ? AND documents.date > ? AND documents.date < ? AND payments_documents.status = ?", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}","#{@status}").order('documents.date DESC')
      end
     end      
     pdf = DocumentsReport.new(@documents, @user, @start_at, @end_at)
