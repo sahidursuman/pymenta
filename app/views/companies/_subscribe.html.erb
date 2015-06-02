@@ -81,11 +81,11 @@ require 'mercadopago.rb'
         </dl>
         <% if mp != nil %>
           <dl class="dl-horizontal">
-            <dt><a href="<%= mp.create_preference({"items" => ["title"=>t("helpers.links.subscribe_month"), "quantity"=>1, "unit_price"=>1000, "currency_id"=>"VEN"]})['response']['init_point'].to_s %>" name="MP-Checkout" class="blue-rn-m" onreturn="execute_month_onreturn"><%= t '.subscribe_month', :default => t("helpers.links.subscribe_month") %></a></dt>
+            <dt><a href="<%= mp.create_preference({"items" => ["title"=>t("helpers.links.subscribe_month"), "quantity"=>1, "unit_price"=>4000, "currency_id"=>"VEN"]})['response']['init_point'].to_s %>" name="MP-Checkout" class="blue-rn-m" onreturn="execute_month_onreturn"><%= t '.subscribe_month', :default => t("helpers.links.subscribe_month") %></a></dt>
              <dd><%= number_to_currency(4000, unit: @company.unit, separator: @company.separator , delimiter: @company.delimiter, format: "%u %n") %></dd> 
           </dl>
           <dl class="dl-horizontal">
-            <dt><a href="<%= mp.create_preference({"items" => ["title"=>t("helpers.links.subscribe_year"), "quantity"=>1, "unit_price"=>10000, "currency_id"=>"VEN"]})['response']['init_point'].to_s %>" name="MP-Checkout" class="red-rn-m" onreturn="execute_year_onreturn"><%= t '.subscribe_year', :default => t("helpers.links.subscribe_year") %></a></dt>
+            <dt><a href="<%= mp.create_preference({"items" => ["title"=>t("helpers.links.subscribe_year"), "quantity"=>1, "unit_price"=>40000, "currency_id"=>"VEN"]})['response']['init_point'].to_s %>" name="MP-Checkout" class="red-rn-m" onreturn="execute_year_onreturn"><%= t '.subscribe_year', :default => t("helpers.links.subscribe_year") %></a></dt>
             <dd><%= number_to_currency(40000, unit: @company.unit, separator: @company.separator , delimiter: @company.delimiter, format: "%u %n") %></dd> 
           </dl>
         <% end %>

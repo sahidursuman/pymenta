@@ -13,11 +13,26 @@ class Document < ActiveRecord::Base
 
   has_many :document_lines, :foreign_key => 'header_id'
 
+  before_validation :ensure_counter_is_not_greater_than_limit, :on => :create
+  before_create :increment_counter
   before_save :default_values
   
   def default_values
       self.status ||= 'NOT_PAID'
   end
+
+  private
+    def ensure_counter_is_not_greater_than_limit
+      if self.company.counter >= self.company.limit
+        errors[:base] << "Ha alcanzado el limite de su plan. Por favor actualice su plan para seguir usando la aplicacion"
+      end
+    end
+
+    def increment_counter
+      self.company.counter = self.company.counter + 1
+      self.company.save
+    end
+
 
   def full_name
      "#{type} ------ #{document_number} ------- #{account.name} -------- #{date} ---------- #{sub_total}---------- #{tax_total}---------- #{total}"
