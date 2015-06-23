@@ -6,6 +6,7 @@ es:
   will_paginate:
     previous_label:  ← Anterior
     next_label: Proximo →
+    page_gap: ...
   date:
     formats:
       # Use the strftime parameters for formats.
