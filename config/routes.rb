@@ -14,6 +14,7 @@ Pymenta::Application.routes.draw do
     get "document_report", :on => :collection
     get "document_report2", :on => :collection
     get "document_report3", :on => :collection
+    get "personalize_report", :on => :collection
   end
 
   resources :providers do

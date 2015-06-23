@@ -222,19 +222,11 @@ class DocumentsController < ApplicationController
       send_data pdf.render, filename:'document_report.pdf',type: 'application/pdf', disposition: 'inline'
     end
 
-  def document_report2
-      #raise params.inspect
-      user = current_user
-      @document = Document.find(params[:format])
-      pdf = DocumentReport2.new(@document, user)
-      send_data pdf.render, filename:'document_report2.pdf',type: 'application/pdf', disposition: 'inline'
-    end
 
-  def document_report3
-      #raise params.inspect
+   def personalize_report
       user = current_user
       @document = Document.find(params[:format])
-      pdf = DocumentReport3.new(@document, user)
-      send_data pdf.render, filename:'document_report3.pdf',type: 'application/pdf', disposition: 'inline'
-    end
+      pdf = Object.const_get("Report"+@document.document_type_id.to_s).new(@document, user)
+      send_data pdf.render, filename:'personalize_report.pdf',type: 'application/pdf', disposition: 'inline'
+   end 
 end

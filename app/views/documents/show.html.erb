@@ -131,14 +131,11 @@
 	  <%= link_to t('.print', :default => t("helpers.links.print")),
 		          document_report_documents_path(@document),
 		          :class => 'btn btn-large btn-primary' %>
-        <% if current_user.company.name.upcase.include?("FABRIC LAR") %> 
-	    <%= link_to "FACTURA",
-		          document_report2_documents_path(@document),
+         <% if has_personalize_report @document %> 
+	    <%= link_to "PERSONALIZADO",
+		          personalize_report_documents_path(@document),
 		          :class => 'btn btn-large btn-primary' %>
-	    <%= link_to "NOTA",
-		          document_report3_documents_path(@document),
-		          :class => 'btn btn-large btn-primary' %>
-         <% end %> 
+         <% end %>
 	   <% if @document.payments_document == nil %>
 		    <%= link_to t('.create_payments_document', :default => t("helpers.links.create_payments_document")),
 		          create_payments_document_account_path(:autocomplete_client => @document.account.id, :document_type_id => @document.document_type_id),

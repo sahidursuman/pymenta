@@ -37,4 +37,18 @@ module ApplicationHelper
       html.html_safe
     end  
 
+   def has_personalize_report(document)
+     begin
+       user = current_user 
+       pdf = Object.const_get("Report"+document.document_type_id.to_s).new(document,user)
+     rescue Exception => e
+      puts "Object not found"
+      puts e
+      return false
+     else
+      return true
+      puts "Object found"
+     end
+   end 
+
 end
