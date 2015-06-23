@@ -14,8 +14,7 @@ class Document < ActiveRecord::Base
   has_many :document_lines, :foreign_key => 'header_id'
 
   before_validation :ensure_counter_is_not_greater_than_limit, :on => :create
-  before_create :increment_counter
-  before_save :default_values
+  before_create :increment_counter, :default_values
   
   def default_values
       self.status ||= 'NOT_PAID'

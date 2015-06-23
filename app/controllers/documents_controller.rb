@@ -146,6 +146,7 @@ class DocumentsController < ApplicationController
       create_document(account) 
     else
       @document = Document.new(params[:document]) 
+      params[:document][:type] = params[:document][:document_type_id]
       @document.errors[:base] << t("helpers.labels.not_provider_present") # Not provider
       render :action => :new # Not provider
     end    
@@ -180,6 +181,7 @@ class DocumentsController < ApplicationController
         format.html { redirect_to @document, notice: 'Document was successfully created.' }
         format.json { render json: @document, status: :created, location: @document }
       else
+        params[:document][:type] = params[:document][:document_type_id] 
         format.html { render action: "new" }
         format.json { render json: @document.errors, status: :unprocessable_entity }
       end

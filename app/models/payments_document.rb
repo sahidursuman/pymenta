@@ -11,7 +11,7 @@ class PaymentsDocument < ActiveRecord::Base
   has_many :payments
   has_many :documents
 
-  before_save :default_values
+  before_create :default_values
   
   def default_values
       self.status ||= 'NOT_PAID'
