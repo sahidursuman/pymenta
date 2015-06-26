@@ -1,4 +1,4 @@
-class Report2 < PdfReport
+class Report3 < PdfReport
  include ActionView::Helpers::NumberHelper
   TABLE_WIDTHS = [180, 240, 50, 60]
   PAGE_MARGIN = [50, 50, 30, 30]
