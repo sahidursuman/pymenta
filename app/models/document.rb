@@ -14,10 +14,24 @@ class Document < ActiveRecord::Base
   has_many :document_lines, :foreign_key => 'header_id'
 
   before_validation :ensure_counter_is_not_greater_than_limit, :on => :create
-  before_create :increment_counter, :default_values
+  before_create :increment_counter, :default_values 
+  before_save :save_type_description, :save_child_type 
   
   def default_values
       self.status ||= 'NOT_PAID'
+  end
+
+  def save_type_description
+    self.type = self.document_type.description
+  end
+
+  def save_child_type
+    Document.transaction do
+      document_lines.each do |child|
+        child.type = self.type 
+        child.save
+      end
+    end
   end
 
   private

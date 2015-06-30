@@ -1,4 +1,7 @@
 <%= simple_form_for @document, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="form-actions">
+    <%= label_tag(:type, (t '.type', :default =>  t("helpers.labels.document_type") ) ) %><%= f.collection_select :document_type_id, current_user.company.document_types, :id, :description %>
+  </div>
   <%= f.input :document_number %>
   <%= f.input :date %>
   <div class="form-actions">
