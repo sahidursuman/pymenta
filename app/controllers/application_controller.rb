@@ -24,8 +24,22 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
   end
 
-def after_sign_in_path_for(resource)
-  documents_path() #your path
-end
+  def after_sign_in_path_for(resource)
+    if Time.now > current_user.company.final_cycle
+      finish_plan_cycle()
+    end 
+    documents_path() #your path
+  end
+
+
+  def finish_plan_cycle
+    @company = Company.find(current_user.company.id)
+    @company.plan = 'GRATIS'
+    @company.initial_cycle = @company.final_cycle
+    @company.final_cycle = @company.final_cycle.months_since(1)
+    @company.counter = 0
+    @company.limit = 3
+    @company.save
+  end
 
 end
