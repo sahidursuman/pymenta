@@ -202,13 +202,13 @@ class DocumentsController < ApplicationController
      if @type.blank?
       @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND date >= ? AND date <= ? ", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}")
      else
-      @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND documents.type = ? AND date >= ? AND date <= ? ", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}")
+      @documents = Document.joins(:account).where("documents.domain = ? AND name like ? AND documents.type = ? AND date >= ? AND date <= ? ", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}")
      end
     else
      if @type.blank?
       @documents = Document.joins(:account).joins("LEFT OUTER JOIN payments_documents ON payments_documents.id = documents.payments_document_id").where("documents.domain = ? AND accounts.name like ? AND documents.date >= ? AND documents.date <= ? AND (payments_documents.status = ? OR (documents.status = ? AND payments_documents.id IS NULL))", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}","#{@status}","#{@status}")
      else
-      @documents = Document.joins(:account).joins("LEFT OUTER JOIN payments_documents ON payments_documents.id = documents.payments_document_id").where("documents.domain = ? AND accounts.name like ? AND documents.type = ? AND documents.date >= ? AND documents.date <= ? AND (payments_documents.status = ? OR (documents.status = ? AND payments_documents.id IS NULL))", current_user.domain,"%#{@name}%","#{@start_at}","#{@end_at}","#{@status}","#{@status}")
+      @documents = Document.joins(:account).joins("LEFT OUTER JOIN payments_documents ON payments_documents.id = documents.payments_document_id").where("documents.domain = ? AND accounts.name like ? AND documents.type = ? AND documents.date >= ? AND documents.date <= ? AND (payments_documents.status = ? OR (documents.status = ? AND payments_documents.id IS NULL))", current_user.domain,"%#{@name}%","#{@type}","#{@start_at}","#{@end_at}","#{@status}","#{@status}")
      end
     end       
     pdf = DocumentsReport.new(@documents, @user, @start_at, @end_at)
