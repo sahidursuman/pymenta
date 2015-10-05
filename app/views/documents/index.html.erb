@@ -18,7 +18,7 @@
 	<div class="form-search">
         <div class="text-center">
 		<%= form_tag({:controller => "documents", :action => "search"}, :method => "post") do %>
-              <%= select_tag('type', options_for_select(current_user.company.document_types.collect{|x| [x.description,x.description]}), params[:type], :include_blank => true) %>
+              <%= select_tag('type', options_for_select(current_user.company.document_types.collect{|x| [x.description,x.description]}), :include_blank => true) %>
               <%= text_field_tag :name, params[:name], :placeholder => (t '.name', :default =>  t("helpers.labels.name")) %>
               <%= text_field_tag :start_at, params[:start_at], :class => "input-small", :placeholder => (t '.start_at', :default =>  t("helpers.labels.start_at")) %>  
               <%= text_field_tag :end_at, params[:end_at], :class => "input-small", :placeholder => (t '.end_at', :default =>  t("helpers.labels.end_at")) %>  		  		
