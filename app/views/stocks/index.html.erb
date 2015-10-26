@@ -2,14 +2,25 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<div class="form-actions">
+	<div class="form-search">
+      <div class="text-center">
+        <%= form_tag({:controller => "stocks", :action => "search"}, :method => "post") do %>
+          <% warehouses_array = Account.where("domain = ? AND type = ?",current_user.domain,"Warehouse").all.map { |warehouse| [warehouse.name, warehouse.id] } %>
+          <%= select_tag :warehouse_id, options_for_select(warehouses_array, params[:warehouse_id]),  class: 'input-medium', :include_blank => true  %>
+          <%= text_field_tag :description, params[:description], :placeholder => (t '.description', :default =>  t("helpers.labels.description"))  %>
+          <%= submit_tag((t '.search', :default =>  t("helpers.labels.search")), :class => 'btn btn-danger') %>
+        <% end %>
+	  </div>
+	</div>
+</div>		
 <table class="table table-striped">
   <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:warehouse_id) %></th>
-      <th><%= model_class.human_attribute_name(:product_id) %></th>
-      <th><%= model_class.human_attribute_name(:in_quantity) %></th>
-      <th><%= model_class.human_attribute_name(:out_quantity) %></th>
-      <th><%= model_class.human_attribute_name(:stock) %></th>
+      <th><%=t '.warehouse', :default =>  t("helpers.labels.warehouse") %></th>
+      <th><%=t '.description', :default =>  t("helpers.labels.description") %></th>
+      <th><%=t '.in_quantity', :default =>  t("helpers.labels.in_quantity") %></th>
+      <th><%=t '.out_quanrity', :default =>  t("helpers.labels.out_quantity") %></th>
+      <th><%=t '.stock', :default =>  t("helpers.labels.stock") %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -17,7 +28,7 @@
     <% @stocks.each do |stock| %>
       <tr>
         <td><%= stock.warehouse.name %></td>
-        <td><%= link_to stock.product.description, stock_path(stock) %></td>
+        <td><%= stock.product.description %></td>
         <td><%= stock.in_quantity %></td>
         <td><%= stock.out_quantity %></td>
         <td><%= stock.stock %></td>
@@ -33,4 +44,5 @@
   </tbody>
 </table>
 
-<%= will_paginate(@movies, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
+<%= will_paginate(@movies, :params => { :warehouse_id => params[:warehouse_id], :description => params[:description]}, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
+

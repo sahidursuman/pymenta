@@ -72,6 +72,10 @@
       NOT_PAID: "NO PAGADO"
       PARTIAL_PAID: "PAGADO PARCIAL"
       PAID: "PAGADO"    
+      warehouse: "Almacen"
+      in_quantity: "Cantidad de Entrada"
+      out_quantity: "Cantidad de Salida"
+      stock: "Inventario"
     links:
       cancel: "Cancelar"
       select: "Seleccion de la lista.."	

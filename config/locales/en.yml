@@ -109,10 +109,13 @@ en:
       title: "New Company Info"
   users:
     index:
-      title: "Usuarios"
+      title: "Users"
     show:
-      title: "Usuario"
+      title: "User"
     edit:
-      title: "Editar Usuario"
+      title: "Edit User"
     new:
-      title: "Nuevo Usuario"
+      title: "New User"
+  stocks:
+    index:
+      title: "Stocks"

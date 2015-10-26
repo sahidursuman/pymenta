@@ -1,9 +1,22 @@
 class StocksController < ApplicationController
   # GET /stocks
   # GET /stocks.json
+  before_filter :authenticate_user!
+  def search
+    @warehouse = params[:warehouse_id]
+    @description = params[:description]
+    @query = "stocks.domain = ? and products.description like ?"
+    if !@warehouse.blank? 
+      @query = @query + " and warehouse_id = ?"
+    else
+      @query = @query + " or warehouse_id = ?"
+    end
+    @stocks = Stock.joins(:product).where(@query , current_user.domain, "%#{@description}%","#{@warehouse}").paginate(:page => params[:page], :per_page => 10, :order => 'description ASC')
+    render :index
+  end
+
   def index
     @stocks = current_user.company.stocks.paginate(:page => params[:page], :per_page => 10, :order => 'created_at ASC')
-
 
     respond_to do |format|
       format.html # index.html.erb

@@ -97,6 +97,10 @@ en:
       create_payments_document: "Create Payment"
       beta: "This is a beta version. Only emails in the invitation list can register."
       print: "Print"
+      warehouse: "Warehouse"
+      in_quantity: "In quantity"
+      out_quantity: "Out quantity"
+      stock: "Stock"	
     submit:
       provider:
         create: "Create Provider"
