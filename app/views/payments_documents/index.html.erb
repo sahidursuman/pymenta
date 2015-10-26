@@ -17,17 +17,14 @@
 <div class="form-actions">
 	<div class="form-search">
         <div class="text-center">
-		<%= form_tag({:controller => "payments_documents", :action => "search"}, :method => "post") do %>
-              <%= label_tag(:name, (t '.name', :default =>  t("helpers.labels.name")) ) %>
-              <%= text_field_tag(:name) %>
-              <%= label_tag(:start_at, (t '.start_at', :default =>  t("helpers.labels.start_at")) ) %>
-              <%= text_field_tag(:start_at, nil, :class => "input-small") %>  
-              <%= label_tag(:end_at, (t '.end_at', :default =>  t("helpers.labels.end_at")) ) %>
-              <%= text_field_tag(:end_at, nil, :class => "input-small") %>
- 			  <%= label_tag(:status, (t '.status', :default =>  t("helpers.labels.status")) ) %>
-              <%= select_tag 'status', options_for_select([['' , '' ],[t("helpers.labels.NOT_PAID"),'NOT_PAID'], [t("helpers.labels.PARTIAL_PAID"),'PARTIAL_PAID'], [t("helpers.labels.PAID"),'PAID']]) %>		  		
-              <%= submit_tag((t '.search', :default =>  t("helpers.labels.search")), :class => 'btn btn-danger') %>
-            <% end %>
+              <%= form_tag({:controller => "payments_documents", :action => "search"}, :method => "post") do %>
+                <%= select_tag 'type', options_for_select(current_user.company.document_types.collect{|x| [x.description,x.description]}, params[:type]),  class: 'input-medium', :include_blank => true %>
+	          <%= text_field_tag :name, params[:name], :placeholder => (t '.name', :default =>  t("helpers.labels.name")) %>
+	          <%= text_field_tag :start_at, params[:start_at], :class => "input-small", :placeholder => (t '.start_at', :default =>  t("helpers.labels.start_at")) %>  
+	          <%= text_field_tag :end_at, params[:end_at], :class => "input-small", :placeholder => (t '.end_at', :default =>  t("helpers.labels.end_at")) %>  		  		
+	          <%= select_tag 'status', options_for_select([['' , '' ],[t("helpers.labels.NOT_PAID"),'NOT_PAID'], [t("helpers.labels.PARTIAL_PAID"),'PARTIAL_PAID'], [t("helpers.labels.PAID"),'PAID']], params[:status] ),  class: 'input-medium' %>
+	          <%= submit_tag((t '.search', :default =>  t("helpers.labels.search")), :class => 'btn btn-danger') %>
+	        <% end %>
 	  </div>
 	</div>
 </div>
@@ -68,4 +65,4 @@
   </tbody>
 </table>
 
-<%= will_paginate(@movies, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
+<%= will_paginate(@movies, :params => { :name => params[:name], :start_at => params[:start_at], :end_at => params[:end_at], :status => params[:status] , :type => params[:type]}, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>

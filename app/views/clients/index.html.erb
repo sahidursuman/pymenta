@@ -6,18 +6,14 @@
 	<div class="form-search">
       <div class="text-center">
 		<%= form_tag({:controller => "clients", :action => "search"}, :method => "post") do %>
-  		  <%= label_tag(:code, (t '.code', :default =>  t("helpers.labels.code")) ) %>
-              <%= text_field_tag(:code, nil, :class => 'input-small') %>
-              <%= label_tag(:name, (t '.name', :default =>  t("helpers.labels.name")) ) %>
-              <%= text_field_tag(:name) %>
-              <%= label_tag(:city, (t '.city', :default =>  t("helpers.labels.city")) ) %>
-              <%= text_field_tag(:city) %>  		
-
+          <%= text_field_tag :code, params[:code],:class => 'input-small', :placeholder => (t '.code', :default =>  t("helpers.labels.code"))  %>
+          <%= text_field_tag :name, params[:name], :placeholder => (t '.name', :default =>  t("helpers.labels.name")) %>
+          <%= text_field_tag :city, params[:city], :placeholder => (t '.city', :default =>  t("helpers.labels.city")) %>
           <%= submit_tag((t '.search', :default =>  t("helpers.labels.search")), :class => 'btn btn-danger') %>
         <% end %>
 	  </div>
 	</div>
-</div>	
+</div>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -57,4 +53,4 @@
             new_client_path,
             :class => 'btn btn-primary' %>
 
-<%= will_paginate(@movies, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
+<%= will_paginate(@movies, :params => { :code => params[:code], :name => params[:name], :city => params[:city] }, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>

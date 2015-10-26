@@ -44,7 +44,7 @@
   <tbody>
     <% @documents.each do |document| %>
       <tr>
-        <td><%= document.type %></td>
+        <td><span class='label label-default'><%= document.type %></span></td>
         <td><%= document.document_number %></td>
         <td><%= document.account.nil? ? '' : document.account.name %></td>
         <td><%= document.date.strftime(current_user.company.date_format) %></td>

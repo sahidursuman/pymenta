@@ -6,10 +6,19 @@ class PaymentsDocumentsController < ApplicationController
    @start_at = params[:start_at].blank? ? DateTime.parse("01/01/1901") : DateTime.parse(params[:start_at])
    @end_at = params[:end_at].blank? ? DateTime.parse("01/01/2901") : DateTime.parse(params[:end_at])
    @status = params[:status]
+   @type = params[:type]
    if @status.blank?
-     @payments_documents = PaymentsDocument.where("domain = ? AND name like ? AND date > ? AND date < ? ", current_user.domain,"%#{params[:name]}%","#{@start_at}","#{@end_at}").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
-   else      
-     @payments_documents = PaymentsDocument.where("domain = ? AND name like ? AND date > ? AND date < ? AND status = ? ", current_user.domain,"%#{params[:name]}%","#{@start_at}","#{@end_at}","#{@status}").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+     if @type.blank?
+       @payments_documents = PaymentsDocument.where("domain = ? AND name like ? AND date >= ? AND date <= ? ", current_user.domain,"%#{params[:name]}%","#{@start_at}","#{@end_at}").paginate(:page => params[:page], :per_page => 10, :order => 'date DESC')
+     else
+       @payments_documents = PaymentsDocument.where("domain = ? AND name like ? AND date >= ? AND date <= ? AND type = ?", current_user.domain,"%#{params[:name]}%","#{@start_at}","#{@end_at}","#{@type}").paginate(:page => params[:page], :per_page => 10, :order => 'date DESC')
+     end     
+   else
+     if @type.blank?
+       @payments_documents = PaymentsDocument.where("domain = ? AND name like ? AND date >= ? AND date <= ? AND status = ? ", current_user.domain,"%#{params[:name]}%","#{@start_at}","#{@end_at}","#{@status}").paginate(:page => params[:page], :per_page => 10, :order => 'date DESC')
+     else
+       @payments_documents = PaymentsDocument.where("domain = ? AND name like ? AND date >= ? AND date <= ? AND status = ? AND type = ?", current_user.domain,"%#{params[:name]}%","#{@start_at}","#{@end_at}","#{@status}","#{@type}").paginate(:page => params[:page], :per_page => 10, :order => 'date DESC')
+     end     
    end
     render :index
   end
