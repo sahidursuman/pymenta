@@ -18,11 +18,11 @@
 	<div class="form-search">
         <div class="text-center">
 		<%= form_tag({:controller => "documents", :action => "search"}, :method => "post") do %>
-              <%= select_tag('type', options_for_select(current_user.company.document_types.collect{|x| [x.description,x.description]}), :include_blank => true) %>
+              <%= select_tag('type', options_for_select(current_user.company.document_types.collect{|x| [x.description,x.description]}), params[:type]),  class: 'input-medium') %>
               <%= text_field_tag :name, params[:name], :placeholder => (t '.name', :default =>  t("helpers.labels.name")) %>
               <%= text_field_tag :start_at, params[:start_at], :class => "input-small", :placeholder => (t '.start_at', :default =>  t("helpers.labels.start_at")) %>  
               <%= text_field_tag :end_at, params[:end_at], :class => "input-small", :placeholder => (t '.end_at', :default =>  t("helpers.labels.end_at")) %>  		  		
-              <%= select_tag 'status', options_for_select([['' , '' ],[t("helpers.labels.NOT_PAID"),'NOT_PAID'], [t("helpers.labels.PARTIAL_PAID"),'PARTIAL_PAID'], [t("helpers.labels.PAID"),'PAID']], params[:status] ) %>
+              <%= select_tag 'status', options_for_select([['' , '' ],[t("helpers.labels.NOT_PAID"),'NOT_PAID'], [t("helpers.labels.PARTIAL_PAID"),'PARTIAL_PAID'], [t("helpers.labels.PAID"),'PAID']], params[:status],  class: 'input-medium' ) %>
               <%= submit_tag((t '.search', :default =>  t("helpers.labels.search")), :class => 'btn btn-danger') %>
             <% end %>
         </div>
