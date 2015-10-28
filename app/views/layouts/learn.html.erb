@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Pymenta" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Pymenta" %>">
+    <%= stylesheet_link_tag "terms_privacy", :media => "all" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>   
+	<script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
+	<script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
+	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>">
+	  <div class="navbar navbar-fixed-top">
+	    <div class="navbar-inner">
+	      <div class="container">
+				<%= link_to "PYMENTA", root_path, :class => 'navbar-brand' %>
+				<p class="text-info">beta</p>
+	      </div>
+	    </div>
+	  </div>
+	<div id="wrap">
+      <div id="main" role="main">
+        <div class="container">
+           <h3><%= t('.learn_personalize_report', :default => t("helpers.links.learn_personalize_report")) %></h3>
+        </div> <!--! end of .container -->
+      </div> <!--! end of #main -->
+	</div> <!--! end of #wrap -->
+    <footer class="footer">
+        <div class="container" style="margin:0 auto;">
+            <div class="row">
+                <div class="col-sm-6">
+                    <%= t('.copyright', :default => t("layouts.home.copyright")) %><a target="_blank" href="http://papayalabs.github.io" title="Lapapaya"><%= t('.companyname', :default => t("layouts.home.companyname")) %>
+</a>. <%= t('.allrightreserved', :default => t("layouts.home.allrightreserved")) %>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+  </body>
+</html>
+            
+          

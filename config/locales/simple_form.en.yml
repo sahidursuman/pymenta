@@ -102,6 +102,8 @@ en:
       in_quantity: "In quantity"
       out_quantity: "Out quantity"
       stock: "Stock"	
+      go_to_payments_document: "Go to Payment"
+      learn_personalize_report: "Learn more abont the personalize reports..."
     submit:
       provider:
         create: "Create Provider"

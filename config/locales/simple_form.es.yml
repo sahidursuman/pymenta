@@ -102,6 +102,8 @@
       beta: "Esta es una version beta. Solo los correos que esten en la lista de invitados pueden registrarse."
       print: "Imprimir"
       personalize_print: "Imprimir Personalizado"
+      go_to_payments_document: "Ir al Pago"
+      learn_personalize_report: "Aprende más sobre los reportes personalizados..."
     submit:
       provider:
         create: "Crear Proveedor"

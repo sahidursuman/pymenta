@@ -142,10 +142,10 @@
 		          document_report_documents_path(@document),
 		          :class => 'btn btn-large btn-primary' %>
          <% if has_personalize_report @document %> 
-	    <%= link_to t('.print', :default => t("helpers.links.personalize_print")),
+	     <%= link_to t('.print', :default => t("helpers.links.personalize_print")),
 		          personalize_report_documents_path(@document),
 		          :class => 'btn btn-large btn-primary' %>
          <% end %>
-		
+         <%= link_to t('.learn_personalize_report', :default => t("helpers.links.learn_personalize_report")), learn_personalize_report_path, :class => 'decorated_link'  %>
 </div>
 
