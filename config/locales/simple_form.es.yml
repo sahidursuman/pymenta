@@ -101,6 +101,7 @@
       create_payments_document: "Crear Pago"
       beta: "Esta es una version beta. Solo los correos que esten en la lista de invitados pueden registrarse."
       print: "Imprimir"
+      personalize_print: "Imprimir Personalizado"
     submit:
       provider:
         create: "Crear Proveedor"

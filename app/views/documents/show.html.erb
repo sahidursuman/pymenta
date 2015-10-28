@@ -128,14 +128,6 @@
   </div>
 </div>
 <div class="form-actions">
-	  <%= link_to t('.print', :default => t("helpers.links.print")),
-		          document_report_documents_path(@document),
-		          :class => 'btn btn-large btn-primary' %>
-         <% if has_personalize_report @document %> 
-	    <%= link_to "PERSONALIZADO",
-		          personalize_report_documents_path(@document),
-		          :class => 'btn btn-large btn-primary' %>
-         <% end %>
 	   <% if @document.payments_document == nil %>
 		    <%= link_to t('.create_payments_document', :default => t("helpers.links.create_payments_document")),
 		          create_payments_document_account_path(:autocomplete_client => @document.account.id, :document_type_id => @document.document_type_id),
@@ -145,6 +137,15 @@
 		          payments_document_path(:id => @document.payments_document.id),
 		          :class => 'btn btn-large btn' %>
 
-	   <% end %>		
+	   <% end %>
+	   <%= link_to t('.print', :default => t("helpers.links.print")),
+		          document_report_documents_path(@document),
+		          :class => 'btn btn-large btn-primary' %>
+         <% if has_personalize_report @document %> 
+	    <%= link_to t('.print', :default => t("helpers.links.personalize_print")),
+		          personalize_report_documents_path(@document),
+		          :class => 'btn btn-large btn-primary' %>
+         <% end %>
+		
 </div>
 
