@@ -46,9 +46,9 @@ Pymenta::Application.routes.draw do
     resources :guest
 
     authenticated :user do
-      root :to => 'application#index'
+      root :to => 'home#index'
     end
-    root :to => "application#index"
+    root :to => "home#index"
     devise_for :users, :controllers => { :registrations => "registrations"}
     devise_for :users 
     resources :users
