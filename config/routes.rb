@@ -82,7 +82,8 @@ Pymenta::Application.routes.draw do
     match '/:locale/companies/subscribe_alert' => 'companies#subscribe_alert', :as => :subscribe_alert 
 #    match '/:locale/companies/became_free' => 'companies#became_free', :as => :became_free 
     match '/:locale/privacy' => 'privacy#index', :as => :privacy
-    match '/:locale/terms' => 'terms#index', :as => :terms
+    match '/:locale/terms' => 'terms#index', :as => :terms 
+    match '/:locale/learn' => 'learn#index', :as => :learn_personalize_report
     match '/:locale/guest/guest_list' => 'guest#guest_list', :as => :guest_list
     match '/upload_logo' => 'companies#upload_logo', :as => :upload_logo
     match '/delete_logo' => 'companies#delete_logo', :as => :delete_logo
