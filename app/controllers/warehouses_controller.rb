@@ -79,7 +79,7 @@ class WarehousesController < ApplicationController
     respond_to do |format|
       if @warehouse.update_attributes(params[:warehouse])
         format.html { redirect_to @warehouse, notice: 'Warehouse was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @warehouse }
       else
         format.html { render action: "edit" }
         format.json { render json: @warehouse.errors, status: :unprocessable_entity }

@@ -1,149 +1,34 @@
-<%- model_class = DocumentType -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%=t '.description', :default =>  t("helpers.labels.description") %></th>
-      <th><%=t '.account_type', :default =>  t("helpers.labels.account_type") %></th>
-      <th><%=t '.stock_type', :default =>  t("helpers.labels.stock_type") %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% current_user.company.document_types.each do |document_type| %>
-      <tr>
-        <td><%= link_to document_type.description, document_type_path(document_type) %></td>
-        <td><%= document_type.account_type %></td>
-        <td><%= document_type.stock_type %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_document_type_path(document_type), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      document_type_path(document_type),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= react_component 'DocumentTypes',
+                    {
+                        data: current_user.company.document_types,
+                        page_header: t('.title', :default => DocumentType.model_name.human.pluralize.titleize),
+                        form_data: {
+                            account_types: DocumentType::ACCOUNT_TYPES,
+                            stock_types: DocumentType::STOCK_TYPES,
+                            select_prompt: t('.select', :default => t("helpers.links.select")),
+                        }
+                    } %>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_document_type_path,
-            :class => 'btn btn-primary' %>
+<%= react_component 'Warehouses',
+                    {
+                        data: Account.where("domain = ? AND type = ?", current_user.domain, "Warehouse"),
+                        page_header: t('.title', :default => Warehouse.model_name.human.pluralize.titleize),
+                        form_data: {
+                        }
+                    } %>
 
-<%- model_class = Warehouse -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%=t '.code', :default =>  t("helpers.labels.code") %></th>
-      <th><%=t '.name', :default =>  t("helpers.labels.name") %></th>
-	<th><%=t '.city', :default =>  t("helpers.labels.city") %></th>
+<%= react_component 'Categories',
+                    {
+                        data: current_user.company.categories,
+                        page_header: t('.title', :default => Category.model_name.human.pluralize.titleize),
+                        form_data: {
+                        }
+                    } %>
 
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-   <tbody>
-    <% Account.where("domain = ? AND type = ?",current_user.domain,"Warehouse").each do |warehouse| %>
-      <tr>
-        <td><%= link_to warehouse.code, warehouse_path(warehouse) %></td>
-        <td><%= warehouse.name %></td>
-        <td><%= warehouse.city %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_warehouse_path(warehouse), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      warehouse_path(warehouse),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_warehouse_path,
-            :class => 'btn btn-primary' %>
-
-<%- model_class = Category -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%=t '.code', :default =>  t("helpers.labels.code") %></th>
-      <th><%=t '.description', :default =>  t("helpers.labels.description") %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% current_user.company.categories.each do |category| %>
-      <tr>
-        <td><%= link_to category.code, category_path(category) %></td>
-        <td><%= category.description %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_category_path(category), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      category_path(category),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_category_path,
-            :class => 'btn btn-primary' %>
-
-
-<%- model_class = Brand -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%=t '.code', :default =>  t("helpers.labels.code") %></th>
-      <th><%=t '.description', :default =>  t("helpers.labels.description") %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% current_user.company.brands.each do |brand| %>
-      <tr>
-        <td><%= link_to brand.code, brand_path(brand) %></td>
-        <td><%= brand.description %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_brand_path(brand), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      brand_path(brand),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_brand_path,
-            :class => 'btn btn-primary' %>
-
-
-
-
+<%= react_component 'Brands',
+                    {
+                        data: current_user.company.brands,
+                        page_header: t('.title', :default => Brand.model_name.human.pluralize.titleize),
+                        form_data: {
+                        }
+                    } %>

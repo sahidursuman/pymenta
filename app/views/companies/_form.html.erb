@@ -1,4 +1,4 @@
-<%= simple_form_for @company, :html => { :multipart => true , :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @company, :html => { :multipart => true , :class => 'form-horizontal' }, :remote => true do |f| %>
   <%= f.input :name %>
   <%= f.input :id_number1 %>
   <%= f.input :address , input_html: { style: "width:50%;" } %>
@@ -11,10 +11,7 @@
   <%= f.input :email %>
   <%= f.input :web %>
   <%= f.input :contact %>
-  <%= f.file_field :logo %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                companies_path, :class => 'btn' %>
   </div>
 <% end %>

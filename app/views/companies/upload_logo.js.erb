@@ -1,0 +1,6 @@
+<% if @logo_uploaded %>
+  $('#company-logo').html("<%= j (render 'companies/logo') %>");
+<% else %>
+  $('#image').append('<div class="error">Error on uploading logo</div>');
+<% end %>
+

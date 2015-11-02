@@ -1,0 +1,56 @@
+<dl class="dl-horizontal">
+  <dt><strong><%= t '.code', :default => t("helpers.labels.code") %></strong></dt>
+  <dd><%= @company.id %></dd>
+</dl>
+<dl class="dl-horizontal">
+  <dt><strong><%= t '.name', :default => t("helpers.labels.name") %></strong></dt>
+  <dd><%= @company.name %></dd>
+</dl>
+<dl class="dl-horizontal">
+  <dt><strong><%= t '.id_number1', :default => t("helpers.labels.id_number1") %></strong></dt>
+  <dd><%= @company.id_number1 %></dd>
+</dl>
+<dl class="dl-horizontal">
+  <dt><strong><%= t '.address', :default => t("helpers.labels.address") %></strong></dt>
+  <dd><%= @company.address %></dd>
+</dl>
+<dl class="dl-horizontal">
+  <dt><strong><%= t '.city', :default => t("helpers.labels.city") %></strong></dt>
+  <dd><%= @company.city %></dd>
+</dl>
+<dl class="dl-horizontal">
+  <dt><strong><%= t '.state', :default => t("helpers.labels.state") %></strong></dt>
+  <dd><%= @company.state %></dd>
+</dl>
+<dl class="dl-horizontal">
+  <dt><strong><%= t '.country', :default => t("helpers.labels.country") %></strong></dt>
+  <dd><%= @company.country %></dd>
+</dl>
+<dl class="dl-horizontal">
+  <dt><strong><%= t '.zip_code', :default => t("helpers.labels.zip_code") %></strong></dt>
+  <dd><%= @company.zip_code %></dd>
+</dl>
+<dl class="dl-horizontal">
+  <dt><strong><%= t '.telephone', :default => t("helpers.labels.telephone") %></strong></dt>
+  <dd><%= @company.telephone %></dd>
+</dl>
+<dl class="dl-horizontal">
+  <dt><strong><%= t '.fax', :default => t("helpers.labels.fax") %></strong></dt>
+  <dd><%= @company.fax %></dd>
+</dl>
+<dl class="dl-horizontal">
+  <dt><strong><%= t '.email', :default => t("helpers.labels.email") %></strong></dt>
+  <dd><%= @company.email %></dd>
+</dl>
+<dl class="dl-horizontal">
+  <dt><strong><%= t '.web', :default => t("helpers.labels.web") %></strong></dt>
+  <dd><%= @company.web %></dd>
+</dl>
+<dl class="dl-horizontal">
+  <dt><strong><%= t '.contact', :default => t("helpers.labels.contact") %></strong></dt>
+  <dd><%= @company.contact %></dd>
+</dl>
+<div class="form-actions">
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_company_path(@company), :class => 'btn switcher', remote: true %>
+</div>

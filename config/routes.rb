@@ -46,14 +46,13 @@ Pymenta::Application.routes.draw do
     resources :guest
 
     authenticated :user do
-      root :to => 'home#index'
+      root :to => 'application#index'
     end
-    root :to => "home#index"
+    root :to => "application#index"
     devise_for :users, :controllers => { :registrations => "registrations"}
     devise_for :users 
     resources :users
     match '/:locale/products/search' => 'products#search', :as => :product_search
-    match '/:locale/stocks/search' => 'stocks#search', :as => :stock_search
     match '/:locale/clients/search' => 'clients#search', :as => :client_search
     match '/:locale/providers/search' => 'providers#search', :as => :provider_search
     match '/:locale/documents/search' => 'documents#search', :as => :documents_search
@@ -84,9 +83,10 @@ Pymenta::Application.routes.draw do
 #    match '/:locale/companies/became_free' => 'companies#became_free', :as => :became_free 
     match '/:locale/privacy' => 'privacy#index', :as => :privacy
     match '/:locale/terms' => 'terms#index', :as => :terms
-    match '/:locale/learn' => 'learn#index', :as => :learn_personalize_report
     match '/:locale/guest/guest_list' => 'guest#guest_list', :as => :guest_list
-  end  
+    match '/upload_logo' => 'companies#upload_logo', :as => :upload_logo
+    match '/delete_logo' => 'companies#delete_logo', :as => :delete_logo
+  end
 
 end
 

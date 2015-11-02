@@ -67,7 +67,7 @@ class BrandsController < ApplicationController
     respond_to do |format|
       if @brand.update_attributes(params[:brand])
         format.html { redirect_to @brand, notice: 'Brand was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @brand }
       else
         format.html { render action: "edit" }
         format.json { render json: @brand.errors, status: :unprocessable_entity }

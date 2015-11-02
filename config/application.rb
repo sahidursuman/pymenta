@@ -95,5 +95,6 @@ module Pymenta
 
     # add app/assets/fonts to the asset path
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.react.addons = true
   end
 end

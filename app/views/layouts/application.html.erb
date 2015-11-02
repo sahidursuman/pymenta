@@ -40,7 +40,9 @@
 
     <div id="main" role="main">
       <div class="container">
-        <%= image_tag current_user.company.logo.url(:square) %>
+        <div id="company-logo">
+          <%= render 'companies/logo' %>
+        </div>
         <div class="content">
            <div class="row">
             <div class="span12">

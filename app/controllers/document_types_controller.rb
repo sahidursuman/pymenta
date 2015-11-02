@@ -66,7 +66,7 @@ class DocumentTypesController < ApplicationController
     respond_to do |format|
       if @document_type.update_attributes(params[:document_type])
         format.html { redirect_to @document_type, notice: 'Document type was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @document_type }
       else
         format.html { render action: "edit" }
         format.json { render json: @document_type.errors, status: :unprocessable_entity }
