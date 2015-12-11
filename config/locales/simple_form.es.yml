@@ -76,6 +76,11 @@
       in_quantity: "Cantidad de Entrada"
       out_quantity: "Cantidad de Salida"
       stock: "Inventario"
+      service_payments: "Pagos del Servicio"
+      payment_id: "ID del Pago"
+      approved: "Aprobado"
+      cancelled: "Cancelado"
+      method: "Método de Pago"      
     links:
       cancel: "Cancelar"
       select: "Seleccion de la lista.."	

@@ -72,6 +72,11 @@ en:
       NOT_PAID: "NOT PAID"
       PARTIAL_PAID: "PARTIAL PAID"
       PAID: "PAID"
+      service_payments: "Service Payments"
+      payment_id: "Payment ID"
+      approved: "Approved"
+      cancelled: "Cancelled"
+      method: "Payment Method"      
     links:
       cancel: "Cancel"
       select: "Select from the list.."	

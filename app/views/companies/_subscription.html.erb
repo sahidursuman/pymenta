@@ -1,8 +1,3 @@
-<%- 
-require 'mercadopago.rb'
-  mp = MercadoPago.new(ENV['MERCADO_PAGO_CLIENT_ID'] , ENV['MERCADO_PAGO_CLIENT_SECRET'])
--%>
-
 <%= render 'shared/error_messages', :object => @company %>
 <dl class="dl-horizontal">
   <dt><strong><%= @company.counter %> de <%= @company.limit %></strong></dt>
@@ -20,23 +15,21 @@ require 'mercadopago.rb'
 </dl>
     <dl class="dl-horizontal">
       <dt><strong><%=t '.plan', :default =>  t("helpers.labels.plan") %></strong></dt>
-      <% if @company.plan == nil || @company.plan == "GRATIS" %>
-          <dd><td><span class="label label-important">GRATIS</span> </td></dd>
-        </dl>
-        <% if mp != nil %>
-          <dl class="dl-horizontal">
-            <dt><a href="<%= mp.create_preference({"items" => ["title"=>t("helpers.links.subscribe_month"), "quantity"=>1, "unit_price"=>4400, "currency_id"=>"VEN"]})['response']['init_point'].to_s %>" name="MP-Checkout" class="blue-rn-m" onreturn="execute_month_onreturn"><%= t '.subscribe_month', :default => t("helpers.links.subscribe_month") %></a></dt>
-             <dd><%= number_to_currency(4400, unit: @company.unit, separator: @company.separator , delimiter: @company.delimiter, format: "%u %n") %></dd> 
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><a href="<%= mp.create_preference({"items" => ["title"=>t("helpers.links.subscribe_year"), "quantity"=>1, "unit_price"=>44000, "currency_id"=>"VEN"]})['response']['init_point'].to_s %>" name="MP-Checkout" class="red-rn-m" onreturn="execute_year_onreturn"><%= t '.subscribe_year', :default => t("helpers.links.subscribe_year") %></a></dt>
-            <dd><%= number_to_currency(44000, unit: @company.unit, separator: @company.separator , delimiter: @company.delimiter, format: "%u %n") %></dd> 
-          </dl>
-        <% end %>
-      <% elsif @company.plan != nil && @company.plan == "PAGO" %>
-          <dd><td><span class="label label-success"> <%= @company.plan %> </span></td></dd>
-        </dl>
-      <% end %>
+	  <% if @company.plan == nil || @company.plan == "GRATIS" %>
+	      <dd><td><span class="label label-important">GRATIS</span> </td></dd>
+	    </dl>
+	    <dl class="dl-horizontal">
+	        <dt><%= link_to t('.subscribe_month', :default => t("helpers.links.subscribe_month")), subscribe_month_path, :class => 'btn btn-primary' %></dt>
+	         <dd><%= number_to_currency(22, unit: '$', separator: @company.separator , delimiter: @company.delimiter, format: "%u %n") %></dd> 
+	      </dl>
+	      <dl class="dl-horizontal">
+	        <dt><%= link_to t('.subscribe_year', :default => t("helpers.links.subscribe_year")), subscribe_year_path, :class => 'btn btn-danger' %></dt>
+	        <dd><%= number_to_currency(220, unit: '$', separator: @company.separator , delimiter: @company.delimiter, format: "%u %n") %></dd> 
+	      </dl>
+	  <% elsif @company.plan != nil && @company.plan == "PAGO" %>
+	      <dd><td><span class="label label-success"> <%= @company.plan %> </span></td></dd>
+	    </dl>
+	  <% end %>
 
   <dl class="dl-horizontal">
     <%= link_to t('.edit_formats', :default => t("helpers.links.edit_formats")),

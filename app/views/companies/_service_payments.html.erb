@@ -1,0 +1,31 @@
+<%- model_class = ServicePayment -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => t("helpers.labels.service_payments") %></h1>
+</div>
+<div class="modal fade" id="user-modal"></div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+	  <th><%= t '.code', :default => t("helpers.labels.code") %></th>  
+      <th><%= t '.payment_id', :default => t("helpers.labels.payment_id") %></th>
+      <th><%= t '.date', :default => t("helpers.labels.date") %></th>
+      <th><%= t '.method', :default => t("helpers.labels.method") %></th>
+      <th><%= t '.description', :default => t("helpers.labels.description") %></th>
+      <th><%= t '.amount', :default => t("helpers.labels.amount") %></th>
+      <th><%= t '.state', :default => t("helpers.labels.state") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_user.company.service_payments.each do |service_payment| %>
+      <tr>
+        <td><%= service_payment.id %></td>
+        <td><%= service_payment.payment_id %></td>
+        <td><%= service_payment.created_at.strftime(@company.date_format) %></td>
+        <td><%= service_payment.method %></td>
+        <td><%= service_payment.description %></td>
+        <td><%= number_to_currency(service_payment.amount, unit: '$', separator: @company.separator  , delimiter: @company.delimiter, format: "%u %n") %></td>
+        <%= display_state service_payment.state %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

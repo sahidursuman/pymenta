@@ -104,47 +104,6 @@ class CompaniesController < ApplicationController
     end
   end
   
-  def subscribe_month
-    @company = Company.find(current_user.company.id)
-    @company.plan = "PAGO"
-    @company.initial_cycle = Time.new
-    @company.final_cycle = Time.now.months_since(1)
-    @company.counter = 0
-    @company.limit = 1000000
-
-    respond_to do |format|
-      if @company.save
-  	    format.js {} 
-      else
-  	    format.js { @company.errors[:base] << "Error al actualizar plan"} 
-      end
-    end  
-  end
-  
-  def subscribe_year
-    @company = Company.find(current_user.company.id)
-    @company.plan = "PAGO"
-    @company.initial_cycle = Time.new
-    @company.final_cycle = Time.now.years_since(1)
-    @company.counter = 0
-    @company.limit = 1000000
-
-    respond_to do |format|
-       if @company.save
-         format.js { } 
-       else
-         format.js { @company.errors[:base] << "Error al actualizar plan"} 
-       end
-     end
-  end
-
-   def subscribe_alert
-      @company = Company.find(current_user.company.id)
-
-      respond_to do |format|
-     	  format.js { @company.errors[:base] << params[:msg] }  
-      end
-   end
 
   def upload_logo
     @company = current_user.company

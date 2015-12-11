@@ -36,6 +36,15 @@ module ApplicationHelper
       end
       html.html_safe
     end  
+    
+    def display_state state
+      if state == "cancelled"
+           html = "<td><span class='label label-important'>" + t('helpers.labels.cancelled') + "</span></td>"
+      elsif state == "approved"
+           html = "<td><span class='label label-success'>" + t('helpers.labels.approved') + "</span></td>"
+      end
+      html.html_safe
+     end
 
    def has_personalize_report(document)
      begin
