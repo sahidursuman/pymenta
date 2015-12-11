@@ -13,5 +13,5 @@ test:
   <<: *default
 production:
   mode: live
-  client_id: PAYPAL_CLIENT_ID
-  client_secret: PAYPAL_CLIENT_SECRET
+  client_id: ATxxEBlZKvBPJEVwAeZSkdNASEgKSfkJx_xSfgYeM3WY2J0n5d5r4QsXzLtlOt1RxE5k1upm-OiJukGU
+  client_secret: EERC4Qthr6JqP88e90yev4e511EDlieZ5vOIO7ph1vvvqtspcfUmb2udxAJM9mPkfuXtO_e6acOOb583
