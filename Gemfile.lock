@@ -334,7 +334,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   figaro
-  jquery-rails (< 3.0.0)
+  jquery-rails (~> 2.3.0)
   jquery-ui-rails
   launchy
   mercadopago-sdk

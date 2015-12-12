@@ -8,7 +8,7 @@ end
 gem 'mercadopago-sdk'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'sass', '~> 3.2.5'
-gem 'jquery-rails', "< 3.0.0"
+gem 'jquery-rails', '~> 2.3.0'
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'bootstrap-select-rails'
