@@ -22,7 +22,7 @@ ActiveAdmin.register Company do
     column :id_number1
     column :city
     column :state
-  #  column :country
+    column :country
     column :plan                     
           
     actions                   
