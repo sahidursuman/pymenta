@@ -1,6 +1,6 @@
 Pymenta::Application.routes.draw do
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
+ # devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :service_payments do
     get :execute
