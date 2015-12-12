@@ -16,6 +16,71 @@
 	<script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
 	<script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
 	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+	<script src="http://vjs.zencdn.net/4.12/video.js"></script>
+	<script>
+		(function(vjs) {
+		  var
+		    /**
+		     * Copies properties from one or more objects onto an original.
+		     */
+		    extend = function(obj /*, arg1, arg2, ... */) {
+		      var arg, i, k;
+		      for (i = 1; i < arguments.length; i++) {
+		        arg = arguments[i];
+		        for (k in arg) {
+		          if (arg.hasOwnProperty(k)) {
+		            obj[k] = arg[k];
+		          }
+		        }
+		      }
+		      return obj;
+		    },
+		    // define some reasonable defaults for this sweet plugin
+		    defaults = {
+		      autoDisable: false
+		    },
+		    // plugin initializer
+		    disableProgress = function(options) {
+		      var
+		        // save a reference to the player instance
+		        player = this,
+		        state = false,
+		        // merge options and defaults
+		        settings = extend({}, defaults, options || {});
+		      // disable / enable methods
+		      player.disableProgress = {
+		        disable: function() {
+		            state = true;
+		            player.controlBar.progressControl.seekBar.hide();
+		        },
+		        enable: function() {
+		            state = false;
+		        },
+		        getState: function(){
+		          return state;
+		        }
+		      };
+		      if(settings.autoDisable)
+		      {
+		        player.disableProgress.disable();
+		      }
+		    };
+		  // register the plugin with video.js
+		  vjs.plugin('disableProgress', disableProgress);
+		}(window.videojs));
+		var
+		  // save a reference to the video element
+		  video = document.querySelector('video'),
+		  // save a reference to the video.js player for that element
+		  player = videojs(video);
+		  // Here is where you initialize the plugin, passing in autoDisable
+		  // autoDisable: true ==> The ProgressBar is hide
+		  // autoDisable: false ==> The ProgressBar work normally
+		  player.disableProgress({
+		    autoDisable: true
+		  });
+	</script>	
     <!-- Core JavaScript Files -->
 
     <!-- Fonts -->
@@ -48,6 +113,12 @@
                     </li>
                     <li class="page-scroll">          
                         <a href="#about"><%=t '.ourproduct' %></a>
+                    </li>
+                   <li class="page-scroll">          
+                        <a href="#tour"><%=t '.tour' %></a>
+                    </li>
+                   <li class="page-scroll">          
+                        <a href="#pricing"><%=t '.prices' %></a>
                     </li>
                     <li class="page-scroll">
                         <a href="#contact"><%=t '.contact' %></a>
@@ -100,6 +171,68 @@
         </div>
     </section>
 
+
+		<section id="tour" class="content-section text-center">	
+		  <div class="tour-section">	
+		  <div class="wet-asphalt-video">
+	        <div class="container">
+				<div class="row mt centered">
+					<div class="col-lg-6 col-lg-offset-3">
+	                    <h1><%= t('.tour', :default => t("layouts.home.tour")) %></h1>
+					</div>
+					</br>
+					</br>
+				    </br>
+				    </br>
+					<video id="really-cool-video" class="video-js vjs-default-skin" controls preload="auto" width="1164" height="528" data-setup='{}'>
+					  <source src="assets/Tour.mp4" type='video/mp4'/>	
+
+					  <p class="vjs-no-js">
+					    To view this video please enable JavaScript, and consider upgrading to a web browser
+					    that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+					  </p>
+					</video>
+				</div>
+	        </div>
+	      </div>
+	      </div>	
+		</section>
+		
+		<section id="pricing" class="content-section text-center">
+		  <div class="container">
+			<div class="row">
+				<div class="col-lg-10 col-lg-offset-1">
+					<h1><%= t('.prices', :default => t("layouts.home.prices")) %></h1>
+					</br>
+					</br>
+	                <div id="pricing-table" class="row">
+	                    <div class="col-sm-6">
+	                        <ul class="plan">
+	                            <li class="plan-name"><%= t('.free', :default => t("layouts.home.free")) %></li>
+	                            <li class="plan-price"><%= t('.free', :default => t("layouts.home.free")) %></li>
+	                            <li><%= t('.unlimited-invoices', :default => t("layouts.home.unlimited-invoices")) %></li>
+	                            <li><%= t('.unlimited-providers', :default => t("layouts.home.unlimited-providers")) %></li>
+	                            <li><%= t('.free-retentions', :default => t("layouts.home.free-retentions")) %></li>
+	                            <li class="plan-action"><%= link_to t("helpers.links.sign_up"), new_user_registration_path , :class=>"btn btn-primary btn-lg" %></li>
+	                        </ul>
+	                    </div>
+	                    <div class="col-sm-6">
+	                        <ul class="plan">
+	                            <li class="plan-name"><%= t('.paid', :default => t("layouts.home.paid")) %></li>
+	                            <li class="plan-price"><%= t('.month-price', :default => t("layouts.home.month-price")) %></li>
+	                            <li class="plan-price-year"><%= t('.year-price', :default => t("layouts.home.year-price")) %></li>
+	                            <li><%= t('.unlimited-invoices', :default => t("layouts.home.unlimited-invoices")) %></li>
+	                            <li><%= t('.unlimited-providers', :default => t("layouts.home.unlimited-providers")) %></li>
+	                            <li><%= t('.unlimited-retentions', :default => t("layouts.home.unlimited-retentions")) %></li>
+	                            <li class="plan-action"><%= link_to t("helpers.links.sign_up"), new_user_registration_path , :class=>"btn btn-primary btn-lg" %></li>
+	                        </ul>
+	                    </div>
+	                </div> 
+	            </div>
+			</div>
+		  </div>
+		</section><!--/#pricing-->
+		
     <section id="contact" class="content-section text-center">
         <div class="download-section">
             <div class="container">
