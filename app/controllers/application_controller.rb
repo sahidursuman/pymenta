@@ -28,11 +28,15 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
   end
 
-  def after_sign_in_path_for(resource)
-    if Time.now > current_user.company.final_cycle
-      finish_plan_cycle()
-    end 
-    documents_path() #your path
+  def after_sign_in_path_for(resource_or_scope)
+    if current_user != nil
+      if Time.now > current_user.company.final_cycle
+        finish_plan_cycle()
+      end 
+      documents_path() #your path
+    else
+      super
+    end  
   end
 
 
