@@ -34,7 +34,7 @@ gem 'bootswatch-rails'
 gem 'uuidtools'
 gem "will_paginate", '~> 3.0'
 gem 'country_select'
-#gem 'activeadmin', github: "gregbell/active_admin"
+gem 'activeadmin', github: "gregbell/active_admin"
 # PayPal
 gem 'paypal-sdk-core', '~> 0.3.2'
 gem 'paypal-sdk-rest', '~> 1.3.3'
