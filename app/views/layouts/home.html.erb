@@ -18,69 +18,7 @@
 	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
 	<script src="http://vjs.zencdn.net/4.12/video.js"></script>
-	<script>
-		(function(vjs) {
-		  var
-		    /**
-		     * Copies properties from one or more objects onto an original.
-		     */
-		    extend = function(obj /*, arg1, arg2, ... */) {
-		      var arg, i, k;
-		      for (i = 1; i < arguments.length; i++) {
-		        arg = arguments[i];
-		        for (k in arg) {
-		          if (arg.hasOwnProperty(k)) {
-		            obj[k] = arg[k];
-		          }
-		        }
-		      }
-		      return obj;
-		    },
-		    // define some reasonable defaults for this sweet plugin
-		    defaults = {
-		      autoDisable: false
-		    },
-		    // plugin initializer
-		    disableProgress = function(options) {
-		      var
-		        // save a reference to the player instance
-		        player = this,
-		        state = false,
-		        // merge options and defaults
-		        settings = extend({}, defaults, options || {});
-		      // disable / enable methods
-		      player.disableProgress = {
-		        disable: function() {
-		            state = true;
-		            player.controlBar.progressControl.seekBar.hide();
-		        },
-		        enable: function() {
-		            state = false;
-		        },
-		        getState: function(){
-		          return state;
-		        }
-		      };
-		      if(settings.autoDisable)
-		      {
-		        player.disableProgress.disable();
-		      }
-		    };
-		  // register the plugin with video.js
-		  vjs.plugin('disableProgress', disableProgress);
-		}(window.videojs));
-		var
-		  // save a reference to the video element
-		  video = document.querySelector('video'),
-		  // save a reference to the video.js player for that element
-		  player = videojs(video);
-		  // Here is where you initialize the plugin, passing in autoDisable
-		  // autoDisable: true ==> The ProgressBar is hide
-		  // autoDisable: false ==> The ProgressBar work normally
-		  player.disableProgress({
-		    autoDisable: true
-		  });
-	</script>	
+
     <!-- Core JavaScript Files -->
 
     <!-- Fonts -->
@@ -280,6 +218,69 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script>
+		(function(vjs) {
+		  var
+		    /**
+		     * Copies properties from one or more objects onto an original.
+		     */
+		    extend = function(obj /*, arg1, arg2, ... */) {
+		      var arg, i, k;
+		      for (i = 1; i < arguments.length; i++) {
+		        arg = arguments[i];
+		        for (k in arg) {
+		          if (arg.hasOwnProperty(k)) {
+		            obj[k] = arg[k];
+		          }
+		        }
+		      }
+		      return obj;
+		    },
+		    // define some reasonable defaults for this sweet plugin
+		    defaults = {
+		      autoDisable: false
+		    },
+		    // plugin initializer
+		    disableProgress = function(options) {
+		      var
+		        // save a reference to the player instance
+		        player = this,
+		        state = false,
+		        // merge options and defaults
+		        settings = extend({}, defaults, options || {});
+		      // disable / enable methods
+		      player.disableProgress = {
+		        disable: function() {
+		            state = true;
+		            player.controlBar.progressControl.seekBar.hide();
+		        },
+		        enable: function() {
+		            state = false;
+		        },
+		        getState: function(){
+		          return state;
+		        }
+		      };
+		      if(settings.autoDisable)
+		      {
+		        player.disableProgress.disable();
+		      }
+		    };
+		  // register the plugin with video.js
+		  vjs.plugin('disableProgress', disableProgress);
+		}(window.videojs));
+		var
+		  // save a reference to the video element
+		  video = document.querySelector('video'),
+		  // save a reference to the video.js player for that element
+		  player = videojs(video);
+		  // Here is where you initialize the plugin, passing in autoDisable
+		  // autoDisable: true ==> The ProgressBar is hide
+		  // autoDisable: false ==> The ProgressBar work normally
+		  player.disableProgress({
+		    autoDisable: true
+		  });
+	</script>
      <%= javascript_include_tag 'application' %>
 </body>
 
