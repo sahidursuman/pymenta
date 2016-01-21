@@ -18,7 +18,7 @@ class RegistrationsController < Devise::RegistrationsController
     @company.date_format = "%d/%m/%Y"
     @user = User.new(params[:user])
     User.transaction do
-     if Guest.exists?(:email => params[:user][:email]) # Guest list stage
+#     if Guest.exists?(:email => params[:user][:email]) # Guest list stage
        if @company.save
          @user.domain = @company.id
          if @user.save
@@ -35,10 +35,10 @@ class RegistrationsController < Devise::RegistrationsController
          @user.errors[:base] << @company.errors.full_messages
           render :action => :new
        end
-     else # Guest list stage
-       @user.errors[:base] << t("devise.registrations.not_in_guest_list") # Guest list stage
-       render :action => :new # Guest list stage
-     end # Guest list stage
+#     else # Guest list stage
+#       @user.errors[:base] << t("devise.registrations.not_in_guest_list") # Guest list stage
+#       render :action => :new # Guest list stage
+#     end # Guest list stage
     end #End of User.transaction
   end #End of create
   

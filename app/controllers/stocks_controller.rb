@@ -16,7 +16,7 @@ class StocksController < ApplicationController
   end
 
   def index
-    @stocks = current_user.company.stocks.paginate(:page => params[:page], :per_page => 10, :order => 'created_at ASC')
+    @stocks = current_user.company.stocks.paginate(:page => params[:page], :per_page => 10).order('created_at ASC')
 
     respond_to do |format|
       format.html # index.html.erb

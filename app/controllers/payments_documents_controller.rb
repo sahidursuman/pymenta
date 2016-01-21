@@ -24,7 +24,7 @@ class PaymentsDocumentsController < ApplicationController
   end
     
   def index
-    @payments_documents = current_user.company.payments_documents.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
+    @payments_documents = current_user.company.payments_documents.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb

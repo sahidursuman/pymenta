@@ -1,5 +1,4 @@
 <h2><%= t("helpers.links.sign_up") %></h2>
-<h5 class="beta-font"><%= t("helpers.links.beta") %></h5>
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
   <%= display_base_errors resource %>

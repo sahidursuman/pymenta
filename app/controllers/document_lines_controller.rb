@@ -2,7 +2,7 @@ class DocumentLinesController < ApplicationController
   # GET /document_lines
   # GET /document_lines.json
   def index
-    @document_lines = current_user.company.document_lines.paginate(:page => params[:page], :per_page => 10, :order => 'description ASC')
+    @document_lines = current_user.company.document_lines.paginate(:page => params[:page], :per_page => 10).order('description ASC')
 
     respond_to do |format|
       format.html # index.html.erb

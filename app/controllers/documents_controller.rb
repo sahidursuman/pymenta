@@ -26,7 +26,7 @@ class DocumentsController < ApplicationController
 
  
   def index
-    @documents = current_user.company.documents.paginate(:page => params[:page], :per_page => 10, :order => 'date DESC')
+    @documents = current_user.company.documents.paginate(:page => params[:page], :per_page => 10).order('date DESC')
 
     respond_to do |format|
       format.html # index.html.erb

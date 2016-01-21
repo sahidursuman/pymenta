@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
   end
  
   def index
-    @products = current_user.company.products.paginate(:page => params[:page], :per_page => 10, :order => 'description ASC')
+    @products = current_user.company.products.paginate(:page => params[:page], :per_page => 10).order('description ASC')
 
     respond_to do |format|
       format.html # index.html.erb

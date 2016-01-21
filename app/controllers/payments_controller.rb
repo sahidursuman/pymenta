@@ -2,7 +2,7 @@ class PaymentsController < ApplicationController
   # GET /payments
   # GET /payments.json
   def index
-    @payments = current_user.company.payments.paginate(:page => params[:page], :per_page => 10, :order => 'created_at ASC')
+    @payments = current_user.company.payments.paginate(:page => params[:page], :per_page => 10).order('created_at ASC')
 
     respond_to do |format|
       format.html # index.html.erb

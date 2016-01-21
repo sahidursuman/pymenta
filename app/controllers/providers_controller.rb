@@ -17,7 +17,7 @@ class ProvidersController < ApplicationController
   end
 
   def index
-    @providers = Account.where("domain = ? AND type = ?",current_user.domain,"Provider").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+    @providers = Account.where("domain = ? AND type = ?",current_user.domain,"Provider").paginate(:page => params[:page], :per_page => 10).order('name ASC')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @providers }

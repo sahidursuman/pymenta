@@ -3,7 +3,7 @@ class WarehousesController < ApplicationController
   # GET /warehouses.json
   before_filter :authenticate_user!
   def index
-    @warehouses = Account.where("domain = ? AND type = ?",current_user.domain,"Warehouse").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+    @warehouses = Account.where("domain = ? AND type = ?",current_user.domain,"Warehouse").paginate(:page => params[:page], :per_page => 10).order('name ASC')
 
     respond_to do |format|
       format.html # index.html.erb

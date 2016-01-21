@@ -100,11 +100,7 @@
             <div class="col-lg-8 col-lg-offset-2">
 				  <h2><%=t '.ourproduct' %></h2>      
                   <p class="lead"><%=t '.description', :default => 'Pymenta is a very simple Cloud ERP System created for small companies to create, manage and print documents. You can manage warehouses, providers, clients, products and stock. Designed to work in the Cloud.' %></p>
-				  <%= form_tag({:controller => "guest", :action => "guest_list"}, :method => "post") do %>
-                     <%= text_field_tag(:email, nil, :class => "form-control", :placeholder => t("helpers.labels.email")) %>
-                     </br>
-                     <%= submit_tag((t '.request_guest_list', :default =>  t("helpers.labels.request_guest_list")), :class=>"btn btn-danger" ) %>
-                  <% end %>
+                  <%= link_to t("helpers.links.sign_up"), new_user_registration_path , :class=>"btn btn-danger btn-lg" %>
             </div>
         </div>
     </section>
