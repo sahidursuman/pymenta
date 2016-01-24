@@ -11,7 +11,7 @@ class StocksController < ApplicationController
     else
       @query = @query + " or warehouse_id = ?"
     end
-    @stocks = Stock.joins(:product).where(@query , current_user.domain, "%#{@description}%","#{@warehouse}").paginate(:page => params[:page], :per_page => 10, :order => 'description ASC')
+    @stocks = Stock.joins(:product).where(@query , current_user.domain, "%#{@description}%","#{@warehouse}").paginate(:page => params[:page], :per_page => 10).order('description ASC')
     render :index
   end
 

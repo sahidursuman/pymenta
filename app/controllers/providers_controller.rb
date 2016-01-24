@@ -3,7 +3,7 @@ class ProvidersController < ApplicationController
   # GET /providers.json
   before_filter :authenticate_user!
   def search
-   @providers = Provider.where("domain = ? AND code like ? AND name like ? AND city like ? ", current_user.domain,"%#{params[:code]}%","%#{params[:name]}%","%#{params[:city]}%").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+   @providers = Provider.where("domain = ? AND code like ? AND name like ? AND city like ? ", current_user.domain,"%#{params[:code]}%","%#{params[:name]}%","%#{params[:city]}%").paginate(:page => params[:page], :per_page => 10).order('name ASC')
     render :index
   end
 

@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   # GET /clients.json
   before_filter :authenticate_user!
   def search
-   @clients = Client.where("domain = ? AND code like ? AND name like ? AND city like ? ", current_user.domain,"%#{params[:code]}%","%#{params[:name]}%","%#{params[:city]}%").paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
+   @clients = Client.where("domain = ? AND code like ? AND name like ? AND city like ? ", current_user.domain,"%#{params[:code]}%","%#{params[:name]}%","%#{params[:city]}%").paginate(:page => params[:page], :per_page => 10).order('name ASC')
     render :index
   end
 

@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     else
       @query = @query + " or category_id = ?"
     end
-    @products = Product.where(@query , current_user.domain, "%#{params[:code]}%","%#{params[:description]}%",params[:brand_id],params[:category_id]).paginate(:page => params[:page], :per_page => 10, :order => 'description ASC')
+    @products = Product.where(@query , current_user.domain, "%#{params[:code]}%","%#{params[:description]}%",params[:brand_id],params[:category_id]).paginate(:page => params[:page], :per_page => 10).order('description ASC')
     render :index
   end
 
