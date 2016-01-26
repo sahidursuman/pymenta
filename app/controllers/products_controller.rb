@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
   end
 
   def autocomplete
-    @products = Product.where("domain = ? AND code like ? OR description like ?", current_user.domain,"%#{params[:query]}%","%#{params[:query]}%")
+    @products = Product.where("domain = ? AND (code like ? OR description like ?)", current_user.domain,"%#{params[:query]}%","%#{params[:query]}%")
 
     result = @products.collect do |item|
       { :value => item.id, :label => item.code + " - " + item.description }
