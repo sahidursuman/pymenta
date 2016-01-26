@@ -16,7 +16,12 @@ class ProductListReport < PdfReport
   private
 
   def logo
-    image "#{RAILS_ROOT}/public"+@user.company.logo.url(:square).sub(/\?.+\Z/, ''), :width => 250, :height => 100
+    puts "directory RAILS_ROOT = #{RAILS_ROOT}"
+    if "#{RAILS_ROOT}" == "/app"
+      image open(@user.company.logo.url(:square).sub(/\?.+\Z/, '')), :width => 250, :height => 100
+    else
+      image "#{RAILS_ROOT}/public"+@user.company.logo.url(:square).sub(/\?.+\Z/, ''), :width => 250, :height => 100
+    end
   end
 
   def display_product_table
