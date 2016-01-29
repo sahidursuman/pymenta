@@ -76,7 +76,11 @@ en:
       payment_id: "Payment ID"
       approved: "Approved"
       cancelled: "Cancelled"
-      method: "Payment Method"      
+      method: "Payment Method"
+      warehouse: "Warehouse"
+      in_quantity: "In quantity"
+      out_quantity: "Out quantity"
+      stock: "Stock"	      
     links:
       cancel: "Cancel"
       select: "Select from the list.."	
@@ -103,10 +107,6 @@ en:
       beta: "This is a beta version. Only emails in the invitation list can register."
       print: "Print"
       personalize_print: "Personalize Print"
-      warehouse: "Warehouse"
-      in_quantity: "In quantity"
-      out_quantity: "Out quantity"
-      stock: "Stock"	
       go_to_payments_document: "Go to Payment"
       learn_personalize_report: "Learn more abont the personalize reports..."
     submit:
