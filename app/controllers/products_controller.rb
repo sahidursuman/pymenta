@@ -5,18 +5,8 @@ class ProductsController < ApplicationController
   def search
     @category = params[:category_id]
     @brand = params[:brand_id]
-    @query = "domain = ? and code like ? and description like ?"
-    if !@brand.blank? 
-      @query = @query + " and brand_id = ?"
-    else
-      @query = @query + " or brand_id = ?"
-    end
-    if !@category.blank?
-      @query = @query + " and category_id = ?"
-    else
-      @query = @query + " or category_id = ?"
-    end
-    @products = Product.where(@query , current_user.domain, "%#{params[:code]}%","%#{params[:description]}%",params[:brand_id],params[:category_id]).paginate(:page => params[:page], :per_page => 10).order('description ASC')
+    @query = "domain = ? and code like ? and description like ? and brand_id like ? and category_id like ?"
+    @products = Product.where(@query , current_user.domain, "%#{params[:code]}%","%#{params[:description]}%","%#{params[:brand_id]}%","%#{params[:category_id]}%").paginate(:page => params[:page], :per_page => 10).order('description ASC')
     render :index
   end
 
