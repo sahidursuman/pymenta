@@ -30,7 +30,7 @@ class DocumentReport < PdfReport
     grid(1,1).bounding_box do
       text document.account.name, :size => 10, :style => :bold
       text document.account.id_number1, :size => 9
-      if company.address != nil
+      if document.account.address != nil
         text document.account.address.truncate(94,omission: ''), :size => 9
 	end
       text document.account.city, :size => 9
