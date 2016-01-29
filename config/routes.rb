@@ -1,5 +1,8 @@
 Pymenta::Application.routes.draw do
 
+  resources :payment_types
+
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

@@ -5,7 +5,7 @@ class CreatePayments < ActiveRecord::Migration
       t.string :version
       t.string :domain
       t.string :username
-      t.string :payment_type
+      t.string :payment_type_id
       t.string :notes
       t.date :date
       t.decimal :amount, :precision => 10, :scale => 2

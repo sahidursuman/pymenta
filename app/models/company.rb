@@ -20,6 +20,7 @@ class Company < ActiveRecord::Base
   has_many :payments, :foreign_key => 'domain'
   has_many :payments_documents, :foreign_key => 'domain'
   has_many :service_payments, :foreign_key => 'domain'
+  has_many :payment_types, :foreign_key => 'domain'
   
 has_attached_file :logo, styles: {
     thumb: '100x100>',

@@ -21,14 +21,18 @@ class DocumentReport < PdfReport
       text ""
       text company.name, :size => 10,:style => :bold
       text company.id_number1, :size => 9
-      text company.address.truncate(94,omission: ''), :size => 9
+      if company.address != nil
+        text company.address.truncate(94,omission: ''), :size => 9
+      end
       text company.city, :size => 9
       text company.telephone, :size => 9
     end
     grid(1,1).bounding_box do
       text document.account.name, :size => 10, :style => :bold
       text document.account.id_number1, :size => 9
-      text document.account.address.truncate(94,omission: ''), :size => 9
+      if company.address != nil
+        text document.account.address.truncate(94,omission: ''), :size => 9
+	end
       text document.account.city, :size => 9
       text document.account.telephone, :size => 9
     end  

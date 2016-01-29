@@ -1,13 +1,14 @@
 class Payment < ActiveRecord::Base
   set_primary_key "id"
   include UUIDHelper
-  attr_accessible :amount, :date, :domain, :id, :notes, :payment_type, :username, :version, :payments_document_id
+  attr_accessible :amount, :date, :domain, :id, :notes, :payment_type_id, :username, :version, :payments_document_id
 
   belongs_to :company, :foreign_key => 'domain'
+  belongs_to :payment_type, :foreign_key => 'payment_type_id'
   belongs_to :payments_document
 
-  TYPES = ["CHEQUE","DEPOSITO","EFECTIVO","RETENCION","TRANSFERENCIA"]
-  validates :payment_type, inclusion: TYPES
+#  TYPES = ["CHEQUE","DEPOSITO","EFECTIVO","RETENCION","TRANSFERENCIA"]
+#  validates :payment_type, inclusion: TYPES
 
   before_create :sum_payments
   before_destroy :substract_payments

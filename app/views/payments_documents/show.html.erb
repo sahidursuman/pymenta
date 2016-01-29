@@ -76,7 +76,7 @@
   <tbody>
     <% @payments_document.payments.each do |payment| %>
       <tr>
-        <td><%= payment.payment_type %></td>
+        <td><%= payment.payment_type.description %></td>
         <td><%= payment.date.strftime(current_user.company.date_format)  %></td>
         <td><%= number_to_currency(payment.amount, unit: "", separator: current_user.company.separator , delimiter: current_user.company.delimiter, format: "%u %n") %></td>
         <td><%= payment.notes %></td>
@@ -106,7 +106,7 @@
         <strong><%=t '.payment_type', :default =>  t("helpers.labels.payment_type")  %></strong>
       </div>
       <div class="span2">
-	    <%= select_tag 'payment_type', options_for_select(["CHEQUE","DEPOSITO","EFECTIVO","RETENCION","TRANSFERENCIA"], "CHEQUE"), :style => "width:100%;" %>
+	  <%= select_tag 'payment_type', options_for_select(current_user.company.payment_types.collect{|x| [x.description,x.id]}, params[:payment_type]),  class: 'input-medium', :include_blank => true %>
       </div>
       <div class="span1">
         <strong><%=t '.notes', :default =>  t("helpers.labels.notes")  %></strong>

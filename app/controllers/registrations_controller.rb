@@ -53,6 +53,7 @@ class RegistrationsController < Devise::RegistrationsController
     document_type_1 = DocumentType.new(:description => 'INVOICE/FACTURA', :account_type => 'Client', :stock => true, :stock_type => 'debit', :domain => company.id, :username => user.username).save 
     document_type_2 = DocumentType.new(:description => 'ESTIMATE/PRESUPUESTO', :account_type => 'Client', :stock => false, :stock_type => 'debit', :domain => company.id, :username => user.username).save 
     document_type_3 = DocumentType.new(:description => 'IN STOCK/ENTRADA', :account_type => 'Warehouse', :stock => true, :stock_type => 'credit', :domain => company.id, :username => user.username).save     
+    payment_type = PaymentType.new(:code => '01', :description => 'CASH/EFECTIVO', :domain => company.id, :username => user.username).save
   end  
 end
            

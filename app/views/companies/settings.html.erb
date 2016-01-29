@@ -9,6 +9,14 @@
                         }
                     } %>
 
+<%= react_component 'PaymentTypes',
+                    {
+                        data: current_user.company.payment_types,
+                        page_header: t('.title', :default => PaymentType.model_name.human.pluralize.titleize),
+                        form_data: {
+                        }
+                    } %>
+
 <%= react_component 'Warehouses',
                     {
                         data: Account.where("domain = ? AND type = ?", current_user.domain, "Warehouse"),

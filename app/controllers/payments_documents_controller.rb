@@ -204,7 +204,7 @@ class PaymentsDocumentsController < ApplicationController
       amount = params[:amount].to_f
       date = Date.parse("#{params[:date]['day']}-#{params[:date]['month']}-#{params[:date]['year']}") if params[:date]
       payment_line = Payment.new(domain: current_user.domain, username: current_user.username,      
-  	payments_document_id: payments_document.id, payment_type: params[:payment_type], date: date,  amount: amount,
+  	payments_document_id: payments_document.id, payment_type_id: params[:payment_type], date: date,  amount: amount,
   	notes: params[:notes])
       if payment_line.save!
         flash[:notice]='Your payment was created'
