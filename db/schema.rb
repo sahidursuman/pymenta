@@ -226,12 +226,12 @@ ActiveRecord::Schema.define(:version => 20160129141729) do
     t.string   "domain"
     t.string   "username"
     t.string   "payment_type_id"
+    t.string   "payments_document_id"
     t.string   "notes"
     t.date     "date"
     t.decimal  "amount",                             :precision => 10, :scale => 2
     t.datetime "created_at",                                                        :null => false
     t.datetime "updated_at",                                                        :null => false
-    t.string   "payments_document_id"
   end
 
   create_table "payments_documents", :id => false, :force => true do |t|

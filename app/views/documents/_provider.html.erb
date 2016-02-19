@@ -19,7 +19,7 @@
 	    <dd><%= f.date_select(:date, :order => [:month, :day, :year]) %></dd>
 	  </dl>
 	  <dl class="dl-horizontal">
-	    <dt><strong><%=@type_description %> <%=t '.document_number', :default => t("helpers.labels.document_number") %>:</strong></dt>
+	    <dt><strong><%=t '.document_number', :default => t("helpers.labels.document_number") %>:</strong></dt>
 	    <dd><%= f.text_field :document_number %></dd>
 	  </dl>
 	  <dl class="dl-horizontal">
