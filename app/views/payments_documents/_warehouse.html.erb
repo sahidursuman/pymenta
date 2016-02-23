@@ -23,6 +23,6 @@
 	  </dl>
 	  <%= f.hidden_field :type, :value => @type_description %>
 	  <%= f.hidden_field :document_type_id, :value => @type_id %>
-	  <%= f.button t('.new', :default => t("helpers.links.new")), :class => 'btn btn-primary' %>
+	  <%= f.button t('.new', :default => t("helpers.links.new")), :class => 'btn btn-primary', :data => {:disable_with =>  t('.creating', :default => t("helpers.labels.creating"))}%>
 	<% end %>
 </div>
