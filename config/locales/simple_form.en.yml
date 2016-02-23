@@ -80,7 +80,10 @@ en:
       warehouse: "Warehouse"
       in_quantity: "In quantity"
       out_quantity: "Out quantity"
-      stock: "Stock"	      
+      stock: "Stock"
+      creating: "Creating..."
+      saving: "Saving..."
+      updating: "Updating..."
     links:
       cancel: "Cancel"
       select: "Select from the list.."	

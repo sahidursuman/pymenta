@@ -80,7 +80,10 @@
       payment_id: "ID del Pago"
       approved: "Aprobado"
       cancelled: "Cancelado"
-      method: "Método de Pago"      
+      method: "Método de Pago"
+      creating: "Creando..."
+      saving: "Grabando..."
+      updating: "Actualizando..."      
     links:
       cancel: "Cancelar"
       select: "Seleccion de la lista.."	
