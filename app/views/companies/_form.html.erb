@@ -1,5 +1,6 @@
 <%= simple_form_for @company, :html => { :multipart => true , :class => 'form-horizontal' }, :remote => true do |f| %>
   <%= f.input :name %>
+  <%= f.input :id_number1_label %>
   <%= f.input :id_number1 %>
   <%= f.input :address , input_html: { style: "width:50%;" } %>
   <%= f.input :city %>
@@ -11,6 +12,7 @@
   <%= f.input :email %>
   <%= f.input :web %>
   <%= f.input :contact %>
+
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
   </div>

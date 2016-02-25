@@ -1,7 +1,7 @@
 class Company < ActiveRecord::Base
   set_primary_key "id"
   include UUIDHelper
-  attr_accessible :address, :name, :id_number1, :city, :state, :country, :telephone, :fax, :zip_code, :email, :web, :contact, :plan, :date_format, :decimal_format, :unit, :separator, :delimiter, :logo
+  attr_accessible :address, :name, :id_number1, :city, :state, :country, :telephone, :fax, :zip_code, :email, :web, :contact, :plan, :date_format, :decimal_format, :unit, :separator, :delimiter, :logo, :id_number1_label
  
   validates :name, presence: true
 

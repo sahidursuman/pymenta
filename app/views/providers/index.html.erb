@@ -19,7 +19,7 @@
     <tr>
       <th><%=t '.code', :default =>  t("helpers.labels.code") %></th>
       <th><%=t '.name', :default =>  t("helpers.labels.name") %></th>
-      <th><%=t '.id_number1', :default =>  t("helpers.labels.id_number1") %></th>
+      <th><%= current_user.company.id_number1_label %></th>
       <th><%=t '.telephone', :default =>  t("helpers.labels.telephone") %></th>
       <th><%=t '.city', :default =>  t("helpers.labels.city") %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>

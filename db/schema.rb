@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160129141729) do
+ActiveRecord::Schema.define(:version => 20160225201916) do
 
   create_table "accounts", :id => false, :force => true do |t|
     t.string   "id",           :limit => 36
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20160129141729) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "id_number1_label"
   end
 
   create_table "document_lines", :id => false, :force => true do |t|

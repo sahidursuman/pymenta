@@ -13,7 +13,7 @@
       <dd><%= @client.name %></dd>  
     </dl>
     <dl class="dl-horizontal">
-      <dt><strong><%=t '.id_number1', :default =>  t("helpers.labels.id_number1") %></strong></dt>
+      <dt><strong><%= current_user.company.id_number1_label %></strong></dt>
       <dd><%= @client.id_number1 %></dd>  
     </dl>
     <dl class="dl-horizontal">
