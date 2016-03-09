@@ -2,23 +2,16 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
-
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:version) %>:</strong></dt>
-  <dd><%= @document_type.version %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:domain) %>:</strong></dt>
-  <dd><%= @document_type.domain %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:username) %>:</strong></dt>
-  <dd><%= @document_type.username %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @document_type.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:account_type) %>:</strong></dt>
-  <dd><%= @document_type.account_type %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:stock_type) %>:</strong></dt>
-  <dd><%= @document_type.stock_type %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:stock) %>:</strong></dt>
-  <dd><%= @document_type.stock %></dd>
-</dl>
+<div class="row-fluid">
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.description', :default =>  t("helpers.labels.description") %></strong></dt>
+      <dd><%=  @document_type.description %></dd>  
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><strong><%=t '.name', :default =>  t("helpers.labels.code") %></strong></dt>
+      <dd><%=  @document_type.id %></dd>  
+    </dl>
+</div>   
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
