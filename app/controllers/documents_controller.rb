@@ -31,6 +31,7 @@ class DocumentsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @documents }
+      format.js {}
     end
   end
 
