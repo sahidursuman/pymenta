@@ -13,6 +13,11 @@ ActiveAdmin.register Company do
       f.input :email 
       f.input :web 
       f.input :contact 
+      f.input :initial_cycle, :as => :datepicker
+      f.input :final_cycle, :as => :datepicker
+      f.input :plan, :as => :select, :collection => ["GRATIS","PAGO"]
+      f.input :counter
+      f.input :limit
     end
 
     f.actions
