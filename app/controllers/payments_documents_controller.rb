@@ -29,6 +29,7 @@ class PaymentsDocumentsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @payments_documents }
+      format.js {}
     end
   end
 
