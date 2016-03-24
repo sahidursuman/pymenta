@@ -1,11 +1,25 @@
 <%- model_class = Stock -%>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $('select#warehouse_id').on('change', function() {
+      $.get($('#stocks_search').attr('action'), $('#stocks_search').serialize(), null, 'script');
+      return false;
+    });
+    $('input#description').keyup(function() {
+      $.get($('#stocks_search').attr('action'), $('#stocks_search').serialize(), null, 'script');
+      return false;
+    });
+
+});
+</script>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 <div class="form-actions">
 	<div class="form-search">
       <div class="text-center">
-        <%= form_tag({:controller => "stocks", :action => "search"}, :method => "post") do %>
+        <%= form_tag({:controller => "stocks", :action => "search"}, :method => "get", :id => "stocks_search", remote: true) do %>
           <% warehouses_array = Account.where("domain = ? AND type = ?",current_user.domain,"Warehouse").all.map { |warehouse| [warehouse.name, warehouse.id] } %>
           <%= select_tag :warehouse_id, options_for_select(warehouses_array, params[:warehouse_id]),  class: 'input-medium', :include_blank => true  %>
           <%= text_field_tag :description, params[:description], :placeholder => (t '.description', :default =>  t("helpers.labels.description"))  %>
@@ -14,35 +28,5 @@
 	  </div>
 	</div>
 </div>		
-<table class="table table-striped">
-  <thead>
-      <th><%=t '.warehouse', :default =>  t("helpers.labels.warehouse") %></th>
-      <th><%=t '.description', :default =>  t("helpers.labels.description") %></th>
-      <th><%=t '.in_quantity', :default =>  t("helpers.labels.in_quantity") %></th>
-      <th><%=t '.out_quanrity', :default =>  t("helpers.labels.out_quantity") %></th>
-      <th><%=t '.stock', :default =>  t("helpers.labels.stock") %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @stocks.each do |stock| %>
-      <tr>
-        <td><%= stock.warehouse.name %></td>
-        <td><%= stock.product.description %></td>
-        <td><%= stock.in_quantity %></td>
-        <td><%= stock.out_quantity %></td>
-        <td><%= stock.stock %></td>
-        <td>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      stock_path(stock),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= will_paginate(@movies, :params => { :warehouse_id => params[:warehouse_id], :description => params[:description]}, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
+<div id="stocks"><%= render 'stocks' %></div>
 
