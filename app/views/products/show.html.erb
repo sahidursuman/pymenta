@@ -45,6 +45,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th><%=t '.document_type', :default =>  t("helpers.labels.document_type") %></th>
       <th><%=t '.date', :default =>  t("helpers.labels.date") %></th>
       <th><%=t '.name', :default =>  t("helpers.labels.name") %></th>
       <th><%=t '.quantity', :default =>  t("helpers.labels.quantity") %></th>
@@ -56,6 +57,7 @@
   <tbody>
     <% @product.document_lines.each do |document_line| %>
       <tr>
+        <td><%= document_line.document.type %></td>	
         <td><%= document_line.document.date %></td>
         <td><%= document_line.document.account.name %></td>
         <td><%= document_line.out_quantity %></td>
