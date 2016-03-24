@@ -1,0 +1,44 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%=t '.code', :default =>  t("helpers.labels.code") %></th>
+      <th><%=t '.name', :default =>  t("helpers.labels.name") %></th>
+      <th><%= current_user.company.id_number1_label %></th>
+      <th><%=t '.telephone', :default =>  t("helpers.labels.telephone") %></th>
+      <th><%=t '.city', :default =>  t("helpers.labels.city") %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+   <tbody>
+    <% @providers.each do |provider| %>
+      <tr>
+        <td><%= provider.code %></td>
+        <td><%= provider.name %></td>
+        <td><%= provider.id_number1 %></td>
+        <td><%= provider.telephone %></td>
+        <td><%= provider.city %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      provider_path(provider), :class => 'btn btn-mini btn-warning' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_provider_path(provider), :class => 'btn btn-mini btn-primary' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      provider_path(provider),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_provider_path,
+            :class => 'btn btn-primary' %>
+<%= link_to t('.print', :default => t("helpers.links.print")),
+            providers_report_providers_path(:code => @code, :name => @name, :city => @city),
+            :class => 'btn' %>
+
+<%= will_paginate(@movies, :params => { :code => params[:code], :name => params[:name], :city => params[:city] }, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
+

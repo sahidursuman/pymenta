@@ -1,0 +1,40 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%=t '.code', :default =>  t("helpers.labels.code") %></th>
+      <th><%=t '.name', :default =>  t("helpers.labels.name") %></th>
+      <th><%= current_user.company.id_number1_label %></th>
+      <th><%=t '.telephone', :default =>  t("helpers.labels.telephone") %></th>
+      <th><%=t '.city', :default =>  t("helpers.labels.city") %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+   <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <td><%= client.code %></td>
+        <td><%= client.name %></td>
+        <td><%= client.id_number1 %></td>
+        <td><%= client.telephone %></td>
+        <td><%= client.city %></td>
+        <td>
+	      <%= link_to t('.show', :default => t("helpers.links.show")),
+                      client_path(client), :class => 'btn btn-mini btn-warning' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_client_path(client), :class => 'btn btn-mini btn-primary' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      client_path(client),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_client_path,
+            :class => 'btn btn-primary' %>
+
+<%= will_paginate(@movies, :params => { :code => params[:code], :name => params[:name], :city => params[:city] }, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
