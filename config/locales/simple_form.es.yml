@@ -84,7 +84,10 @@
       method: "Método de Pago"
       creating: "Creando..."
       saving: "Grabando..."
-      updating: "Actualizando..."      
+      updating: "Actualizando..." 
+      barcode: "Código de Barra"
+      cost: "Costo"     
+      movements: "Movimientos"
     links:
       cancel: "Cancelar"
       select: "Seleccion de la lista.."	

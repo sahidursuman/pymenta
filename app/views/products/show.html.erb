@@ -1,24 +1,78 @@
 <%- model_class = Product -%>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%=t '.code', :default => t("helpers.labels.code") %>:</strong></dt>
-  <dd><%= @product.code %></dd>
-  <dt><strong><%=t '.description', :default => t("helpers.labels.description") %>:</strong></dt>
-  <dd><%= @product.description %></dd>
-  <dt><strong><%=t '.brand', :default => t("helpers.labels.brand") %>:</strong></dt>
-  <dd><%= @product.brand.description %></dd>
-  <dt><strong><%=t '.category', :default => t("helpers.labels.category") %>:</strong></dt>
-  <dd><%= @product.category.description %></dd>
-  <dt><strong><%=t '.units', :default => t("helpers.labels.units") %>:</strong></dt>
-  <dd><%= @product.units %></dd>
-  <dt><strong><%=t '.price', :default => t("helpers.labels.price") %>:</strong></dt>
-  <dd><%= @product.price %></dd>
-
+  <dd><h1 style="color: #000"><%= @product.description %></h1></dd>
+  <dd><h2 style="color: #456789"><%=number_to_currency(@product.price, unit: current_user.company.unit, separator: current_user.company.separator , delimiter: current_user.company.delimiter, format: "%u %n") %></h2></dd>
+  <dd><span class='label label-info'><strong><%=t '.brand', :default => t("helpers.labels.brand") %>:</strong>  <%= @product.brand.description %></span>  <span class='label label-important'><strong><%=t '.category', :default => t("helpers.labels.category") %>:</strong>  <%= @product.category.description %></span></dd>
+  </br>
+  <ul class="list-group">
+     <dd><strong><%=t '.code', :default => t("helpers.labels.code") %>:</strong> <%= @product.code %></li></dd>
+     <dd><strong><%=t '.barcode', :default => t("helpers.labels.barcode") %>:</strong>  <%= @product.barcode %></li></dd>
+     <dd><strong><%=t '.units', :default => t("helpers.labels.units") %>:</strong>  <%= @product.units %></li></dd>
+     <dd><strong><%=t '.cost', :default => t("helpers.labels.cost") %>:</strong> <%= @product.cost %></li></dd>
+  </ul>
 </dl>
-
+<div id="accordion">
+<h3><%=t '.stocks', :default =>  t("helpers.labels.stocks") %></h3>
+<table class="table table-striped">
+  <thead>
+      <th><%=t '.warehouse', :default =>  t("helpers.labels.warehouse") %></th>
+      <th><%=t '.description', :default =>  t("helpers.labels.description") %></th>
+      <th><%=t '.in_quantity', :default =>  t("helpers.labels.in_quantity") %></th>
+      <th><%=t '.out_quanrity', :default =>  t("helpers.labels.out_quantity") %></th>
+      <th><%=t '.stock', :default =>  t("helpers.labels.stock") %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @product.stocks.each do |stock| %>
+      <tr>
+        <td><%= stock.warehouse.name %></td>
+        <td><%= stock.product.description %></td>
+        <td><%= stock.in_quantity %></td>
+        <td><%= stock.out_quantity %></td>
+        <td><%= stock.stock %></td>
+        <td>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      stock_path(stock),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<div id="accordion2">
+<h3><%=t '.movements', :default =>  t("helpers.labels.movements") %></h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%=t '.description', :default =>  t("helpers.labels.description") %></th>
+      <th><%=t '.quantity', :default =>  t("helpers.labels.quantity") %></th>
+      <th><%=t '.units', :default =>  t("helpers.labels.units") %></th>
+      <th><%=t '.price', :default =>  t("helpers.labels.price") %></th>
+      <th><%=t '.total', :default =>  t("helpers.labels.total") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @product.document_lines.each do |document_line| %>
+      <tr>
+        <td><%= document_line.description %></td>
+        <td><%= document_line.out_quantity %></td>
+        <td><%= document_line.product.units %></td>
+        <td><%= document_line.price %></td>
+        <td><%= document_line.total %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               products_path, :class => 'btn'  %>

@@ -85,6 +85,9 @@ en:
       creating: "Creating..."
       saving: "Saving..."
       updating: "Updating..."
+      barcode: "Barcode"
+      cost: "Cost"
+      movements: "Movements"
     links:
       cancel: "Cancel"
       select: "Select from the list.."	

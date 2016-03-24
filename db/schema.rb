@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160225201916) do
+ActiveRecord::Schema.define(:version => 20160324034148) do
 
   create_table "accounts", :id => false, :force => true do |t|
     t.string   "id",           :limit => 36
@@ -270,6 +270,8 @@ ActiveRecord::Schema.define(:version => 20160225201916) do
     t.datetime "updated_at",                                               :null => false
     t.string   "brand_id"
     t.string   "category_id"
+    t.string   "barcode"
+    t.decimal  "cost",                      :precision => 10, :scale => 2
   end
 
   create_table "providers", :force => true do |t|
