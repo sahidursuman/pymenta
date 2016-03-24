@@ -16,6 +16,7 @@ class RegistrationsController < Devise::RegistrationsController
     @company.separator = ","
     @company.delimiter = "."
     @company.date_format = "%d/%m/%Y"
+    @company.id_number1_label = "ID"
     @user = User.new(params[:user])
     User.transaction do
 #     if Guest.exists?(:email => params[:user][:email]) # Guest list stage
