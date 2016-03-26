@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  set_primary_key "id"
+  include UUIDHelper
   rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
