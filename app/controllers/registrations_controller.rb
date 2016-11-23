@@ -51,9 +51,9 @@ class RegistrationsController < Devise::RegistrationsController
   end
   
   def defaults company,user
+    warehouse = Warehouse.new(:code => '01', :name => 'MAIN/PRINCIPAL', :domain => company.id, :username => user.username).save
     brand = Brand.new(:code => '00', :description => 'NONE/NINGUNO', :domain => company.id, :username => user.username).save
     category = Category.new(:code => '00', :description => 'NONE/NINGUNO', :domain => company.id, :username => user.username).save
-    warehouse = Warehouse.new(:code => '01', :name => 'MAIN/PRINCIPAL', :domain => company.id, :username => user.username).save
     document_type_1 = DocumentType.new(:description => 'INVOICE/FACTURA', :account_type => 'Client', :stock => true, :stock_type => 'debit', :domain => company.id, :username => user.username).save 
     document_type_2 = DocumentType.new(:description => 'ESTIMATE/PRESUPUESTO', :account_type => 'Client', :stock => false, :stock_type => 'debit', :domain => company.id, :username => user.username).save 
     document_type_3 = DocumentType.new(:description => 'IN STOCK/ENTRADA', :account_type => 'Warehouse', :stock => true, :stock_type => 'credit', :domain => company.id, :username => user.username).save     
