@@ -27,7 +27,7 @@ class RegistrationsController < Devise::RegistrationsController
             Notifier.welcome_email(@user).deliver
              @user.add_role :admin
              sign_in(resource_name, resource)
-             #defaults @company,@user   
+             defaults @company,@user   
              flash[:notice] = t("devise.sessions.signed_in")
              redirect_to documents_url
            else
