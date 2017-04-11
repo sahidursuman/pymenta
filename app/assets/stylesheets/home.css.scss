@@ -141,7 +141,7 @@ a:focus {
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: url(/assets/intro-bg.jpg) no-repeat bottom center scroll;
+    background: asset-data-url("intro-bg.jpg") no-repeat bottom center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -218,7 +218,7 @@ a:focus {
 }
 
 @-webkit-keyframes pulse {    
-    0 {
+    1% {
         -webkit-transform: scale(1);
         transform: scale(1);
     }
@@ -235,7 +235,7 @@ a:focus {
 }
 
 @-moz-keyframes pulse {    
-    0 {
+    1% {
         -moz-transform: scale(1);
         transform: scale(1);
     }

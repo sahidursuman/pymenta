@@ -1,4 +1,4 @@
-class CreateDocumentTypes < ActiveRecord::Migration
+class CreateDocumentTypes < ActiveRecord::Migration[5.0]
   def change
     create_table :document_types, :id => false do |t|
       t.string :id, :limit => 36, :primary => true

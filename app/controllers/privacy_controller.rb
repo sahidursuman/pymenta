@@ -1,3 +1,5 @@
 class PrivacyController < ApplicationController
-  layout "privacy"
+  layout 'privacy' 
+  def index
+  end  
 end

@@ -1,4 +1,4 @@
-class CreatePaymentsDocuments < ActiveRecord::Migration
+class CreatePaymentsDocuments < ActiveRecord::Migration[5.0]
   def change
     create_table :payments_documents, :id => false do |t|
       t.string :id, :limit => 36, :primary => true
@@ -16,7 +16,10 @@ class CreatePaymentsDocuments < ActiveRecord::Migration
       t.decimal :paid_left, :precision => 10, :scale => 2
       t.integer :year
       t.integer :month
-
+      
+      t.string :document_type_id
+      t.string :account_id
+      
       t.timestamps
     end
   end

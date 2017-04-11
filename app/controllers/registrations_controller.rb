@@ -1,6 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  before_filter:authenticate_user!, :only => :token
-  
+  before_action :authenticate_user!, :only => :token
   def new
     super
   end
@@ -19,7 +18,7 @@ class RegistrationsController < Devise::RegistrationsController
         @company.date_format = "%d/%m/%Y"
         @company.id_number1_label = "ID"
       User.transaction do
-        @user = User.new(params[:user])
+        @user = User.new(user_params)
   #    if Guest.exists?(:email => params[:user][:email]) # Guest list stage
          if @company.save
            @user.domain = @company.id
@@ -51,13 +50,24 @@ class RegistrationsController < Devise::RegistrationsController
   end
   
   def defaults company,user
-    warehouse = Warehouse.new(:code => '01', :name => 'MAIN/PRINCIPAL', :domain => company.id, :username => user.username).save
     brand = Brand.new(:code => '00', :description => 'NONE/NINGUNO', :domain => company.id, :username => user.username).save
     category = Category.new(:code => '00', :description => 'NONE/NINGUNO', :domain => company.id, :username => user.username).save
+    warehouse = Warehouse.new(:code => '01', :name => 'MAIN/PRINCIPAL', :city => 'NONE/NINGUNO', :domain => company.id, :username => user.username).save
     document_type_1 = DocumentType.new(:description => 'INVOICE/FACTURA', :account_type => 'Client', :stock => true, :stock_type => 'debit', :domain => company.id, :username => user.username).save 
     document_type_2 = DocumentType.new(:description => 'ESTIMATE/PRESUPUESTO', :account_type => 'Client', :stock => false, :stock_type => 'debit', :domain => company.id, :username => user.username).save 
     document_type_3 = DocumentType.new(:description => 'IN STOCK/ENTRADA', :account_type => 'Warehouse', :stock => true, :stock_type => 'credit', :domain => company.id, :username => user.username).save     
     payment_type = PaymentType.new(:code => '01', :description => 'CASH/EFECTIVO', :domain => company.id, :username => user.username).save
   end  
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def user_params
+      params.require(:user).permit(:company_name, :password_confirmation, :username, :name, :email, :password, :domain, :id)
+    end
 end
            

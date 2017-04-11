@@ -1,7 +1,7 @@
 class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def search
    @start_at = params[:start_at].blank? ? DateTime.parse("01/01/1901") : DateTime.parse(params[:start_at])
    @end_at = params[:end_at].blank? ? DateTime.parse("01/01/2901") : DateTime.parse(params[:end_at])
@@ -70,7 +70,7 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
 
     respond_to do |format|
-      if @document.update_attributes(params[:document])
+      if @document.update_attributes(document_params)
         format.html { redirect_to @document, notice: 'Document was successfully updated.' }
         format.json { head :no_content }
       else
@@ -147,7 +147,7 @@ class DocumentsController < ApplicationController
     if account
       create_document(account) 
     else
-      @document = Document.new(params[:document]) 
+      @document = Document.new(document_params) 
       params[:document][:type] = params[:document][:document_type_id]
       @document.errors[:base] << t("helpers.labels.not_provider_present") # Not provider
       render :action => :new # Not provider
@@ -176,7 +176,7 @@ class DocumentsController < ApplicationController
       params[:document][:year] = Time.new.year+1900
       params[:document][:status] = "NOT_PAID"
       
-    @document = Document.new(params[:document])
+    @document = Document.new(document_params)
 
     respond_to do |format|
       if @document.save
@@ -231,4 +231,16 @@ class DocumentsController < ApplicationController
       pdf = Object.const_get("Report"+@document.document_type_id.to_s).new(@document, user)
       send_data pdf.render, filename:'personalize_report.pdf',type: 'application/pdf', disposition: 'inline'
    end 
+   
+   private
+     # Use callbacks to share common setup or constraints between actions.
+     def set_document
+       @document = Document.find(params[:id])
+     end
+
+     # Never trust parameters from the scary internet, only allow the white list through.
+     def document_params
+       params.require(:document).permit(:code, :date, :discount_percentage, :discount_total, :document_number, :domain, :due, :expire_date, :id, :month, :paid, :paid_left,
+   :status, :sub_total, :tax, :tax_total, :total, :type, :username, :version, :year, :account_id, :warehouse_id, :document_type_id, :details, :control_number)
+     end
 end

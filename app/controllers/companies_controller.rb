@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def index
 #    @companies = Company.all
     @company = Company.find(current_user.company.id)
@@ -55,7 +55,7 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(params[:company])
+    @company = Company.new(company_params)
 
     respond_to do |format|
       if @company.save
@@ -74,7 +74,7 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
 
     respond_to do |format|
-      if @company.update_attributes(params[:company])
+      if @company.update_attributes(company_params)
         format.js do
           if params[:update_formats]
             render 'update_formats'
@@ -135,4 +135,15 @@ class CompaniesController < ApplicationController
    #      end
    #   end
    ####################   
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_company
+      @company = Company.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def company_params
+      params.require(:company).permit(:id, :name, :address, :id_number1, :id_number2, :address, :city, :state, :country, :zip_code, :telephone, :fax, :email, :web, :contact, :initial_cycle, :final_cycle, :plan, :counter, :limit, :note, :date_format, :unit, :separator, :delimiter, :id_number1_label)
+    end
 end

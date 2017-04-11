@@ -30,7 +30,7 @@
    </div>
 </div>
 
-<%= form_for Document.new, :url => {:controller => "payments_documents" , :action => "add_payments_document_id"}, :method => "post"  do |f| %>
+<%= form_for Document.new, :url => {:controller => "payments_documents" , :action => "add_payments_document_id"}, :method => "get"  do |f| %>
   <div class="row-fluid">
     <div class="span10"><%= f.collection_select :payments_document_id, Document.where("domain = ? AND account_id = ? AND payments_document_id IS NULL", current_user.domain,   @payments_document.account_id), :id, :full_name,  {:include_blank=> true}, {:class => "span12"} %></div>
     <%= f.hidden_field :payment_id, :value => @payments_document.id %>

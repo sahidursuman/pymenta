@@ -3,7 +3,7 @@
 <div class="row-fluid">
   <div class="span10">
 	<div class="modal fade" id="provider-modal"></div>
-    <%= form_for @document, :url => {:action => "create_document_account"}, :method => "post"  do |f| %>
+    <%= form_for @document, :url => {:action => "create_document_account"}, :method => "get"  do |f| %>
       <%= render 'shared/error_messages', :object => @document %>
       <dl class="dl-horizontal">
         <dt><strong><%=t '.providers', :default =>  t("helpers.labels.providers") %></strong></dt>

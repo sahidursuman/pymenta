@@ -44,4 +44,4 @@
             product_list_report_products_path,
             :class => 'btn' %>
 
-<%= will_paginate(@movies, :params => { :code => params[:code], :description => params[:description], :brand_id => params[:brand_id], :category_id => params[:category_id] }, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
+<%= will_paginate(@movies, :params => { :code => params[:code], :description => params[:description], :brand_id => params[:brand_id], :category_id => params[:category_id] }, renderer: BootstrapPagination::Rails ) %>

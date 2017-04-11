@@ -128,6 +128,7 @@
   </div>
 </div>
 <div class="form-actions">
+
 	   <% if @document.payments_document == nil %>
 		    <%= link_to t('.create_payments_document', :default => t("helpers.links.create_payments_document")),
 		          create_payments_document_account_path(:autocomplete_client => @document.account.id, :document_type_id => @document.document_type_id),
@@ -138,6 +139,7 @@
 		          :class => 'btn btn-large btn' %>
 
 	   <% end %>
+
 	   <%= link_to t('.print', :default => t("helpers.links.print")),
 		          document_report_documents_path(@document),
 		          :class => 'btn btn-large btn-primary' %>

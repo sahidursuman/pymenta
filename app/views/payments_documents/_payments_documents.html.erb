@@ -35,4 +35,4 @@
   </tbody>
 </table>
 
-<%= will_paginate(@movies, :params => { :name => params[:name], :start_at => params[:start_at], :end_at => params[:end_at], :status => params[:status] , :type => params[:type]}, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
+<%= will_paginate(@movies, :params => { :name => params[:name], :start_at => params[:start_at], :end_at => params[:end_at], :status => params[:status] , :type => params[:type]}, renderer: BootstrapPagination::Rails ) %>

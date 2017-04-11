@@ -1,8 +1,5 @@
-class Stock < ActiveRecord::Base
-  set_primary_key "id"
-  include UUIDHelper
-  attr_accessible :domain, :id, :in_quantity, :out_quantity, :stock, :username, :version
-
+class Stock < ApplicationRecord
+  self.primary_key = 'id'  
   belongs_to :company, :foreign_key => 'domain'
   belongs_to :product
   belongs_to :warehouse
@@ -10,4 +7,5 @@ class Stock < ActiveRecord::Base
   before_save do
     self.stock = in_quantity - out_quantity 
   end
+
 end

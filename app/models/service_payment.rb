@@ -1,9 +1,7 @@
-class ServicePayment < ActiveRecord::Base
-  set_primary_key "id"
-  include UUIDHelper
+class ServicePayment < ApplicationRecord
+  self.primary_key = 'id'  
   belongs_to :company, :foreign_key => 'domain'
-  attr_accessible :amount, :description, :payment_id, :state, :period, :method, :domain
-  
+
   validates_presence_of :amount, :description
 
   after_create :create_payment
@@ -39,6 +37,6 @@ class ServicePayment < ActiveRecord::Base
   def approve_url
    payment.links.find{|link| link.method == "REDIRECT" }.try(:href)
   end
-  
+
 end
 

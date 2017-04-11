@@ -43,4 +43,4 @@
             documents_report_documents_path(:start_at => @start_at, :end_at => @end_at, :name => @name, :status => @status, :type => @type),
             :class => 'btn' %>
 
-<%= will_paginate(@movies, :params => { :type => params[:type], :name => params[:name], :start_at => params[:start_at], :end_at => params[:end_at], :status => params[:status] }, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
+<%= will_paginate(@movies, :params => { :type => params[:type], :name => params[:name], :start_at => params[:start_at], :end_at => params[:end_at], :status => params[:status] }, renderer: BootstrapPagination::Rails ) %>

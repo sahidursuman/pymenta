@@ -1,7 +1,7 @@
 class ProvidersController < ApplicationController
   # GET /providers
   # GET /providers.json
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def search
    @providers = Provider.where("domain = ? AND code like ? AND name like ? AND city like ? ", current_user.domain,"%#{params[:code]}%","%#{params[:name]}%","%#{params[:city]}%").paginate(:page => params[:page], :per_page => 10).order('name ASC')
     render :index
@@ -59,7 +59,7 @@ class ProvidersController < ApplicationController
     params[:provider][:version] = ENV["VERSION"]
     params[:provider][:domain] = current_user.domain
     params[:provider][:username] = current_user.username
-    @provider = Provider.new(params[:provider])
+    @provider = Provider.new(provider_params)
 
     respond_to do |format|
       if @provider.save
@@ -82,7 +82,7 @@ class ProvidersController < ApplicationController
     @provider = Provider.find(params[:id])
 
     respond_to do |format|
-      if @provider.update_attributes(params[:provider])
+      if @provider.update_attributes(provider_params)
         format.html { redirect_to @provider, notice: 'Provider was successfully updated.' }
         format.json { head :no_content }
       else
@@ -108,4 +108,34 @@ class ProvidersController < ApplicationController
     @account = Provider.find(params[:provider_id])
     render :partial => "documents/account", :object => @account
   end
+  
+  def providers_report
+    #raise params.inspect
+    @user = current_user
+    @code = params[:code]
+    @name = params[:name]
+    @city = params[:city]
+    @accounts = Provider.where("domain = ? AND (code like ? OR name like ? OR city like ?)", current_user.domain,"%#{@code}%","%#{@name}%","%#{@city}%") 
+    pdf = AccountsReport.new(@accounts, @user, @code, @name, @city)
+    send_data pdf.render, filename:'providers_report.pdf',type: 'application/pdf', disposition: 'inline'
+  end
+  
+  def account_report
+    #raise params.inspect
+    @user = current_user
+    @account = Provider.find(params[:id])
+    pdf = AccountReport.new(@account, @user)
+    send_data pdf.render, filename:'account_report.pdf',type: 'application/pdf', disposition: 'inline'
+  end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_provider
+      @provier = Provider.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def provider_params
+      params.require(:provider).permit(:address, :balance, :balance_b, :city, :code, :contact, :country, :debit_credit, :domain, :email, :fax, :id, :id_number1, :id_number2, :name, :observations, :state, :telephone, :type, :username, :version, :web, :zip_code)
+    end
 end

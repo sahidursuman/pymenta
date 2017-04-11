@@ -1,7 +1,7 @@
 class PaymentTypesController < ApplicationController
   # GET /payment_types
   # GET /payment_types.json
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def index
     @payment_types = current_user.company.payment_types
 
@@ -44,7 +44,7 @@ class PaymentTypesController < ApplicationController
     params[:payment_type][:version] = ENV["VERSION"]
     params[:payment_type][:domain] = current_user.domain
     params[:payment_type][:username] = current_user.username
-    @payment_type = PaymentType.new(params[:payment_type])
+    @payment_type = PaymentType.new(payment_type_params)
 
     respond_to do |format|
       if @payment_type.save
@@ -65,7 +65,7 @@ class PaymentTypesController < ApplicationController
     @payment_type = PaymentType.find(params[:id])
 
     respond_to do |format|
-      if @payment_type.update_attributes(params[:payment_type])
+      if @payment_type.update_attributes(payment_type_params)
         format.html { redirect_to @payment_type, notice: 'PaymentType was successfully updated.' }
         format.json { render json: @payment_type }
       else
@@ -86,6 +86,17 @@ class PaymentTypesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_payment_type
+      @payment_type = PaymentType.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def payment_type_params
+      params.require(:payment_type).permit(:code, :description, :domain, :id, :username, :version)
+    end
 end
 
 

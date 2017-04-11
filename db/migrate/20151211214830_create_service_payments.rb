@@ -1,4 +1,4 @@
-class CreateServicePayments < ActiveRecord::Migration
+class CreateServicePayments < ActiveRecord::Migration[5.0]
   def change
     create_table :service_payments, :id => false do |t|
       t.string :id, :limit => 36, :primary => true

@@ -1,8 +1,5 @@
-class Document < ActiveRecord::Base
-  set_primary_key "id"
-  include UUIDHelper
-  attr_accessible :code, :date, :discount_percentage, :discount_total, :document_number, :domain, :due, :expire_date, :id, :month, :paid, :paid_left,
-   :status, :sub_total, :tax, :tax_total, :total, :type, :username, :version, :year, :account_id, :warehouse_id, :document_type_id, :details, :control_number
+class Document < ApplicationRecord
+  self.primary_key = 'id'  
   self.inheritance_column = nil
 
   belongs_to :company, :foreign_key => 'domain'
@@ -50,4 +47,5 @@ class Document < ActiveRecord::Base
   def full_name
      "#{type} ------ #{document_number} ------- #{account.name} -------- #{date} ---------- #{sub_total}---------- #{tax_total}---------- #{total}"
    end
+
 end

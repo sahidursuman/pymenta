@@ -1,7 +1,7 @@
 class PaymentsDocumentsController < ApplicationController
   # GET /payments_documents
   # GET /payments_documents.json
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def search
    @start_at = params[:start_at].blank? ? DateTime.parse("01/01/1901") : DateTime.parse(params[:start_at])
    @end_at = params[:end_at].blank? ? DateTime.parse("01/01/2901") : DateTime.parse(params[:end_at])
@@ -66,7 +66,7 @@ class PaymentsDocumentsController < ApplicationController
     params[:payments_document][:version] = ENV["VERSION"]
     params[:payments_document][:domain] = current_user.domain
     params[:payments_document][:username] = current_user.username
-    @payments_document = PaymentsDocument.new(params[:payments_document])
+    @payments_document = PaymentsDocument.new(payment_document_params)
 
     respond_to do |format|
       if @payments_document.save
@@ -87,7 +87,7 @@ class PaymentsDocumentsController < ApplicationController
     @payments_document = PaymentsDocument.find(params[:id])
 
     respond_to do |format|
-      if @payments_document.update_attributes(params[:payments_document])
+      if @payments_document.update_attributes(payment_document_params)
         format.html { redirect_to @payments_document, notice: 'Payments document was successfully updated.' }
         format.json { head :no_content }
       else
@@ -217,5 +217,16 @@ class PaymentsDocumentsController < ApplicationController
         format.html{ redirect_to payments_document }
       end
     end
+    
+    private
+      # Use callbacks to share common setup or constraints between actions.
+      def set_payment_document
+        @payment_document = PaymentDocument.find(params[:id])
+      end
+
+      # Never trust parameters from the scary internet, only allow the white list through.
+      def payment_document_params
+        params.require(:payment_document).permit(:date, :domain, :id, :month, :number, :paid, :paid_left, :total, :type, :username, :version, :year, :status, :document_type_id, :account_id, :name)
+      end
 
 end

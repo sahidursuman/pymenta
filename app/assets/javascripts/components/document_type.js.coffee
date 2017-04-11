@@ -19,10 +19,10 @@
   handleEdit: (e) ->
     e.preventDefault()
     data =
-      description: React.findDOMNode(@refs.description).value
-      account_type: React.findDOMNode(@refs.account_type).value
-      stock_type: React.findDOMNode(@refs.stock_type).value
-      stock: React.findDOMNode(@refs.stock).checked
+      description:this.refs.description.value
+      account_type: this.refs.account_type.value
+      stock_type: this.refs.stock_type.value
+      stock: this.refs.stock.checked
     $.ajaxSetup
       headers:
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')

@@ -6,7 +6,7 @@
 
   </div>
   <div class="span3">
-    <%= form_tag upload_logo_path, method: :patch, id: 'company-logo-form', remote: true, html: { multipart: true } do %>
+    <%= form_tag upload_logo_path, method: :patch, id: 'company-logo-form', remote: true, multipart: true do %>
       <%= file_field_tag :logo, accept: 'image/png,image/gif,image/jpeg, image/jpg', id: 'uploadLogo' %>
       <div style="display: none;">
         <%= submit_tag 'Submit Logo', id: 'submitLogo', class: 'btn btn-default' %>

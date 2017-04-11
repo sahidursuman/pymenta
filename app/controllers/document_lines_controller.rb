@@ -1,6 +1,7 @@
 class DocumentLinesController < ApplicationController
   # GET /document_lines
   # GET /document_lines.json
+  before_action :authenticate_user!
   def index
     @document_lines = current_user.company.document_lines.paginate(:page => params[:page], :per_page => 10).order('description ASC')
 
@@ -43,7 +44,7 @@ class DocumentLinesController < ApplicationController
     params[:document_line][:version] = ENV["VERSION"]
     params[:document_line][:domain] = current_user.domain
     params[:document_line][:username] = current_user.username
-    @document_line = DocumentLine.new(params[:document_line])
+    @document_line = DocumentLine.new(document_line_params)
 
     respond_to do |format|
       if @document_line.save
@@ -64,7 +65,7 @@ class DocumentLinesController < ApplicationController
     @document_line = DocumentLine.find(params[:id])
 
     respond_to do |format|
-      if @document_line.update_attributes(params[:document_line])
+      if @document_line.update_attributes(document_line_params)
         format.html { redirect_to @document_line, notice: 'Document line was successfully updated.' }
         format.json { head :no_content }
       else
@@ -85,4 +86,16 @@ class DocumentLinesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_document_line
+      @document_line = DocumentLine.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def document_line_params
+      params.require(:document_line).permit(:code, :date, :description, :document_number, :domain, :id, :in_quantity, :month, :out_quantity, :price,
+   :total, :type, :username, :version, :year, :header_id, :product_id, :warehouse_id)
+    end
 end

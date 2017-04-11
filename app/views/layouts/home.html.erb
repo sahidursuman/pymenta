@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Pymenta" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Pymenta" %>">
-    <%= stylesheet_link_tag "bootstrap3.min", :media => "all" %>
+    <%= stylesheet_link_tag "bootstrap3", :media => "all" %>
     <%= stylesheet_link_tag "home", :media => "all" %>
     <%= javascript_include_tag 'jquery.easing.min' %>
     <%= csrf_meta_tags %>
@@ -133,14 +133,7 @@
 					</br>
 				    </br>
 				    </br>
-					<video id="really-cool-video" class="video-js vjs-default-skin" controls preload="auto" width="1164" height="528" data-setup='{}'>
-					  <source src="assets/Tour.mp4" type='video/mp4'/>	
-
-					  <p class="vjs-no-js">
-					    To view this video please enable JavaScript, and consider upgrading to a web browser
-					    that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-					  </p>
-					</video>
+				    <%= video_tag "Tour.mp4", :class => "video-js vjs-default-skin",:size => "1164x628", :controls => true, :autobuffer => true %>
 				</div>
 	        </div>
 	      </div>

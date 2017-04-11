@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def search
     @category = params[:category_id]
     @brand = params[:brand_id]
@@ -63,7 +63,7 @@ class ProductsController < ApplicationController
     params[:product][:version] = ENV["VERSION"]
     params[:product][:domain] = current_user.domain
     params[:product][:username] = current_user.username
-    @product = Product.new(params[:product])
+    @product = Product.new(product_params)
 
     respond_to do |format|
       if @product.save
@@ -86,7 +86,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     respond_to do |format|
-      if @product.update_attributes(params[:product])
+      if @product.update_attributes(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
@@ -120,4 +120,14 @@ class ProductsController < ApplicationController
     send_data pdf.render, filename:'product_list_report.pdf',type: 'application/pdf', disposition: 'inline'
   end
   
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_product
+      @product = Product.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def product_params
+      params.require(:product).permit(:code, :domain, :description, :id, :price, :units, :username, :version, :brand_id, :category_id, :barcode, :cost)
+    end
 end

@@ -1,1 +1,58 @@
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Pymenta" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Pymenta" %>">
+    <%= stylesheet_link_tag "terms_privacy", :media => "all" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>   
+	<script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
+	<script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
+	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>">
+	  <div class="navbar navbar-fixed-top">
+	    <div class="navbar-inner">
+	      <div class="container">
+				<%= link_to "PYMENTA", root_path, :class => 'navbar-brand' %>
+				<p class="text-info">beta</p>
+	      </div>
+	    </div>
+	  </div>
+	<div id="wrap">
+      <div id="main" role="main">
+        <div class="container">
+           <h3><%= t('.title1', :default => t("layouts.terms.title1")) %></h3>
+           <b><%= t('.description1', :default => t("layouts.terms.description1")) %></b>
+           <h3><%= t('.title2', :default => t("layouts.terms.title2")) %></h3>
+           <b><%= t('.description2', :default => t("layouts.terms.description2")) %></b>
+           <h3><%= t('.title3', :default => t("layouts.terms.title3")) %></h3>
+           <b><%= t('.description3', :default => t("layouts.terms.description3")) %></b>
+           <h3><%= t('.title4', :default => t("layouts.terms.title4")) %></h3>
+           <b><%= t('.description4', :default => t("layouts.terms.description4")) %></b>
+           <h3><%= t('.title5', :default => t("layouts.terms.title5")) %></h3>
+           <b><%= t('.description5', :default => t("layouts.terms.description5")) %></b>
+           <h3><%= t('.title6', :default => t("layouts.terms.title6")) %></h3>
+           <b><%= t('.description6', :default => t("layouts.terms.description6")) %></b>
+           <h3><%= t('.title7', :default => t("layouts.terms.title7")) %></h3>
+           <b><%= t('.description7', :default => t("layouts.terms.description7")) %></b>
+        </div> <!--! end of .container -->
+      </div> <!--! end of #main -->
+	</div> <!--! end of #wrap -->
+    <footer class="footer">
+        <div class="container" style="margin:0 auto;">
+            <div class="row">
+                <div class="col-sm-6">
+                    <%= t('.copyright', :default => t("layouts.home.copyright")) %><a target="_blank" href="http://papayalabs.github.io" title="Lapapaya"><%= t('.companyname', :default => t("layouts.home.companyname")) %>
+</a>. <%= t('.allrightreserved', :default => t("layouts.home.allrightreserved")) %>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+  </body>
+</html>
+            
+          

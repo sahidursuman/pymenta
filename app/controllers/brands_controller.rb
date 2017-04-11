@@ -1,7 +1,7 @@
 class BrandsController < ApplicationController
   # GET /brands
   # GET /brands.json
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def index
     @brands = current_user.company.brands
 
@@ -44,7 +44,7 @@ class BrandsController < ApplicationController
     params[:brand][:version] = ENV["VERSION"]
     params[:brand][:domain] = current_user.domain
     params[:brand][:username] = current_user.username
-    @brand = Brand.new(params[:brand])
+    @brand = Brand.new(brand_params)
 
     respond_to do |format|
       if @brand.save
@@ -65,7 +65,7 @@ class BrandsController < ApplicationController
     @brand = Brand.find(params[:id])
 
     respond_to do |format|
-      if @brand.update_attributes(params[:brand])
+      if @brand.update_attributes(brand_params)
         format.html { redirect_to @brand, notice: 'Brand was successfully updated.' }
         format.json { render json: @brand }
       else
@@ -86,4 +86,15 @@ class BrandsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_brand
+      @brand = Brand.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def brand_params
+      params.require(:brand).permit(:code, :description, :domain, :id, :username, :version)
+    end
 end

@@ -1,4 +1,4 @@
-class CreateCompanies < ActiveRecord::Migration
+class CreateCompanies < ActiveRecord::Migration[5.0]
   def change
     create_table :companies, :id => false do |t|
       t.string :id, :limit => 36, :primary => true
@@ -28,6 +28,8 @@ class CreateCompanies < ActiveRecord::Migration
       t.string :unit
       t.string :separator
       t.string :delimiter
+      
+      t.string :id_number1_label
 
       t.timestamps
     end

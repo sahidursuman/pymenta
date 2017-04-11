@@ -37,4 +37,4 @@
             new_payment_path,
             :class => 'btn btn-primary' %>
 
-<%= will_paginate(@movies, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
+<%= will_paginate(@movies, renderer: BootstrapPagination::Rails ) %>

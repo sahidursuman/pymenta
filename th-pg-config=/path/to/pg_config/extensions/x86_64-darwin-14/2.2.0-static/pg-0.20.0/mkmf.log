@@ -1,0 +1,32 @@
+find_executable: checking for pg_config... -------------------- no
+
+--------------------
+
+find_header: checking for libpq-fe.h... -------------------- no
+
+"gcc -o conftest -I/Users/papayalabs/.rvm/rubies/ruby-2.2.2/include/ruby-2.2.0/x86_64-darwin14 -I/Users/papayalabs/.rvm/rubies/ruby-2.2.2/include/ruby-2.2.0/ruby/backward -I/Users/papayalabs/.rvm/rubies/ruby-2.2.2/include/ruby-2.2.0 -I. -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -I/Users/haven/.sm/pkg/active/include -fPIC -mmacosx-version-min=10.7 -pipe conftest.c  -L. -L/Users/papayalabs/.rvm/rubies/ruby-2.2.2/lib -L. -L/Users/haven/.sm/pkg/active/lib -fPIC -Bstatic -lz -fstack-protector -L/usr/local/lib   -arch x86_64   -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+ld: warning: directory not found for option '-L/Users/haven/.sm/pkg/active/lib'
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc -E -I/Users/papayalabs/.rvm/rubies/ruby-2.2.2/include/ruby-2.2.0/x86_64-darwin14 -I/Users/papayalabs/.rvm/rubies/ruby-2.2.2/include/ruby-2.2.0/ruby/backward -I/Users/papayalabs/.rvm/rubies/ruby-2.2.2/include/ruby-2.2.0 -I. -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -I/Users/haven/.sm/pkg/active/include -fPIC -mmacosx-version-min=10.7 -pipe  conftest.c -o conftest.i"
+conftest.c:3:10: fatal error: 'libpq-fe.h' file not found
+#include <libpq-fe.h>
+         ^
+1 error generated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <libpq-fe.h>
+/* end */
+
+--------------------
+

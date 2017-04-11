@@ -1,5 +1,5 @@
 class ServicePaymentsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def index
     @service_payments = current_user.company.service_payments.all( :limit => 10, :order => "id DESC" )
   end
@@ -77,5 +77,17 @@ class ServicePaymentsController < ApplicationController
   def show
     @service_payment = current_user.company.service_payments.find(params[:id])
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_service_payment
+      @service_payment = ServicePayments.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def service_payment_params
+      params.require(:service_payment).permit(:amount, :description, :payment_id, :state, :period, :method, :domain)
+    end
+
 end
 

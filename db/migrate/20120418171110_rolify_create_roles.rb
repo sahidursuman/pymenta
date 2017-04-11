@@ -1,4 +1,4 @@
-class RolifyCreateRoles < ActiveRecord::Migration
+class RolifyCreateRoles < ActiveRecord::Migration[5.0]
   def change
     create_table(:roles) do |t|
       t.string :name
@@ -8,8 +8,8 @@ class RolifyCreateRoles < ActiveRecord::Migration
     end
 
     create_table(:users_roles, :id => false) do |t|
-      t.references :user
-      t.references :role
+      t.string "user_id"
+      t.integer "role_id"
     end
 
     add_index(:roles, :name)

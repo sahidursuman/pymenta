@@ -1,8 +1,5 @@
-class Product < ActiveRecord::Base
-  set_primary_key "id"
-  include UUIDHelper
-  attr_accessible :code, :domain, :description, :id, :price, :units, :username, :version, :brand_id, :category_id, :barcode, :cost
-
+class Product < ApplicationRecord
+  self.primary_key = 'id'  
   validates :code, presence: true
   validates :description, presence: true
   validates :units, presence: true
@@ -17,4 +14,5 @@ class Product < ActiveRecord::Base
   
   UNIT_TYPES = ["UND","MTS","HRS"]
   validates :units, inclusion: UNIT_TYPES
+
 end

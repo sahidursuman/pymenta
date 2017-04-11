@@ -1,7 +1,7 @@
 class StocksController < ApplicationController
   # GET /stocks
   # GET /stocks.json
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def search
     @warehouse = params[:warehouse_id]
     @description = params[:description]
@@ -58,7 +58,7 @@ class StocksController < ApplicationController
     params[:stock][:version] = ENV["VERSION"]
     params[:stock][:domain] = current_user.domain
     params[:stock][:username] = current_user.username
-    @stock = Stock.new(params[:stock])
+    @stock = Stock.new(stock_params)
 
     respond_to do |format|
       if @stock.save
@@ -79,7 +79,7 @@ class StocksController < ApplicationController
     @stock = Stock.find(params[:id])
 
     respond_to do |format|
-      if @stock.update_attributes(params[:stock])
+      if @stock.update_attributes(stock_params)
         format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
         format.json { head :no_content }
       else
@@ -100,4 +100,15 @@ class StocksController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_stock
+      @stock = Stock.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def stock_params
+      params.require(:stock).permit(:domain, :id, :in_quantity, :out_quantity, :stock, :username, :version)
+    end
 end

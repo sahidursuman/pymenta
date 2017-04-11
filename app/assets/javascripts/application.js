@@ -12,15 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.autocomplete
-//= require twitter/bootstrap
+//= require jquery.remotipart
 //= require bootstrap
 //= require react
 //= require react_ujs
 //= require components
-//= require jquery.remotipart
 //= require logo_upload
+//= require turbolinks
 //= require_tree .
+
 
 //jQuery to collapse the navbar on scroll
 $(window).scroll(function() {

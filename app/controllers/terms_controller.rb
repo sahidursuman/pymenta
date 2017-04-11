@@ -1,3 +1,5 @@
 class TermsController < ApplicationController
-  layout "terms"
+  layout 'terms'
+  def index
+  end  
 end

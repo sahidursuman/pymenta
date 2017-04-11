@@ -1,7 +1,5 @@
-class PaymentsDocument < ActiveRecord::Base
-  set_primary_key "id"
-  include UUIDHelper
-  attr_accessible :date, :domain, :id, :month, :number, :paid, :paid_left, :total, :type, :username, :version, :year, :status, :document_type_id, :account_id, :name
+class PaymentsDocument < ApplicationRecord
+  self.primary_key = 'id'  
   self.inheritance_column = nil
 
   belongs_to :company, :foreign_key => 'domain'        
@@ -16,4 +14,5 @@ class PaymentsDocument < ActiveRecord::Base
   def default_values
       self.status ||= 'NOT_PAID'
   end
+
 end

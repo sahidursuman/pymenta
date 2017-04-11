@@ -1,4 +1,4 @@
-class CreateDocuments < ActiveRecord::Migration
+class CreateDocuments < ActiveRecord::Migration[5.0]
   def change
     create_table :documents, :id => false do |t|
       t.string :id, :limit => 36, :primary => true
@@ -26,6 +26,11 @@ class CreateDocuments < ActiveRecord::Migration
 
       t.integer :year
       t.integer :month
+      
+      t.string :document_type_id
+      t.string :account_id
+      t.string :warehouse_id
+      t.string :payments_document_id
 
       t.timestamps
     end

@@ -36,5 +36,8 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_client_path,
             :class => 'btn btn-primary' %>
+<%= link_to t('.print', :default => t("helpers.links.print")),
+            clients_report_clients_path(:code => @code, :name => @name, :city => @city),
+            :class => 'btn' %>			
 
-<%= will_paginate(@movies, :params => { :code => params[:code], :name => params[:name], :city => params[:city] }, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
+<%= will_paginate(@movies, :params => { :code => params[:code], :name => params[:name], :city => params[:city] }, renderer: BootstrapPagination::Rails ) %>

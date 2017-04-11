@@ -1,4 +1,4 @@
-class CreateDocumentLines < ActiveRecord::Migration
+class CreateDocumentLines < ActiveRecord::Migration[5.0]
   def change
     create_table :document_lines, :id => false do |t|
       t.string :id, :limit => 36, :primary => true
@@ -16,6 +16,11 @@ class CreateDocumentLines < ActiveRecord::Migration
       t.decimal :total, :precision => 10, :scale => 2
       t.integer :year
       t.integer :month
+      
+      t.string :header_id
+      t.string :product_id
+      t.string :warehouse_id
+      t.string :stock_id
 
       t.timestamps
     end

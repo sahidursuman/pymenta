@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
-  layout "home"
+  layout 'home'
   def index
-    @users = User.all
   end
 end

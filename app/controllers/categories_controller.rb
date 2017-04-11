@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def index
     @categories = current_user.company.categories
 
@@ -44,7 +44,7 @@ class CategoriesController < ApplicationController
     params[:category][:version] = ENV["VERSION"]
     params[:category][:domain] = current_user.domain
     params[:category][:username] = current_user.username
-    @category = Category.new(params[:category])
+    @category = Category.new(category_params)
 
     respond_to do |format|
       if @category.save
@@ -65,7 +65,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
 
     respond_to do |format|
-      if @category.update_attributes(params[:category])
+      if @category.update_attributes(category_params)
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { render json: @category }
       else
@@ -86,4 +86,15 @@ class CategoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_category
+      @category = Category.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def category_params
+      params.require(:category).permit(:code, :description, :domain, :id, :username, :version)
+    end
 end

@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def search
    @clients = Client.where("domain = ? AND code like ? AND name like ? AND city like ? ", current_user.domain,"%#{params[:code]}%","%#{params[:name]}%","%#{params[:city]}%").paginate(:page => params[:page], :per_page => 10).order('name ASC')
    render :index
@@ -59,7 +59,7 @@ class ClientsController < ApplicationController
     params[:client][:version] = ENV["VERSION"]
     params[:client][:domain] = current_user.domain
     params[:client][:username] = current_user.username
-    @client = Client.new(params[:client])
+    @client = Client.new(client_params)
 
     respond_to do |format|
       if @client.save
@@ -82,7 +82,7 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
 
     respond_to do |format|
-      if @client.update_attributes(params[:client])
+      if @client.update_attributes(client_params)
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
         format.json { head :no_content }
       else
@@ -115,8 +115,8 @@ class ClientsController < ApplicationController
     @code = params[:code]
     @name = params[:name]
     @city = params[:city]
-    @clients = Client.where("domain = ? AND (code like ? OR name like ? OR city like ?)", current_user.domain,"%#{@code}%","%#{@name}%","%#{@city}%") 
-    pdf = ProvidersReport.new(@clients, @user, @code, @name, @city)
+    @accounts = Client.where("domain = ? AND (code like ? OR name like ? OR city like ?)", current_user.domain,"%#{@code}%","%#{@name}%","%#{@city}%") 
+    pdf = AccountsReport.new(@accounts, @user, @code, @name, @city)
     send_data pdf.render, filename:'clients_report.pdf',type: 'application/pdf', disposition: 'inline'
   end
   
@@ -127,4 +127,15 @@ class ClientsController < ApplicationController
     pdf = AccountReport.new(@account, @user)
     send_data pdf.render, filename:'account_report.pdf',type: 'application/pdf', disposition: 'inline'
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_client
+      @client = Client.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def client_params
+      params.require(:client).permit(:address, :balance, :balance_b, :city, :code, :contact, :country, :debit_credit, :domain, :email, :fax, :id, :id_number1, :id_number2, :name, :observations, :state, :telephone, :type, :username, :version, :web, :zip_code)
+    end
 end

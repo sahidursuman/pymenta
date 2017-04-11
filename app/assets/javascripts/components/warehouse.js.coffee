@@ -19,9 +19,9 @@
   handleEdit: (e) ->
     e.preventDefault()
     data =
-      code: React.findDOMNode(@refs.code).value
-      name: React.findDOMNode(@refs.name).value
-      city: React.findDOMNode(@refs.city).value
+      code: this.refs.code.value
+      name: this.refs.name.value
+      city: this.refs.city.value
     $.ajaxSetup
       headers:
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')

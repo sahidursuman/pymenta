@@ -121,15 +121,18 @@ ActiveAdmin.setup do |config|
   # You can completely disable comments:
   # config.comments = false
   #
-  # You can disable the menu item for the comments index page:
-  # config.show_comments_in_menu = false
-  #
   # You can change the name under which comments are registered:
   # config.comments_registration_name = 'AdminComment'
   #
   # You can change the order for the comments and you can change the column
-  # to be used for ordering
+  # to be used for ordering:
   # config.comments_order = 'created_at ASC'
+  #
+  # You can disable the menu item for the comments index page:
+  # config.comments_menu = false
+  #
+  # You can customize the comment menu:
+  # config.comments_menu = { parent: 'Admin', priority: 1 }
 
   # == Batch Actions
   #
@@ -142,7 +145,7 @@ ActiveAdmin.setup do |config|
   # You can add before, after and around filters to all of your
   # Active Admin resources and pages from here.
   #
-  # config.before_filter :do_something_awesome
+  # config.before_action :do_something_awesome
 
   # == Localize Date/Time Format
   #
@@ -266,4 +269,18 @@ ActiveAdmin.setup do |config|
   # of those filters by default here.
   #
   # config.include_default_association_filters = true
+
+  # == Footer
+  #
+  # By default, the footer shows the current Active Admin version. You can
+  # override the content of the footer here.
+  #
+  # config.footer = 'my custom footer text'
+
+  # == Sorting
+  #
+  # By default ActiveAdmin::OrderClause is used for sorting logic
+  # You can inherit it with own class and inject it for all resources
+  #
+  # config.order_clause = MyOrderClause
 end

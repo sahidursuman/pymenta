@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def index
     @accounts = current_user.company.accounts
 
@@ -44,7 +44,7 @@ class AccountsController < ApplicationController
     params[:account][:version] = ENV["VERSION"]
     params[:account][:domain] = current_user.domain
     params[:account][:username] = current_user.username
-    @account = Account.new(params[:account])
+    @account = Account.new(account_params)
 
     respond_to do |format|
       if @account.save
@@ -65,7 +65,7 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
 
     respond_to do |format|
-      if @account.update_attributes(params[:account])
+      if @account.update_attributes(account_params)
         format.html { redirect_to @account, notice: 'Account was successfully updated.' }
         format.json { head :no_content }
       else
@@ -86,4 +86,15 @@ class AccountsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_account
+      @account = Account.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def account_params
+      params.require(:account).permit(:address, :balance, :balance_b, :city, :code, :contact, :country, :debit_credit, :domain, :email, :fax, :id, :id_number1, :id_number2, :name, :observations, :state, :telephone, :type, :username, :version, :web, :zip_code)
+    end
 end

@@ -1,7 +1,7 @@
 class WarehousesController < ApplicationController
   # GET /warehouses
   # GET /warehouses.json
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def index
     @warehouses = Account.where("domain = ? AND type = ?",current_user.domain,"Warehouse").paginate(:page => params[:page], :per_page => 10).order('name ASC')
 
@@ -55,7 +55,7 @@ class WarehousesController < ApplicationController
     params[:warehouse][:version] = ENV["VERSION"]
     params[:warehouse][:domain] = current_user.domain
     params[:warehouse][:username] = current_user.username
-    @warehouse = Warehouse.new(params[:warehouse])
+    @warehouse = Warehouse.new(warehouse_params)
 
     respond_to do |format|
       if @warehouse.save
@@ -78,7 +78,7 @@ class WarehousesController < ApplicationController
     @warehouse = Warehouse.find(params[:id])
 
     respond_to do |format|
-      if @warehouse.update_attributes(params[:warehouse])
+      if @warehouse.update_attributes(warehouse_params)
         format.html { redirect_to @warehouse, notice: 'Warehouse was successfully updated.' }
         format.json { render json: @warehouse }
       else
@@ -104,4 +104,15 @@ class WarehousesController < ApplicationController
     @account = Warehouse.find(params[:warehouse_id])
     render :partial => "documents/account", :object => @account
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_warehouse
+      @warehouse = Warehouse.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def warehouse_params
+      params.require(:warehouse).permit(:address, :balance, :balance_b, :city, :code, :contact, :country, :debit_credit, :domain, :email, :fax, :id, :id_number1, :id_number2, :name, :observations, :state, :telephone, :type, :username, :version, :web, :zip_code)
+    end
 end

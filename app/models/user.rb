@@ -1,15 +1,10 @@
-class User < ActiveRecord::Base
-  set_primary_key "id"
-  include UUIDHelper
-  rolify
+class User < ApplicationRecord
+  self.primary_key = 'id'   
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  belongs_to :company, :foreign_key => 'domain'       
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :role_ids, :as => :admin
-  attr_accessible :domain, :company_name, :name, :email, :password, :password_confirmation, :remember_me, :username
-  belongs_to :company, :foreign_key => 'domain'
 end

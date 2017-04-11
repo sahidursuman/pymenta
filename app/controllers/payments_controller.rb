@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
   # GET /payments
   # GET /payments.json
+  before_action :authenticate_user!
   def index
     @payments = current_user.company.payments.paginate(:page => params[:page], :per_page => 10).order('created_at ASC')
 
@@ -43,7 +44,7 @@ class PaymentsController < ApplicationController
     params[:payment][:version] = ENV["VERSION"]
     params[:payment][:domain] = current_user.domain
     params[:payment][:username] = current_user.username
-    @payment = Payment.new(params[:payment])
+    @payment = Payment.new(payment_params)
 
     respond_to do |format|
       if @payment.save
@@ -64,7 +65,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.find(params[:id])
 
     respond_to do |format|
-      if @payment.update_attributes(params[:payment])
+      if @payment.update_attributes(payment_params)
         format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
         format.json { head :no_content }
       else
@@ -86,4 +87,15 @@ class PaymentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_payment
+      @payment = Payment.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def payment_params
+      params.require(:payment).permit(:amount, :date, :domain, :id, :notes, :payment_type_id, :username, :version, :payments_document_id)
+    end
 end

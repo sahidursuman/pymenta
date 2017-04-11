@@ -1,6 +1,7 @@
 class DocumentTypesController < ApplicationController
   # GET /document_types
   # GET /document_types.json
+  before_action :authenticate_user!
   def index
     @document_types = current_user.company.document_types
 
@@ -43,7 +44,7 @@ class DocumentTypesController < ApplicationController
     params[:document_type][:version] = ENV["VERSION"]
     params[:document_type][:domain] = current_user.domain
     params[:document_type][:username] = current_user.username
-    @document_type = DocumentType.new(params[:document_type])
+    @document_type = DocumentType.new(document_type_params)
 
     respond_to do |format|
       if @document_type.save
@@ -64,7 +65,7 @@ class DocumentTypesController < ApplicationController
     @document_type = DocumentType.find(params[:id])
 
     respond_to do |format|
-      if @document_type.update_attributes(params[:document_type])
+      if @document_type.update_attributes(document_type_params)
         format.html { redirect_to @document_type, notice: 'Document type was successfully updated.' }
         format.json { render json: @document_type }
       else
@@ -85,4 +86,15 @@ class DocumentTypesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_document_type
+      @document_type = DocumentType.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def document_type_params
+      params.require(:document_type).permit(:account_type, :description, :domain, :id, :stock, :stock_type, :username, :version)
+    end
 end
