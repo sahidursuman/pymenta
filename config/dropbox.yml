@@ -1,8 +1,8 @@
-app_key: dn2orq7691brhhj
-app_secret: aruieu7ef26ejr4
-access_token: 0c1526x53h8mh486
-access_token_secret: 64l32xas59ssjbc
-user_id: 420436503
+app_key: <%= ENV["DROPBOX_APP_KEY"] %>
+app_secret: <%= ENV["DROPBOX_APP_SECRET"] %>
+access_token: <%= ENV["DROPBOX_ACCESS_TOKEN"] %>
+access_token_secret: <%= ENV["DROPBOX_ACCESS_TOKEN_SECRET"] %>
+user_id: <%= ENV["DROPBOX_USER_ID"] %>
 access_type: app_folder
 
 

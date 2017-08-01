@@ -1,4 +1,4 @@
-Pymenta Rails Project
+Pymenta Rails Open Source Project
 ===========================================================
 
 Pymenta is a very simple Cloud ERP System created for small companies to create, 
