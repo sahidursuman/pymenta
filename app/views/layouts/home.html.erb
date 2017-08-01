@@ -114,7 +114,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
 				  <h2><%=t '.ourproduct' %></h2>      
-                  <p class="lead"><%=t '.description', :default => 'Pymenta is a very simple Cloud ERP System created for small companies to create, manage and print documents. You can manage warehouses, providers, clients, products and stock. Designed to work in the Cloud.' %></p>
+                  <p class="lead"><%=t '.description', :default => 'Pymenta is a very simple Rails Cloud ERP System created for small companies to create, manage and print documents ( invoices, notes, quotations, credits, etc). You can manage warehouses, providers and clients. Also products and stock. Print Statistic Reports.
+
+This application is released as an open source project for educational purposes. Uses Rails 5, React, Boostrap, Device, Simple_Form, Prawn, PaperClip and ActiveAdmin.' %></p>
                   <%= link_to t("helpers.links.sign_up"), new_user_registration_path , :class=>"btn btn-danger btn-lg" %>
             </div>
         </div>
@@ -148,7 +150,7 @@
 					</br>
 					</br>
 	                <div id="pricing-table" class="row">
-	                    <div class="col-sm-6">
+	                    <div class="col-sm-12">
 	                        <ul class="plan">
 	                            <li class="plan-name"><%= t('.free', :default => t("layouts.home.free")) %></li>
 	                            <li class="plan-price"><%= t('.free', :default => t("layouts.home.free")) %></li>
@@ -158,6 +160,7 @@
 	                            <li class="plan-action"><%= link_to t("helpers.links.sign_up"), new_user_registration_path , :class=>"btn btn-primary btn-lg" %></li>
 	                        </ul>
 	                    </div>
+<!--						
 	                    <div class="col-sm-6">
 	                        <ul class="plan">
 	                            <li class="plan-name"><%= t('.paid', :default => t("layouts.home.paid")) %></li>
@@ -170,6 +173,7 @@
 	                        </ul>
 	                    </div>
 	                </div> 
+-->						
 	            </div>
 			</div>
 		  </div>
