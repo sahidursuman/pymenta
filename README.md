@@ -57,6 +57,10 @@ In order to use heroku, you need to:
   5. Migrate database
 
 	`heroku run rake db:migrate`
+	
+## License
+
+This code is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).	
 
 
 
