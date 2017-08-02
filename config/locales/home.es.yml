@@ -4,7 +4,7 @@ es:
       brand: "Pymenta"    
       title: "Ahora tu pyme en la nube!"
       title2: "Relajate, ahora nosotros nos encargamos de lo complicado."
-      ourproduct: "Nuestro Producto"
+      ourproduct: "Proyecto de Código Abierto"
       description: "Pymenta es un Sistema ERP muy simple hecho en Rails que permite a las pequeñas compañias crear, administrar e imprimir documentos ( facturas, notas, presupuestos, notas de creditos, etc). Tambien puede administrar almacenes, proveedores, clientes, productos e inventario. 
 	  Esta aplicación se publica como un proyecto de código abierto con fines educativos. Utiliza Rails 5, React, Boostrap, Device, Simple_Form, Gamba, PaperClip y ActiveAdmin."
       subtitle1: "Recived Invoices"
