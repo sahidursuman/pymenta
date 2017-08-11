@@ -23,7 +23,7 @@ class RegistrationsController < Devise::RegistrationsController
          if @company.save
            @user.domain = @company.id
            if @user.save
-            Notifier.welcome_email(@user).deliver
+           # Notifier.welcome_email(@user).deliver
              @user.add_role :admin
              sign_in(resource_name, resource)
              defaults @company,@user   

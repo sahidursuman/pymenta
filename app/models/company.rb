@@ -20,11 +20,11 @@ class Company < ApplicationRecord
   has_many :payment_types, :foreign_key => 'domain'
   
   has_attached_file :logo,
-      :storage => :dropbox,
-      :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
-      :dropbox_options => {
-       path: proc{|style| "#{style}/#{id}_#{logo.original_filename}"}
-      },
+#      :storage => :dropbox,
+#      :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
+#      :dropbox_options => {
+#       path: proc{|style| "#{style}/#{id}_#{logo.original_filename}"}
+#      },
       styles: {
       thumb: '100x100>',
       square: '500x200>',
